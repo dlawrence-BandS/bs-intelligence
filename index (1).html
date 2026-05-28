@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>B&S Intelligence Suite</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--navy:#1B2A4A;--teal:#2E7D6F;--teal-l:#E8F4F2;--gold:#C9A84C;--sand:#F5F0E8;--red:#C0392B;--red-l:#FDECEA;--green:#27AE60;--grn-l:#E9F7EF;--amber:#D4860B;--border:#E2DDD6;--mid:#6B7A8D;--text:#2C3E50;
+--heals:#2E7D6F;--heals-l:#E8F4F2;--ll:#1B2A4A;--ll-l:#E8EEF7}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--text);min-height:100vh}
+header{background:var(--navy);color:#fff;padding:20px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--gold)}
+.h-title{font-family:'Playfair Display',serif;font-size:1.45rem;font-weight:700}
+.h-sub{font-size:.72rem;color:rgba(255,255,255,.45);margin-top:2px}
+.h-right{display:flex;align-items:center;gap:8px}
+#run-time{font-size:.7rem;color:rgba(255,255,255,.38);margin-right:4px}
+.btn{padding:7px 14px;border-radius:6px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.74rem;cursor:pointer;border:none;transition:.2s}
+.btn-ghost{background:transparent;border:1px solid rgba(255,255,255,.28);color:#fff}
+.btn-ghost:hover{background:rgba(255,255,255,.08)}
+.btn:disabled{opacity:.4;cursor:default}
+/* Competitor tabs */
+.comp-bar{background:#fff;padding:0 32px;border-bottom:2px solid var(--border);display:flex;gap:0;overflow-x:auto}
+.comp-tab{padding:11px 20px;font-size:.8rem;font-weight:600;color:var(--mid);cursor:pointer;border-bottom:3px solid transparent;white-space:nowrap;transition:.15s;display:flex;align-items:center;gap:7px}
+.comp-tab:hover{color:var(--navy)}
+.comp-tab.heals.active{color:var(--heals);border-bottom-color:var(--heals)}
+.comp-tab.ll.active{color:var(--ll);border-bottom-color:var(--ll)}
+.comp-tab.all.active{color:var(--gold);border-bottom-color:var(--gold)}
+.comp-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.dot-heals{background:var(--heals)}.dot-ll{background:var(--ll)}.dot-gold{background:var(--gold)}
+/* Nav */
+nav{background:#fff;padding:0 32px;border-bottom:1px solid var(--border);display:flex;overflow-x:auto;gap:0}
+.tab{padding:11px 15px;font-size:.75rem;font-weight:500;color:var(--mid);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:.15s;display:flex;align-items:center;gap:5px}
+.tab:hover{color:var(--navy)}
+.tab.active{color:var(--navy);border-bottom-color:var(--teal);font-weight:600}
+.bdg{background:var(--red);color:#fff;font-size:.6rem;font-weight:700;padding:1px 5px;border-radius:10px;min-width:14px;text-align:center}
+.bdg.am{background:var(--amber)}
+main{padding:24px 32px;max-width:1440px}
+.panel{display:none}.panel.active{display:block}
+/* Loading */
+#loading{display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:55vh;gap:14px;text-align:center}
+#loading h2{font-family:'Playfair Display',serif;font-size:1.25rem;color:var(--navy)}
+#loading p{color:var(--mid);font-size:.82rem;max-width:360px;line-height:1.6}
+.spinner{width:34px;height:34px;border:3px solid var(--border);border-top-color:var(--teal);border-radius:50%;animation:spin .8s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+.chip-grid{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;margin-top:8px}
+.chip{padding:5px 12px;border-radius:11px;background:#eee;color:var(--mid);font-size:.72rem;display:flex;align-items:center;gap:5px}
+.chip.ok{background:var(--grn-l);color:var(--green)}.chip.fail{background:var(--red-l);color:var(--red)}.chip.loading{background:#EEF2FF;color:#4338CA}
+/* Summary cards */
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:12px;margin-bottom:22px}
+.card{background:#fff;border-radius:9px;padding:15px 17px;border:1px solid var(--border);position:relative;overflow:hidden}
+.card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
+.c-r::before{background:var(--red)}.c-t::before{background:var(--teal)}.c-a::before{background:var(--amber)}
+.c-n::before{background:var(--navy)}.c-g::before{background:var(--green)}.c-o::before{background:var(--gold)}
+.cl{font-size:.62rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:5px}
+.cn{font-size:1.85rem;font-weight:700;font-family:'Playfair Display',serif;color:var(--navy);line-height:1}
+.cs{font-size:.67rem;color:var(--mid);margin-top:3px}
+/* Section title */
+.sec{font-family:'Playfair Display',serif;font-size:.92rem;color:var(--navy);margin:20px 0 10px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+.sec:first-child{margin-top:0}
+/* Tables */
+.tw{overflow-x:auto;margin-bottom:16px}
+table{width:100%;border-collapse:collapse;font-size:.75rem;background:#fff;border-radius:8px;overflow:hidden;border:1px solid var(--border)}
+th{background:var(--navy);color:#fff;padding:8px 11px;text-align:left;font-weight:500;font-size:.67rem;text-transform:uppercase;letter-spacing:.06em;white-space:nowrap}
+td{padding:8px 11px;border-bottom:1px solid var(--border);vertical-align:middle}
+tr:last-child td{border-bottom:none}
+tr:nth-child(even) td{background:#FAFAF8}
+td a{color:var(--teal);text-decoration:none;font-size:.7rem}
+td a:hover{text-decoration:underline}
+.pill{display:inline-block;padding:2px 7px;border-radius:9px;font-size:.62rem;font-weight:600;white-space:nowrap}
+.p-in{background:var(--grn-l);color:var(--green)}.p-out{background:var(--red-l);color:var(--red)}
+.p-sale{background:var(--red-l);color:var(--red)}.p-up{background:var(--red-l);color:var(--red)}.p-down{background:var(--grn-l);color:var(--green)}
+.tag-heals{background:var(--heals-l);color:var(--heals);display:inline-block;padding:1px 7px;border-radius:8px;font-size:.65rem;font-weight:600}
+.tag-ll{background:var(--ll-l);color:var(--ll);display:inline-block;padding:1px 7px;border-radius:8px;font-size:.65rem;font-weight:600}
+/* Stars */
+.stars{color:var(--gold)}
+/* Bar chart */
+.bar-row{display:flex;align-items:center;gap:10px;margin-bottom:7px;font-size:.73rem}
+.bar-lbl{width:165px;text-align:right;color:var(--mid);flex-shrink:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-size:.7rem}
+.bar-track{flex:1;background:var(--border);border-radius:3px;height:17px;overflow:hidden}
+.bar-fill{height:100%;border-radius:3px;display:flex;align-items:center;padding-left:6px;font-size:.64rem;font-weight:600;color:#fff;transition:width .5s ease}
+.bar-val{width:60px;font-weight:600;color:var(--navy);font-size:.72rem}
+/* Category folders */
+.cat-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:13px}
+.folder{background:#fff;border:1px solid var(--border);border-radius:10px;overflow:hidden}
+.folder-head{display:flex;align-items:center;justify-content:space-between;padding:12px 15px;cursor:pointer;user-select:none;border-bottom:1px solid transparent;transition:.15s}
+.folder-head:hover{background:#FAFAF8}
+.folder-head.open{border-bottom-color:var(--border);background:#FAFAF8}
+.folder-icon{font-size:1.05rem;margin-right:7px;flex-shrink:0}
+.folder-name{font-weight:600;font-size:.82rem;color:var(--navy);flex:1}
+.folder-meta{display:flex;gap:6px;align-items:center;flex-shrink:0}
+.fmeta{font-size:.66rem;color:var(--mid);background:var(--sand);padding:2px 6px;border-radius:7px}
+.fmeta.sale{background:#FEF5E7;color:var(--amber)}.fmeta.oos{background:var(--red-l);color:var(--red)}
+.folder-arrow{font-size:.72rem;color:var(--mid);margin-left:7px;transition:transform .2s}
+.folder-head.open .folder-arrow{transform:rotate(90deg)}
+.folder-body{display:none;max-height:420px;overflow-y:auto}
+.folder-body.open{display:block}
+.subcats{padding:6px 0}
+.subcat-row{display:flex;align-items:center;justify-content:space-between;padding:7px 15px;border-bottom:1px solid var(--border);cursor:pointer;transition:.1s}
+.subcat-row:last-child{border-bottom:none}
+.subcat-row:hover{background:#F5F5F2}
+.subcat-row.active-sub{background:var(--teal-l)}
+.subcat-name{font-size:.76rem;color:var(--text);flex:1}
+.subcat-stats{display:flex;gap:5px;font-size:.66rem;color:var(--mid);flex-shrink:0}
+.subcat-stats span{background:var(--sand);padding:1px 5px;border-radius:5px}
+.cat-products{display:none;padding:10px 15px 12px;background:#FAFAF8;border-top:1px solid var(--border)}
+.cat-products.open{display:block}
+/* Compare panel */
+.compare-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.comp-box{background:#fff;border:1px solid var(--border);border-radius:10px;padding:18px;position:relative;overflow:hidden}
+.comp-box::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.comp-box.heals::before{background:var(--heals)}
+.comp-box.ll::before{background:var(--ll)}
+.comp-box-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:var(--navy);margin-bottom:12px}
+/* Filters */
+.filters{display:flex;align-items:center;gap:9px;margin-bottom:11px;flex-wrap:wrap}
+.filters input,.filters select{padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-family:'DM Sans',sans-serif;font-size:.74rem;outline:none;background:#fff}
+.filters input{width:230px}
+/* Empty */
+.empty{text-align:center;padding:30px;color:var(--mid);font-size:.78rem}
+</style>
+</head>
+<body>
+
+<header>
+  <div>
+    <div class="h-title">B&amp;S Intelligence Suite</div>
+    <div class="h-sub">Competitor monitoring &middot; Barker &amp; Stonehouse</div>
+  </div>
+  <div class="h-right">
+    <div id="run-time"></div>
+    <button class="btn btn-ghost" onclick="refreshAll()" id="btn-refresh">&#8635; Refresh All</button>
+    <button class="btn btn-ghost" onclick="document.getElementById('mwrap').style.display='flex'">&#128193; Manual</button>
+  </div>
+</header>
+
+<!-- Loading screen -->
+<div id="loading">
+  <div class="spinner"></div>
+  <h2>Loading intelligence data&hellip;</h2>
+  <p>Fetching latest competitor data from GitHub</p>
+  <div class="chip-grid" id="load-chips"></div>
+  <div id="mwrap" style="display:none;flex-direction:column;align-items:center;gap:10px;margin-top:14px">
+    <p style="color:var(--mid);font-size:.78rem">Load files manually:</p>
+    <div style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+      <label style="padding:8px 14px;border:1.5px dashed var(--border);border-radius:8px;cursor:pointer;font-size:.74rem;color:var(--mid);background:#fff">
+        <span class="dot-heals" style="display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px"></span>heals_intelligence.json
+        <input type="file" accept=".json" style="display:none" onchange="manualLoad('heals',this)">
+      </label>
+      <label style="padding:8px 14px;border:1.5px dashed var(--border);border-radius:8px;cursor:pointer;font-size:.74rem;color:var(--mid);background:#fff">
+        <span class="dot-ll" style="display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px"></span>lee_longlands_intelligence.json
+        <input type="file" accept=".json" style="display:none" onchange="manualLoad('ll',this)">
+      </label>
+    </div>
+  </div>
+</div>
+
+<!-- Dashboard -->
+<div id="dash" style="display:none">
+
+  <!-- Competitor selector -->
+  <div class="comp-bar">
+    <div class="comp-tab all active" onclick="setComp('all')" data-c="all">
+      <span class="comp-dot dot-gold"></span>All Competitors
+    </div>
+    <div class="comp-tab heals" onclick="setComp('heals')" data-c="heals">
+      <span class="comp-dot dot-heals"></span>Heals
+      <span id="heals-count" style="font-size:.65rem;font-weight:400;color:var(--mid)"></span>
+    </div>
+    <div class="comp-tab ll" onclick="setComp('ll')" data-c="ll">
+      <span class="comp-dot dot-ll"></span>Lee Longlands
+      <span id="ll-count" style="font-size:.65rem;font-weight:400;color:var(--mid)"></span>
+    </div>
+  </div>
+
+  <!-- Page nav -->
+  <nav>
+    <div class="tab active" onclick="show('overview')" data-t="overview">&#128202; Overview</div>
+    <div class="tab" onclick="show('compare')" data-t="compare">&#9878; Compare</div>
+    <div class="tab" onclick="show('categories')" data-t="categories">&#128193; Categories</div>
+    <div class="tab" onclick="show('products')" data-t="products">&#128715; All Products</div>
+    <div class="tab" onclick="show('changes')" data-t="changes">&#128276; Changes <span class="bdg" id="b-ch" style="display:none"></span></div>
+    <div class="tab" onclick="show('sales')" data-t="sales">&#128293; On Sale <span class="bdg am" id="b-sl" style="display:none"></span></div>
+    <div class="tab" onclick="show('stock')" data-t="stock">&#128230; Out of Stock <span class="bdg" id="b-oo" style="display:none"></span></div>
+    <div class="tab" onclick="show('reviews')" data-t="reviews">&#11088; Reviews</div>
+    <div class="tab" onclick="show('pricing')" data-t="pricing">&#128200; Pricing</div>
+  </nav>
+
+  <main>
+
+    <!-- Overview -->
+    <div class="panel active" id="p-overview">
+      <div class="cards" id="ov-cards"></div>
+      <div class="sec">Alerts</div><div id="ov-alerts"></div>
+    </div>
+
+    <!-- Compare -->
+    <div class="panel" id="p-compare">
+      <div class="compare-grid" id="compare-grid"></div>
+    </div>
+
+    <!-- Categories -->
+    <div class="panel" id="p-categories">
+      <div class="sec" style="margin-top:0">Browse by Category</div>
+      <div class="cat-grid" id="cat-grid"></div>
+    </div>
+
+    <!-- All Products -->
+    <div class="panel" id="p-products">
+      <div class="filters">
+        <input id="srch" type="text" placeholder="Search products&hellip;" oninput="filterProds()">
+        <select id="f-comp" onchange="filterProds()">
+          <option value="">All competitors</option>
+          <option value="Heals">Heals</option>
+          <option value="Lee Longlands">Lee Longlands</option>
+        </select>
+        <select id="f-cat" onchange="filterProds()"><option value="">All categories</option></select>
+        <select id="f-st" onchange="filterProds()">
+          <option value="">All stock</option>
+          <option value="in_stock">In stock</option>
+          <option value="out_of_stock">Out of stock</option>
+        </select>
+        <select id="f-sale" onchange="filterProds()">
+          <option value="">All prices</option>
+          <option value="sale">On sale only</option>
+        </select>
+      </div>
+      <div id="prod-tbl"></div>
+      <div id="prod-cnt" style="font-size:.7rem;color:var(--mid);margin-top:5px"></div>
+    </div>
+
+    <!-- Changes -->
+    <div class="panel" id="p-changes">
+      <div class="sec">Price Changes</div><div id="ch-p"></div>
+      <div class="sec">Stock Changes</div><div id="ch-s"></div>
+      <div class="sec">New Products</div><div id="ch-n"></div>
+      <div class="sec">New Sales</div><div id="ch-sn"></div>
+    </div>
+
+    <!-- On Sale -->
+    <div class="panel" id="p-sales">
+      <div class="sec" style="margin-top:0">Products Currently On Sale</div>
+      <div id="sale-tbl"></div>
+    </div>
+
+    <!-- Out of Stock -->
+    <div class="panel" id="p-stock">
+      <div class="sec" style="margin-top:0">Out of Stock Products</div>
+      <div id="oos-tbl"></div>
+    </div>
+
+    <!-- Reviews -->
+    <div class="panel" id="p-reviews">
+      <div class="sec" style="margin-top:0">Trustpilot Ratings</div>
+      <div class="cards" id="rev-cards"></div>
+    </div>
+
+    <!-- Pricing -->
+    <div class="panel" id="p-pricing">
+      <div class="sec" style="margin-top:0">Median Price by Category</div>
+      <div id="price-bars"></div>
+    </div>
+
+  </main>
+</div>
+
+<script>
+// ── Config ────────────────────────────────────────────────────────────────────
+const GITHUB_RAW = 'https://raw.githubusercontent.com/dlawrence-BandS/bs-intelligence/main/';
+const SOURCES = {
+  heals: { file:'heals_intelligence.json',          label:'Heals',         cls:'heals', color:'#2E7D6F' },
+  ll:    { file:'lee_longlands_intelligence.json',   label:'Lee Longlands', cls:'ll',    color:'#1B2A4A' },
+};
+
+const FOLDERS = [
+  { name:'Sofas & Seating',  icon:'🛋', labels:['All Sofas','Fabric Sofas','Leather Sofas','Corner Sofas','Recliner Sofas','Sofa Beds','Footstools','Sofas'] },
+  { name:'Chairs',           icon:'🪑', labels:['Accent Chairs','Dining Chairs','Recliner Chairs','High Back Chairs','Bar Stools','Benches'] },
+  { name:'Dining',           icon:'🍽', labels:['Dining Tables','Extending Tables','Dining Chairs','Bar Stools','Dining Benches'] },
+  { name:'Living Room',      icon:'🪞', labels:['Coffee Tables','Side Tables','Console Tables','Lamp Tables','Sideboards','Bookcases','Display Cabinets','TV Units','Shelving'] },
+  { name:'Bedroom',          icon:'🛏', labels:['All Beds','Ottoman Beds','Divan Beds','Bed Frames','Beds','Wardrobes','Bedroom Chest of Drawers','Chest of Drawers','Bedside Tables','Dressing Tables','All Mattresses','Mattresses','Headboards'] },
+  { name:'Home Office',      icon:'💻', labels:['Office Desks','Office Chairs'] },
+  { name:'Lighting',         icon:'💡', labels:['Pendant Lights','Floor Lamps','Table Lamps','Wall Lights','Ceiling Lights','Lighting'] },
+  { name:'Soft Furnishings', icon:'🧶', labels:['Rugs','Cushions','Throws','Mirrors','Scatter Cushions','Artwork'] },
+  { name:'Garden',           icon:'🌿', labels:['Garden Furniture','Garden Dining Sets','Garden Lounge Sets','Garden Sofas','Garden Dining Chairs','Garden Dining Tables'] },
+  { name:'Brands',           icon:'🏷', labels:['Ercol','Stressless','Kartell','Bontempi','Tempur','Parker Knoll','Himolla','G Plan','Duresta','Hypnos','Vispring','Harrison Spinks','Vitra','Tom Dixon','HAY','Muuto','Fritz Hansen','Carl Hansen','Flos','Gubi','Ligne Roset','Knoll','Anglepoise','Louis Poulsen','De La Espada','Bolia'] },
+  { name:'Sale & New In',    icon:'🔥', labels:['New In','In Stock','Clearance Sofas','Clearance Chairs','Clearance Tables','Clearance Beds','Clearance','Clearance Furniture','New In Furniture','New In Sofas'] },
+];
+
+// ── State ─────────────────────────────────────────────────────────────────────
+const DATA  = {};   // DATA.heals, DATA.ll
+let activeComp = 'all';
+let allProducts = [];
+
+// ── Load ──────────────────────────────────────────────────────────────────────
+const chips = {};
+async function loadAll(force){
+  document.getElementById('loading').style.display='flex';
+  document.getElementById('dash').style.display='none';
+  document.getElementById('load-chips').innerHTML='';
+  let loadedAny = false;
+  await Promise.all(Object.entries(SOURCES).map(async ([key,src])=>{
+    const chip = document.createElement('div');
+    chip.className='chip loading'; chip.id='chip-'+key;
+    chip.innerHTML=`<span class="comp-dot dot-${key}"></span> Loading ${src.label}&hellip;`;
+    document.getElementById('load-chips').appendChild(chip);
+    try {
+      const url = GITHUB_RAW + src.file + (force?'?t='+Date.now():'');
+      const res = await fetch(url);
+      if(!res.ok) throw new Error('HTTP '+res.status);
+      DATA[key] = await res.json();
+      chip.className='chip ok';
+      chip.innerHTML=`<span class="comp-dot dot-${key}"></span> ✓ ${src.label}: ${(DATA[key].summary?.total_products||0).toLocaleString()} products`;
+      loadedAny = true;
+    } catch(e) {
+      chip.className='chip fail';
+      chip.innerHTML=`<span class="comp-dot dot-${key}"></span> ✗ ${src.label}: not found`;
+    }
+  }));
+  if(loadedAny){ render(); }
+  else {
+    document.getElementById('loading').querySelector('h2').textContent='No data found';
+    document.getElementById('loading').querySelector('p').textContent='Run the Python scrapers first, then upload the JSON files to GitHub.';
+    document.getElementById('mwrap').style.display='flex';
+  }
+}
+async function refreshAll(){ document.getElementById('btn-refresh').disabled=true; await loadAll(true); document.getElementById('btn-refresh').disabled=false; }
+function manualLoad(key,input){
+  const r=new FileReader();
+  r.onload=e=>{ DATA[key]=JSON.parse(e.target.result); render(); };
+  r.readAsText(input.files[0]);
+}
+
+// ── Nav ───────────────────────────────────────────────────────────────────────
+function show(name){
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+  document.querySelector('[data-t="'+name+'"]').classList.add('active');
+  document.getElementById('p-'+name).classList.add('active');
+}
+function setComp(c){
+  activeComp=c;
+  document.querySelectorAll('.comp-tab').forEach(t=>t.classList.remove('active'));
+  document.querySelector('[data-c="'+c+'"]').classList.add('active');
+  rebuildProducts(); renderCategories(); renderSales(); renderStock(); renderPricing(); renderChanges();
+}
+
+// ── Helpers ───────────────────────────────────────────────────────────────────
+const fmt  = v => v!=null?'£'+Number(v).toLocaleString('en-GB',{minimumFractionDigits:0,maximumFractionDigits:0}):'—';
+const lnk  = (url,t) => url?`<a href="${url}" target="_blank">${t||'↗'}</a>`:(t||'—');
+function pill(s){ return s==='in_stock'?'<span class="pill p-in">In Stock</span>':s==='out_of_stock'?'<span class="pill p-out">Out of Stock</span>':'—'; }
+function compTag(src){ return src==='heals'?'<span class="tag-heals">Heals</span>':'<span class="tag-ll">Lee Longlands</span>'; }
+function stars(r){ if(!r)return'—'; const f=Math.round(r); return`<span class="stars">${'★'.repeat(f)}${'☆'.repeat(5-f)}</span> <small>${Number(r).toFixed(1)}</small>`; }
+function tbl(headers,rows,empty){
+  if(!rows||!rows.length)return`<div class="empty">${empty||'No data.'}</div>`;
+  const h=headers.map(h=>`<th>${h}</th>`).join('');
+  const r=rows.map(r=>`<tr>${r.map(c=>`<td>${c}</td>`).join('')}</tr>`).join('');
+  return`<div class="tw"><table><thead><tr>${h}</tr></thead><tbody>${r}</tbody></table></div>`;
+}
+function median(arr){ if(!arr.length)return null; const s=[...arr].sort((a,b)=>a-b); return s[Math.floor(s.length/2)]; }
+function getProds(comp){ // filtered by active competitor
+  if(comp==='heals') return (DATA.heals?.all_products||[]).map(p=>({...p,_src:'heals',_competitor:'Heals'}));
+  if(comp==='ll')    return (DATA.ll?.all_products||[]).map(p=>({...p,_src:'ll',_competitor:'Lee Longlands'}));
+  return [
+    ...(DATA.heals?.all_products||[]).map(p=>({...p,_src:'heals',_competitor:'Heals'})),
+    ...(DATA.ll?.all_products||[]).map(p=>({...p,_src:'ll',_competitor:'Lee Longlands'})),
+  ];
+}
+
+// ── Render ────────────────────────────────────────────────────────────────────
+function render(){
+  document.getElementById('loading').style.display='none';
+  document.getElementById('dash').style.display='block';
+  // Update competitor counts
+  if(DATA.heals) document.getElementById('heals-count').textContent=`(${(DATA.heals.summary?.total_products||0).toLocaleString()})`;
+  if(DATA.ll)    document.getElementById('ll-count').textContent=`(${(DATA.ll.summary?.total_products||0).toLocaleString()})`;
+  // Latest run time
+  const times=[DATA.heals?.scraped_at,DATA.ll?.scraped_at].filter(Boolean);
+  if(times.length){ const d=new Date(Math.max(...times.map(t=>new Date(t)))); document.getElementById('run-time').textContent='Last run: '+d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}); }
+  renderOverview(); renderCompare(); rebuildProducts(); renderCategories();
+  renderChanges(); renderSales(); renderStock(); renderReviews(); renderPricing();
+}
+
+// ── Overview ──────────────────────────────────────────────────────────────────
+function renderOverview(){
+  let totalProducts=0, totalSale=0, totalOos=0, totalChanges=0;
+  const alerts=[];
+  Object.entries(DATA).forEach(([key,d])=>{
+    if(!d) return;
+    const s=d.summary||{}, ch=d.changes||{};
+    totalProducts += s.total_products||0;
+    totalSale     += s.on_sale||0;
+    totalOos      += s.out_of_stock||0;
+    totalChanges  += (ch.price_changes||[]).length+(ch.new_sales||[]).length+(ch.stock_changes||[]).length;
+    const src = SOURCES[key];
+    (ch.price_changes||[]).forEach(p=>alerts.push([src.label,`<b>Price change:</b> ${p.name.substring(0,50)} ${fmt(p.prev_price)}→${fmt(p.new_price)} (${p.change_pct>0?'+':''}${p.change_pct}%)`]));
+    (ch.new_sales||[]).forEach(p=>alerts.push([src.label,`<b>New sale:</b> ${p.name.substring(0,50)} ${fmt(p.price)}${p.discount_pct?' ('+p.discount_pct+'% off)':''}`]));
+    (ch.stock_changes||[]).forEach(p=>alerts.push([src.label,`<b>Stock:</b> ${p.name.substring(0,50)} ${p.from}→${p.to}`]));
+    (ch.new_products||[]).slice(0,4).forEach(p=>alerts.push([src.label,`<b>New product:</b> ${p.name.substring(0,50)} ${fmt(p.price)}`]));
+  });
+  if(totalChanges){ const b=document.getElementById('b-ch'); b.textContent=totalChanges; b.style.display='inline-block'; }
+  if(totalSale){ const b=document.getElementById('b-sl'); b.textContent=totalSale; b.style.display='inline-block'; }
+  if(totalOos){ const b=document.getElementById('b-oo'); b.textContent=totalOos; b.style.display='inline-block'; }
+  document.getElementById('ov-cards').innerHTML=`
+    <div class="card c-n"><div class="cl">Total Products</div><div class="cn">${totalProducts.toLocaleString()}</div><div class="cs">across all competitors</div></div>
+    <div class="card ${totalSale?'c-a':'c-t'}"><div class="cl">On Sale</div><div class="cn">${totalSale}</div><div class="cs">currently discounted</div></div>
+    <div class="card ${totalOos?'c-r':'c-t'}"><div class="cl">Out of Stock</div><div class="cn">${totalOos}</div><div class="cs">unavailable</div></div>
+    <div class="card ${totalChanges?'c-r':'c-t'}"><div class="cl">Changes</div><div class="cn">${totalChanges}</div><div class="cs">since last run</div></div>
+    ${Object.entries(DATA).filter(([,d])=>d).map(([k,d])=>`
+      <div class="card c-t"><div class="cl">${SOURCES[k].label}</div><div class="cn">${(d.summary?.total_products||0).toLocaleString()}</div>
+      <div class="cs">${d.summary?.on_sale||0} on sale &middot; ${d.summary?.out_of_stock||0} OOS</div></div>`).join('')}`;
+  document.getElementById('ov-alerts').innerHTML = alerts.length
+    ? tbl(['Competitor','Alert'],alerts,'')
+    : '<div class="empty">✅ No changes since last run.</div>';
+}
+
+// ── Compare ───────────────────────────────────────────────────────────────────
+function renderCompare(){
+  const entries = Object.entries(DATA).filter(([,d])=>d);
+  document.getElementById('compare-grid').innerHTML = entries.map(([key,d])=>{
+    const s=d.summary||{}, ch=d.changes||{};
+    const src=SOURCES[key];
+    return `<div class="comp-box ${key}">
+      <div class="comp-box-title">${src.label}</div>
+      ${tbl(['Metric','Value'],[
+        ['Total Products', (s.total_products||0).toLocaleString()],
+        ['On Sale', s.on_sale||0],
+        ['Out of Stock', s.out_of_stock||0],
+        ['Price Changes', (ch.price_changes||[]).length],
+        ['New Products', (ch.new_products||[]).length],
+        ['New Sales', (ch.new_sales||[]).length],
+        ['Pages Scraped', s.pages_scraped||0],
+        ['Pages Failed', s.pages_failed||0],
+        ['Last Run', d.scraped_at ? new Date(d.scraped_at).toLocaleDateString('en-GB') : '—'],
+      ],'')}
+    </div>`;
+  }).join('');
+}
+
+// ── Products ──────────────────────────────────────────────────────────────────
+function rebuildProducts(){
+  allProducts = getProds(activeComp);
+  const cats=[...new Set(allProducts.map(p=>p.page_label).filter(Boolean))].sort();
+  const sel=document.getElementById('f-cat');
+  sel.innerHTML='<option value="">All categories</option>';
+  cats.forEach(c=>{ const o=document.createElement('option'); o.value=c; o.textContent=c; sel.appendChild(o); });
+  filterProds();
+}
+function filterProds(){
+  const q    = document.getElementById('srch').value.toLowerCase();
+  const comp = document.getElementById('f-comp').value;
+  const cat  = document.getElementById('f-cat').value;
+  const st   = document.getElementById('f-st').value;
+  const sale = document.getElementById('f-sale').value;
+  let filtered = allProducts.filter(p=>{
+    if(q    && !p.name.toLowerCase().includes(q)) return false;
+    if(comp && p._competitor!==comp) return false;
+    if(cat  && p.page_label!==cat) return false;
+    if(st   && p.stock_status!==st) return false;
+    if(sale==='sale' && !p.is_on_sale) return false;
+    return true;
+  });
+  document.getElementById('prod-cnt').textContent=`Showing ${filtered.length} of ${allProducts.length} products`;
+  document.getElementById('prod-tbl').innerHTML=tbl(
+    ['Competitor','Product','Category','Price','Was','Sale','Stock','Link'],
+    filtered.slice(0,600).map(p=>[
+      compTag(p._src), p.name.substring(0,55),
+      (p.page_label||'—').substring(0,22),
+      fmt(p.price), p.was_price?fmt(p.was_price):'—',
+      p.is_on_sale?`<span class="pill p-sale">${p.discount_pct||'?'}% off</span>`:'—',
+      pill(p.stock_status), lnk(p.url,'↗')
+    ]), 'No products found.'
+  );
+}
+
+// ── Categories ────────────────────────────────────────────────────────────────
+function renderCategories(){
+  const products = getProds(activeComp);
+  const byLabel={};
+  products.forEach(p=>{ const l=p.page_label||'Other'; if(!byLabel[l])byLabel[l]=[]; byLabel[l].push(p); });
+  let html='';
+  FOLDERS.forEach((folder,fi)=>{
+    let fc=0, fs=0, fo=0;
+    folder.labels.forEach(lbl=>{ const ps=byLabel[lbl]||[]; fc+=ps.length; fs+=ps.filter(p=>p.is_on_sale).length; fo+=ps.filter(p=>p.stock_status==='out_of_stock').length; });
+    if(!fc) return;
+    html+=`<div class="folder" id="folder-${fi}">
+      <div class="folder-head" onclick="toggleFolder(${fi})">
+        <span class="folder-icon">${folder.icon}</span>
+        <span class="folder-name">${folder.name}</span>
+        <span class="folder-meta">
+          <span class="fmeta">${fc} products</span>
+          ${fs?`<span class="fmeta sale">${fs} on sale`+`</span>`:''}
+          ${fo?`<span class="fmeta oos">${fo} OOS</span>`:''}
+        </span>
+        <span class="folder-arrow">▶</span>
+      </div>
+      <div class="folder-body" id="fbody-${fi}"><div class="subcats">`;
+    folder.labels.forEach((lbl,li)=>{
+      const ps=byLabel[lbl]||[];
+      if(!ps.length) return;
+      const prices=ps.map(p=>p.price).filter(Boolean);
+      const med=median(prices);
+      const sale=ps.filter(p=>p.is_on_sale).length;
+      const oos=ps.filter(p=>p.stock_status==='out_of_stock').length;
+      // Show competitor breakdown if multiple competitors
+      const compBreak = activeComp==='all'
+        ? [...new Set(ps.map(p=>p._competitor))].map(c=>
+            `<span style="font-size:.62rem;color:var(--mid)">${c.split(' ')[0]}: ${ps.filter(p=>p._competitor===c).length}</span>`).join(' · ')
+        : '';
+      html+=`<div class="subcat-row" id="sub-${fi}-${li}" onclick="toggleSubcat(${fi},${li})">
+        <span class="subcat-name">${lbl}${compBreak?` <span style="font-size:.65rem;color:var(--mid);margin-left:4px">${compBreak}</span>`:''}</span>
+        <span class="subcat-stats">
+          <span>${ps.length}</span>
+          ${med?`<span>med ${fmt(med)}</span>`:''}
+          ${sale?`<span style="color:var(--amber)">${sale} sale</span>`:''}
+          ${oos?`<span style="color:var(--red)">${oos} OOS</span>`:''}
+        </span>
+      </div>
+      <div class="cat-products" id="catprods-${fi}-${li}">
+        ${tbl(['Competitor','Product','Price','Was','Sale','Stock','Link'],
+          ps.slice(0,150).map(p=>[compTag(p._src),p.name.substring(0,52),fmt(p.price),
+            p.was_price?fmt(p.was_price):'—',
+            p.is_on_sale?`<span class="pill p-sale">${p.discount_pct||'?'}% off</span>`:'—',
+            pill(p.stock_status),lnk(p.url,'↗')]),'No products.')}
+      </div>`;
+    });
+    html+='</div></div></div>';
+  });
+  document.getElementById('cat-grid').innerHTML=html||'<div class="empty">No category data.</div>';
+}
+function toggleFolder(fi){
+  const head=document.querySelector(`#folder-${fi} .folder-head`);
+  const body=document.getElementById(`fbody-${fi}`);
+  const open=head.classList.contains('open');
+  head.classList.toggle('open',!open); body.classList.toggle('open',!open);
+}
+function toggleSubcat(fi,li){
+  const row=document.getElementById(`sub-${fi}-${li}`);
+  const prods=document.getElementById(`catprods-${fi}-${li}`);
+  const open=row.classList.contains('active-sub');
+  document.querySelectorAll(`#fbody-${fi} .subcat-row`).forEach(r=>r.classList.remove('active-sub'));
+  document.querySelectorAll(`#fbody-${fi} .cat-products`).forEach(p=>p.classList.remove('open'));
+  if(!open){ row.classList.add('active-sub'); prods.classList.add('open'); }
+}
+
+// ── Changes ───────────────────────────────────────────────────────────────────
+function renderChanges(){
+  const priceRows=[],stockRows=[],newRows=[],saleRows=[];
+  Object.entries(DATA).filter(([,d])=>d).forEach(([key,d])=>{
+    if(activeComp!=='all' && key!==activeComp) return;
+    const ch=d.changes||{}, src=SOURCES[key];
+    (ch.price_changes||[]).forEach(p=>priceRows.push([compTag(key),p.name.substring(0,52),fmt(p.prev_price),fmt(p.new_price),`<span class="pill ${p.direction==='up'?'p-up':'p-down'}">${p.change_pct>0?'+':''}${p.change_pct}%</span>`,lnk(p.url,'↗')]));
+    (ch.stock_changes||[]).forEach(p=>stockRows.push([compTag(key),p.name.substring(0,55),pill(p.from),pill(p.to),lnk(p.url,'↗')]));
+    (ch.new_products||[]).forEach(p=>newRows.push([compTag(key),p.name.substring(0,55),fmt(p.price),lnk(p.url,'↗')]));
+    (ch.new_sales||[]).forEach(p=>saleRows.push([compTag(key),p.name.substring(0,55),fmt(p.price),p.discount_pct?p.discount_pct+'%':'—',lnk(p.url,'↗')]));
+  });
+  document.getElementById('ch-p').innerHTML=tbl(['Competitor','Product','Previous','New','Change','Link'],priceRows,'✅ No price changes.');
+  document.getElementById('ch-s').innerHTML=tbl(['Competitor','Product','Was','Now','Link'],stockRows,'✅ No stock changes.');
+  document.getElementById('ch-n').innerHTML=tbl(['Competitor','Product','Price','Link'],newRows,'✅ No new products.');
+  document.getElementById('ch-sn').innerHTML=tbl(['Competitor','Product','Price','Discount','Link'],saleRows,'✅ No new sales.');
+}
+
+// ── Sales ─────────────────────────────────────────────────────────────────────
+function renderSales(){
+  const rows=[];
+  Object.entries(DATA).filter(([,d])=>d).forEach(([key,d])=>{
+    if(activeComp!=='all' && key!==activeComp) return;
+    (d.on_sale||[]).forEach(p=>rows.push([compTag(key),p.name.substring(0,55),(p.page_label||'—').substring(0,20),fmt(p.price),fmt(p.was_price),p.discount_pct?`<span class="pill p-sale">${p.discount_pct}% off</span>`:'—',lnk(p.url,'↗')]));
+  });
+  document.getElementById('sale-tbl').innerHTML=tbl(['Competitor','Product','Category','Now','Was','Discount','Link'],rows,'No products on sale.');
+}
+
+// ── Stock ─────────────────────────────────────────────────────────────────────
+function renderStock(){
+  const rows=[];
+  Object.entries(DATA).filter(([,d])=>d).forEach(([key,d])=>{
+    if(activeComp!=='all' && key!==activeComp) return;
+    (d.out_of_stock||[]).forEach(p=>rows.push([compTag(key),p.name.substring(0,60),(p.page_label||'—').substring(0,20),fmt(p.price),lnk(p.url,'↗')]));
+  });
+  document.getElementById('oos-tbl').innerHTML=tbl(['Competitor','Product','Category','Price','Link'],rows,'✅ No out-of-stock products.');
+}
+
+// ── Reviews ───────────────────────────────────────────────────────────────────
+function renderReviews(){
+  const reviews=[...(DATA.heals?.reviews||[])];
+  if(!reviews.length){ document.getElementById('rev-cards').innerHTML='<div class="empty">No review data.</div>'; return; }
+  const cols=['c-o','c-t','c-n','c-a'];
+  document.getElementById('rev-cards').innerHTML=reviews.map((r,i)=>`
+    <div class="card ${cols[i%cols.length]}">
+      <div class="cl">${r.site}</div>
+      <div style="font-size:1.05rem;margin:5px 0">${stars(r.overall_rating)}</div>
+      <div class="cs">${r.review_count?Number(r.review_count).toLocaleString()+' reviews':'Unavailable'}</div>
+    </div>`).join('');
+}
+
+// ── Pricing ───────────────────────────────────────────────────────────────────
+function renderPricing(){
+  const combined={};
+  Object.entries(DATA).filter(([,d])=>d).forEach(([key,d])=>{
+    if(activeComp!=='all' && key!==activeComp) return;
+    const src=SOURCES[key];
+    (d.all_products||[]).forEach(p=>{
+      const cat=p.page_label||'Other';
+      if(!combined[cat]) combined[cat]={};
+      if(!combined[cat][src.label]) combined[cat][src.label]=[];
+      if(p.price) combined[cat][src.label].push(p.price);
+    });
+  });
+  const entries=Object.entries(combined)
+    .map(([cat,byComp])=>{ const allP=Object.values(byComp).flat(); return [cat,median(allP),byComp]; })
+    .filter(([,m])=>m!=null).sort((a,b)=>b[1]-a[1]);
+  const maxMed=Math.max(...entries.map(([,m])=>m),1);
+  const compCols={'Heals':'#2E7D6F','Lee Longlands':'#1B2A4A'};
+  document.getElementById('price-bars').innerHTML = entries.slice(0,40).map(([cat,med,byComp])=>{
+    const pct=Math.round(med/maxMed*100);
+    const compBars=Object.entries(byComp).map(([comp,prices])=>{
+      const m=median(prices);
+      const p2=Math.round((m||0)/maxMed*100);
+      return `<div class="bar-row" style="margin-bottom:3px">
+        <div class="bar-lbl" style="width:130px;font-size:.65rem">${comp}</div>
+        <div class="bar-track"><div class="bar-fill" style="width:${p2}%;background:${compCols[comp]||'#999'}">${m>300?fmt(m):''}</div></div>
+        <div class="bar-val" style="font-size:.68rem">${m?fmt(m):'—'}</div>
+      </div>`;
+    }).join('');
+    return `<div style="margin-bottom:14px">
+      <div style="font-size:.76rem;font-weight:600;color:var(--navy);margin-bottom:5px">${cat}</div>
+      ${compBars}
+    </div>`;
+  }).join('')||'<div class="empty">No pricing data.</div>';
+}
+
+loadAll(false);
+</script>
+</body>
+</html>
