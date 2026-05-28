@@ -188,12 +188,14 @@ td a:hover{text-decoration:underline}
     <div class="tab active" onclick="show('overview')" data-t="overview">&#128202; Overview</div>
     <div class="tab" onclick="show('compare')" data-t="compare">&#9878; Compare</div>
     <div class="tab" onclick="show('categories')" data-t="categories">&#128193; Categories</div>
+    <div class="tab" onclick="show('brands')" data-t="brands">&#127991; Brands</div>
     <div class="tab" onclick="show('products')" data-t="products">&#128715; All Products</div>
     <div class="tab" onclick="show('changes')" data-t="changes">&#128276; Changes <span class="bdg" id="b-ch" style="display:none"></span></div>
     <div class="tab" onclick="show('sales')" data-t="sales">&#128293; On Sale <span class="bdg am" id="b-sl" style="display:none"></span></div>
     <div class="tab" onclick="show('stock')" data-t="stock">&#128230; Out of Stock <span class="bdg" id="b-oo" style="display:none"></span></div>
     <div class="tab" onclick="show('reviews')" data-t="reviews">&#11088; Reviews</div>
-    <div class="tab" onclick="show('pricing')" data-t="pricing">&#128200; Pricing</div>
+    <div class="tab" onclick="show('pricing')" data-t="pricing">&#128200; Category Pricing</div>
+    <div class="tab" onclick="show('brandpricing')" data-t="brandpricing">&#128200; Brand Pricing</div>
   </nav>
 
   <main>
@@ -210,10 +212,14 @@ td a:hover{text-decoration:underline}
     </div>
 
     <!-- Categories -->
-    <div class="panel" id="p-categories">
+    <div class="panel active" id="p-categories">
       <div class="sec" style="margin-top:0">Product Categories</div>
       <div class="cat-grid" id="cat-grid"></div>
-      <div class="sec" style="margin-top:28px">Brands</div>
+    </div>
+
+    <!-- Brands -->
+    <div class="panel" id="p-brands">
+      <div class="sec" style="margin-top:0">Brands</div>
       <div class="cat-grid" id="brand-grid"></div>
     </div>
 
@@ -268,10 +274,16 @@ td a:hover{text-decoration:underline}
       <div class="cards" id="rev-cards"></div>
     </div>
 
-    <!-- Pricing -->
+    <!-- Category Pricing -->
     <div class="panel" id="p-pricing">
       <div class="sec" style="margin-top:0">Median Price by Category</div>
       <div id="price-bars"></div>
+    </div>
+
+    <!-- Brand Pricing -->
+    <div class="panel" id="p-brandpricing">
+      <div class="sec" style="margin-top:0">Median Price by Brand</div>
+      <div id="brand-price-bars"></div>
     </div>
 
   </main>
@@ -390,7 +402,7 @@ function setComp(c){
   activeComp=c;
   document.querySelectorAll('.comp-tab').forEach(t=>t.classList.remove('active'));
   document.querySelector('[data-c="'+c+'"]').classList.add('active');
-  rebuildProducts(); renderCategories(); renderSales(); renderStock(); renderPricing(); renderChanges();
+  rebuildProducts(); renderCategories(); renderBrands(); renderSales(); renderStock(); renderPricing(); renderBrandPricing(); renderChanges();
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -426,8 +438,8 @@ function render(){
   // Latest run time
   const times=[DATA.heals?.scraped_at,DATA.ll?.scraped_at].filter(Boolean);
   if(times.length){ const d=new Date(Math.max(...times.map(t=>new Date(t)))); document.getElementById('run-time').textContent='Last run: '+d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}); }
-  renderOverview(); renderCompare(); rebuildProducts(); renderCategories();
-  renderChanges(); renderSales(); renderStock(); renderReviews(); renderPricing();
+  renderOverview(); renderCompare(); rebuildProducts(); renderCategories(); renderBrands();
+  renderChanges(); renderSales(); renderStock(); renderReviews(); renderPricing(); renderBrandPricing();
 }
 
 // ── Overview ──────────────────────────────────────────────────────────────────
@@ -581,7 +593,10 @@ function buildFolderGrid(folderList, prefix, products){
 function renderCategories(){
   const products = getProds(activeComp);
   document.getElementById('cat-grid').innerHTML   = buildFolderGrid(CATEGORY_FOLDERS, 'c', products);
-  document.getElementById('brand-grid').innerHTML  = buildFolderGrid(BRAND_FOLDERS,    'b', products);
+}
+function renderBrands(){
+  const products = getProds(activeComp);
+  document.getElementById('brand-grid').innerHTML  = buildFolderGrid(BRAND_FOLDERS, 'b', products);
 }
 function toggleFolder(fid){
   const head=document.querySelector(`#folder-${fid} .folder-head`);
@@ -653,13 +668,16 @@ function renderReviews(){
 }
 
 // ── Pricing ───────────────────────────────────────────────────────────────────
-function renderPricing(){
+// ── Shared pricing bar builder ────────────────────────────────────────────────
+function buildPriceBars(labelSet){
+  const compCols={'Heals':'#2E7D6F','Lee Longlands':'#1B2A4A','Housing Units':'#8B4513'};
   const combined={};
   Object.entries(DATA).filter(([,d])=>d).forEach(([key,d])=>{
     if(activeComp!=='all' && key!==activeComp) return;
     const src=SOURCES[key];
     (d.all_products||[]).forEach(p=>{
       const cat=p.page_label||'Other';
+      if(!labelSet.has(cat)) return;
       if(!combined[cat]) combined[cat]={};
       if(!combined[cat][src.label]) combined[cat][src.label]=[];
       if(p.price) combined[cat][src.label].push(p.price);
@@ -668,10 +686,9 @@ function renderPricing(){
   const entries=Object.entries(combined)
     .map(([cat,byComp])=>{ const allP=Object.values(byComp).flat(); return [cat,median(allP),byComp]; })
     .filter(([,m])=>m!=null).sort((a,b)=>b[1]-a[1]);
+  if(!entries.length) return '<div class="empty">No pricing data for this view.</div>';
   const maxMed=Math.max(...entries.map(([,m])=>m),1);
-  const compCols={'Heals':'#2E7D6F','Lee Longlands':'#1B2A4A','Housing Units':'#8B4513'};
-  document.getElementById('price-bars').innerHTML = entries.slice(0,40).map(([cat,med,byComp])=>{
-    const pct=Math.round(med/maxMed*100);
+  return entries.map(([cat,med,byComp])=>{
     const compBars=Object.entries(byComp).map(([comp,prices])=>{
       const m=median(prices);
       const p2=Math.round((m||0)/maxMed*100);
@@ -681,11 +698,23 @@ function renderPricing(){
         <div class="bar-val" style="font-size:.68rem">${m?fmt(m):'—'}</div>
       </div>`;
     }).join('');
-    return `<div style="margin-bottom:14px">
-      <div style="font-size:.76rem;font-weight:600;color:var(--navy);margin-bottom:5px">${cat}</div>
+    return `<div style="margin-bottom:16px">
+      <div style="font-size:.78rem;font-weight:600;color:var(--navy);margin-bottom:5px">${cat}</div>
       ${compBars}
     </div>`;
-  }).join('')||'<div class="empty">No pricing data.</div>';
+  }).join('');
+}
+
+function renderPricing(){
+  // Category labels = all labels from CATEGORY_FOLDERS
+  const catLabels = new Set(CATEGORY_FOLDERS.flatMap(f=>f.labels));
+  document.getElementById('price-bars').innerHTML = buildPriceBars(catLabels);
+}
+
+function renderBrandPricing(){
+  // Brand labels = all labels from BRAND_FOLDERS
+  const brandLabels = new Set(BRAND_FOLDERS.flatMap(f=>f.labels));
+  document.getElementById('brand-price-bars').innerHTML = buildPriceBars(brandLabels);
 }
 
 loadAll(false);
