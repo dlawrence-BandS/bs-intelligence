@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--navy:#1B2A4A;--teal:#2E7D6F;--teal-l:#E8F4F2;--gold:#C9A84C;--sand:#F5F0E8;--red:#C0392B;--red-l:#FDECEA;--green:#27AE60;--grn-l:#E9F7EF;--amber:#D4860B;--border:#E2DDD6;--mid:#6B7A8D;--text:#2C3E50;
---heals:#2E7D6F;--heals-l:#E8F4F2;--ll:#1B2A4A;--ll-l:#E8EEF7;--hu:#8B4513;--hu-l:#F5EDE4}
+--heals:#2E7D6F;--heals-l:#E8F4F2;--ll:#1B2A4A;--ll-l:#E8EEF7;--hu:#8B4513;--hu-l:#F5EDE4;--bs:#C9A84C;--bs-l:#FBF5E6}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--text);min-height:100vh}
 header{background:var(--navy);color:#fff;padding:20px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--gold)}
@@ -26,9 +26,10 @@ header{background:var(--navy);color:#fff;padding:20px 32px;display:flex;align-it
 .comp-tab.heals.active{color:var(--heals);border-bottom-color:var(--heals)}
 .comp-tab.ll.active{color:var(--ll);border-bottom-color:var(--ll)}
 .comp-tab.hu.active{color:var(--hu);border-bottom-color:var(--hu)}
+.comp-tab.bs.active{color:var(--bs);border-bottom-color:var(--bs)}
 .comp-tab.all.active{color:var(--gold);border-bottom-color:var(--gold)}
 .comp-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-.dot-heals{background:var(--heals)}.dot-ll{background:var(--ll)}.dot-gold{background:var(--gold)}.dot-hu{background:var(--hu)}
+.dot-heals{background:var(--heals)}.dot-ll{background:var(--ll)}.dot-gold{background:var(--gold)}.dot-hu{background:var(--hu)}.dot-bs{background:var(--bs)}
 /* Nav */
 nav{background:#fff;padding:0 32px;border-bottom:1px solid var(--border);display:flex;overflow-x:auto;gap:0}
 .tab{padding:11px 15px;font-size:.75rem;font-weight:500;color:var(--mid);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:.15s;display:flex;align-items:center;gap:5px}
@@ -74,6 +75,7 @@ td a:hover{text-decoration:underline}
 .tag-heals{background:var(--heals-l);color:var(--heals);display:inline-block;padding:1px 7px;border-radius:8px;font-size:.65rem;font-weight:600}
 .tag-ll{background:var(--ll-l);color:var(--ll);display:inline-block;padding:1px 7px;border-radius:8px;font-size:.65rem;font-weight:600}
 .tag-hu{background:var(--hu-l);color:var(--hu);display:inline-block;padding:1px 7px;border-radius:8px;font-size:.65rem;font-weight:600}
+.tag-bs{background:var(--bs-l);color:#8B6914;display:inline-block;padding:1px 7px;border-radius:8px;font-size:.65rem;font-weight:700;border:1px solid var(--bs)}
 /* Stars */
 .stars{color:var(--gold)}
 /* Bar chart */
@@ -157,6 +159,10 @@ td a:hover{text-decoration:underline}
         <span class="dot-hu" style="display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px"></span>housing_units_intelligence.json
         <input type="file" accept=".json" style="display:none" onchange="manualLoad('hu',this)">
       </label>
+      <label style="padding:8px 14px;border:1.5px dashed var(--border);border-radius:8px;cursor:pointer;font-size:.74rem;color:var(--mid);background:#fff">
+        <span class="dot-bs" style="display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px"></span>barker_intelligence.json
+        <input type="file" accept=".json" style="display:none" onchange="manualLoad('bs',this)">
+      </label>
     </div>
   </div>
 </div>
@@ -180,6 +186,11 @@ td a:hover{text-decoration:underline}
     <div class="comp-tab hu" onclick="setComp('hu')" data-c="hu">
       <span class="comp-dot dot-hu"></span>Housing Units
       <span id="hu-count" style="font-size:.65rem;font-weight:400;color:var(--mid)"></span>
+    </div>
+    <div style="width:1px;background:var(--border);margin:8px 4px;flex-shrink:0"></div>
+    <div class="comp-tab bs" onclick="setComp('bs')" data-c="bs">
+      <span class="comp-dot dot-bs"></span>⭐ Barker &amp; Stonehouse
+      <span id="bs-count" style="font-size:.65rem;font-weight:400;color:var(--mid)"></span>
     </div>
   </div>
 
@@ -232,6 +243,7 @@ td a:hover{text-decoration:underline}
           <option value="Heals">Heals</option>
           <option value="Lee Longlands">Lee Longlands</option>
           <option value="Housing Units">Housing Units</option>
+          <option value="Barker &amp; Stonehouse">Barker &amp; Stonehouse</option>
         </select>
         <select id="f-cat" onchange="filterProds()"><option value="">All categories</option></select>
         <select id="f-st" onchange="filterProds()">
@@ -296,6 +308,7 @@ const SOURCES = {
   heals: { file:'heals_intelligence.json',          label:'Heals',         cls:'heals', color:'#2E7D6F' },
   ll:    { file:'lee_longlands_intelligence.json',   label:'Lee Longlands', cls:'ll',    color:'#1B2A4A' },
   hu:    { file:'housing_units_intelligence.json',   label:'Housing Units', cls:'hu',    color:'#8B4513' },
+  bs:    { file:'barker_intelligence.json',             label:'Barker & Stonehouse', cls:'bs', color:'#C9A84C', isOwn:true },
 };
 
 // ── Category folders (product categories only) ───────────────────────────────
@@ -409,7 +422,7 @@ function setComp(c){
 const fmt  = v => v!=null?'£'+Number(v).toLocaleString('en-GB',{minimumFractionDigits:0,maximumFractionDigits:0}):'—';
 const lnk  = (url,t) => url?`<a href="${url}" target="_blank">${t||'↗'}</a>`:(t||'—');
 function pill(s){ return s==='in_stock'?'<span class="pill p-in">In Stock</span>':s==='out_of_stock'?'<span class="pill p-out">Out of Stock</span>':'—'; }
-function compTag(src){ return src==='heals'?'<span class="tag-heals">Heals</span>':src==='ll'?'<span class="tag-ll">Lee Longlands</span>':'<span class="tag-hu">Housing Units</span>'; }
+function compTag(src){ return src==='heals'?'<span class="tag-heals">Heals</span>':src==='ll'?'<span class="tag-ll">Lee Longlands</span>':src==='hu'?'<span class="tag-hu">Housing Units</span>':'<span class="tag-bs">B&amp;S</span>'; }
 function stars(r){ if(!r)return'—'; const f=Math.round(r); return`<span class="stars">${'★'.repeat(f)}${'☆'.repeat(5-f)}</span> <small>${Number(r).toFixed(1)}</small>`; }
 function tbl(headers,rows,empty){
   if(!rows||!rows.length)return`<div class="empty">${empty||'No data.'}</div>`;
@@ -435,6 +448,7 @@ function render(){
   if(DATA.heals) document.getElementById('heals-count').textContent=`(${(DATA.heals.summary?.total_products||0).toLocaleString()})`;
   if(DATA.ll)    document.getElementById('ll-count').textContent=`(${(DATA.ll.summary?.total_products||0).toLocaleString()})`;
   if(DATA.hu)    document.getElementById('hu-count').textContent=`(${(DATA.hu.summary?.total_products||0).toLocaleString()})`;
+  if(DATA.bs)    document.getElementById('bs-count').textContent=`(${(DATA.bs.summary?.total_products||0).toLocaleString()})`;
   // Latest run time
   const times=[DATA.heals?.scraped_at,DATA.ll?.scraped_at].filter(Boolean);
   if(times.length){ const d=new Date(Math.max(...times.map(t=>new Date(t)))); document.getElementById('run-time').textContent='Last run: '+d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}); }
@@ -462,12 +476,15 @@ function renderOverview(){
   if(totalChanges){ const b=document.getElementById('b-ch'); b.textContent=totalChanges; b.style.display='inline-block'; }
   if(totalSale){ const b=document.getElementById('b-sl'); b.textContent=totalSale; b.style.display='inline-block'; }
   if(totalOos){ const b=document.getElementById('b-oo'); b.textContent=totalOos; b.style.display='inline-block'; }
+  const bsData = DATA.bs;
   document.getElementById('ov-cards').innerHTML=`
-    <div class="card c-n"><div class="cl">Total Products</div><div class="cn">${totalProducts.toLocaleString()}</div><div class="cs">across all competitors</div></div>
-    <div class="card ${totalSale?'c-a':'c-t'}"><div class="cl">On Sale</div><div class="cn">${totalSale}</div><div class="cs">currently discounted</div></div>
+    ${bsData?`<div class="card c-o" style="border:2px solid var(--gold)"><div class="cl">&#11088; Your Products (B&S)</div><div class="cn">${(bsData.summary?.total_products||0).toLocaleString()}</div>
+      <div class="cs">${bsData.summary?.on_sale||0} on sale &middot; ${bsData.summary?.out_of_stock||0} OOS</div></div>`:''}
+    <div class="card c-n"><div class="cl">Competitor Products</div><div class="cn">${totalProducts.toLocaleString()}</div><div class="cs">across all competitors</div></div>
+    <div class="card ${totalSale?'c-a':'c-t'}"><div class="cl">Competitors On Sale</div><div class="cn">${totalSale}</div><div class="cs">currently discounted</div></div>
     <div class="card ${totalOos?'c-r':'c-t'}"><div class="cl">Out of Stock</div><div class="cn">${totalOos}</div><div class="cs">unavailable</div></div>
     <div class="card ${totalChanges?'c-r':'c-t'}"><div class="cl">Changes</div><div class="cn">${totalChanges}</div><div class="cs">since last run</div></div>
-    ${Object.entries(DATA).filter(([,d])=>d).map(([k,d])=>`
+    ${Object.entries(DATA).filter(([k,d])=>d&&k!=='bs').map(([k,d])=>`
       <div class="card c-t"><div class="cl">${SOURCES[k].label}</div><div class="cn">${(d.summary?.total_products||0).toLocaleString()}</div>
       <div class="cs">${d.summary?.on_sale||0} on sale &middot; ${d.summary?.out_of_stock||0} OOS</div></div>`).join('')}`;
   document.getElementById('ov-alerts').innerHTML = alerts.length
@@ -477,8 +494,24 @@ function renderOverview(){
 
 // ── Compare ───────────────────────────────────────────────────────────────────
 function renderCompare(){
-  const entries = Object.entries(DATA).filter(([,d])=>d);
-  document.getElementById('compare-grid').innerHTML = entries.map(([key,d])=>{
+  const entries = Object.entries(DATA).filter(([k,d])=>d&&k!=='bs');
+  const bsEntry = DATA.bs ? [['bs', DATA.bs]] : [];
+  // B&S own data shown separately at top
+  const bsHtml = bsEntry.map(([key,d])=>{
+    const s=d.summary||{}, ch=d.changes||{}, src=SOURCES[key];
+    return `<div class="comp-box bs" style="border:2px solid var(--gold);grid-column:1/-1">
+      <div class="comp-box-title">&#11088; ${src.label} <span style="font-size:.7rem;font-weight:400;color:var(--mid)">(your own data)</span></div>
+      ${tbl(['Metric','Value'],[
+        ['Total Products', (s.total_products||0).toLocaleString()],
+        ['In Stock', ((s.total_products||0)-(s.out_of_stock||0)).toLocaleString()],
+        ['Out of Stock', s.out_of_stock||0],
+        ['On Sale / Clearance', s.on_sale||0],
+        ['Price Changes', (ch.price_changes||[]).length],
+        ['Last Run', d.scraped_at ? new Date(d.scraped_at).toLocaleDateString('en-GB') : '—'],
+      ],'')}
+    </div>`;
+  }).join('');
+  document.getElementById('compare-grid').innerHTML = bsHtml + entries.map(([key,d])=>{
     const s=d.summary||{}, ch=d.changes||{};
     const src=SOURCES[key];
     return `<div class="comp-box ${key}">
@@ -620,7 +653,7 @@ function toggleSubcat(sid){
 // ── Changes ───────────────────────────────────────────────────────────────────
 function renderChanges(){
   const priceRows=[],stockRows=[],newRows=[],saleRows=[];
-  Object.entries(DATA).filter(([,d])=>d).forEach(([key,d])=>{
+  Object.entries(DATA).filter(([k,d])=>d&&k!=='bs').forEach(([key,d])=>{
     if(activeComp!=='all' && key!==activeComp) return;
     const ch=d.changes||{}, src=SOURCES[key];
     (ch.price_changes||[]).forEach(p=>priceRows.push([compTag(key),p.name.substring(0,52),fmt(p.prev_price),fmt(p.new_price),`<span class="pill ${p.direction==='up'?'p-up':'p-down'}">${p.change_pct>0?'+':''}${p.change_pct}%</span>`,lnk(p.url,'↗')]));
@@ -637,7 +670,7 @@ function renderChanges(){
 // ── Sales ─────────────────────────────────────────────────────────────────────
 function renderSales(){
   const rows=[];
-  Object.entries(DATA).filter(([,d])=>d).forEach(([key,d])=>{
+  Object.entries(DATA).filter(([k,d])=>d&&k!=='bs').forEach(([key,d])=>{
     if(activeComp!=='all' && key!==activeComp) return;
     (d.on_sale||[]).forEach(p=>rows.push([compTag(key),p.name.substring(0,55),(p.page_label||'—').substring(0,20),fmt(p.price),fmt(p.was_price),p.discount_pct?`<span class="pill p-sale">${p.discount_pct}% off</span>`:'—',lnk(p.url,'↗')]));
   });
@@ -647,7 +680,7 @@ function renderSales(){
 // ── Stock ─────────────────────────────────────────────────────────────────────
 function renderStock(){
   const rows=[];
-  Object.entries(DATA).filter(([,d])=>d).forEach(([key,d])=>{
+  Object.entries(DATA).filter(([k,d])=>d&&k!=='bs').forEach(([key,d])=>{
     if(activeComp!=='all' && key!==activeComp) return;
     (d.out_of_stock||[]).forEach(p=>rows.push([compTag(key),p.name.substring(0,60),(p.page_label||'—').substring(0,20),fmt(p.price),lnk(p.url,'↗')]));
   });
@@ -670,9 +703,9 @@ function renderReviews(){
 // ── Pricing ───────────────────────────────────────────────────────────────────
 // ── Shared pricing bar builder ────────────────────────────────────────────────
 function buildPriceBars(labelSet){
-  const compCols={'Heals':'#2E7D6F','Lee Longlands':'#1B2A4A','Housing Units':'#8B4513'};
+  const compCols={'Heals':'#2E7D6F','Lee Longlands':'#1B2A4A','Housing Units':'#8B4513','Barker & Stonehouse':'#C9A84C'};
   const combined={};
-  Object.entries(DATA).filter(([,d])=>d).forEach(([key,d])=>{
+  Object.entries(DATA).filter(([k,d])=>d&&k!=='bs').forEach(([key,d])=>{
     if(activeComp!=='all' && key!==activeComp) return;
     const src=SOURCES[key];
     (d.all_products||[]).forEach(p=>{
