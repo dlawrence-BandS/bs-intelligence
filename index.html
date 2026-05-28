@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--navy:#1B2A4A;--teal:#2E7D6F;--teal-l:#E8F4F2;--gold:#C9A84C;--sand:#F5F0E8;--red:#C0392B;--red-l:#FDECEA;--green:#27AE60;--grn-l:#E9F7EF;--amber:#D4860B;--border:#E2DDD6;--mid:#6B7A8D;--text:#2C3E50;
---heals:#2E7D6F;--heals-l:#E8F4F2;--ll:#1B2A4A;--ll-l:#E8EEF7}
+--heals:#2E7D6F;--heals-l:#E8F4F2;--ll:#1B2A4A;--ll-l:#E8EEF7;--hu:#8B4513;--hu-l:#F5EDE4}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--text);min-height:100vh}
 header{background:var(--navy);color:#fff;padding:20px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--gold)}
@@ -25,9 +25,10 @@ header{background:var(--navy);color:#fff;padding:20px 32px;display:flex;align-it
 .comp-tab:hover{color:var(--navy)}
 .comp-tab.heals.active{color:var(--heals);border-bottom-color:var(--heals)}
 .comp-tab.ll.active{color:var(--ll);border-bottom-color:var(--ll)}
+.comp-tab.hu.active{color:var(--hu);border-bottom-color:var(--hu)}
 .comp-tab.all.active{color:var(--gold);border-bottom-color:var(--gold)}
 .comp-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-.dot-heals{background:var(--heals)}.dot-ll{background:var(--ll)}.dot-gold{background:var(--gold)}
+.dot-heals{background:var(--heals)}.dot-ll{background:var(--ll)}.dot-gold{background:var(--gold)}.dot-hu{background:var(--hu)}
 /* Nav */
 nav{background:#fff;padding:0 32px;border-bottom:1px solid var(--border);display:flex;overflow-x:auto;gap:0}
 .tab{padding:11px 15px;font-size:.75rem;font-weight:500;color:var(--mid);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:.15s;display:flex;align-items:center;gap:5px}
@@ -72,6 +73,7 @@ td a:hover{text-decoration:underline}
 .p-sale{background:var(--red-l);color:var(--red)}.p-up{background:var(--red-l);color:var(--red)}.p-down{background:var(--grn-l);color:var(--green)}
 .tag-heals{background:var(--heals-l);color:var(--heals);display:inline-block;padding:1px 7px;border-radius:8px;font-size:.65rem;font-weight:600}
 .tag-ll{background:var(--ll-l);color:var(--ll);display:inline-block;padding:1px 7px;border-radius:8px;font-size:.65rem;font-weight:600}
+.tag-hu{background:var(--hu-l);color:var(--hu);display:inline-block;padding:1px 7px;border-radius:8px;font-size:.65rem;font-weight:600}
 /* Stars */
 .stars{color:var(--gold)}
 /* Bar chart */
@@ -151,6 +153,10 @@ td a:hover{text-decoration:underline}
         <span class="dot-ll" style="display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px"></span>lee_longlands_intelligence.json
         <input type="file" accept=".json" style="display:none" onchange="manualLoad('ll',this)">
       </label>
+      <label style="padding:8px 14px;border:1.5px dashed var(--border);border-radius:8px;cursor:pointer;font-size:.74rem;color:var(--mid);background:#fff">
+        <span class="dot-hu" style="display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px"></span>housing_units_intelligence.json
+        <input type="file" accept=".json" style="display:none" onchange="manualLoad('hu',this)">
+      </label>
     </div>
   </div>
 </div>
@@ -170,6 +176,10 @@ td a:hover{text-decoration:underline}
     <div class="comp-tab ll" onclick="setComp('ll')" data-c="ll">
       <span class="comp-dot dot-ll"></span>Lee Longlands
       <span id="ll-count" style="font-size:.65rem;font-weight:400;color:var(--mid)"></span>
+    </div>
+    <div class="comp-tab hu" onclick="setComp('hu')" data-c="hu">
+      <span class="comp-dot dot-hu"></span>Housing Units
+      <span id="hu-count" style="font-size:.65rem;font-weight:400;color:var(--mid)"></span>
     </div>
   </div>
 
@@ -213,6 +223,7 @@ td a:hover{text-decoration:underline}
           <option value="">All competitors</option>
           <option value="Heals">Heals</option>
           <option value="Lee Longlands">Lee Longlands</option>
+          <option value="Housing Units">Housing Units</option>
         </select>
         <select id="f-cat" onchange="filterProds()"><option value="">All categories</option></select>
         <select id="f-st" onchange="filterProds()">
@@ -270,6 +281,7 @@ const GITHUB_RAW = 'https://raw.githubusercontent.com/dlawrence-BandS/bs-intelli
 const SOURCES = {
   heals: { file:'heals_intelligence.json',          label:'Heals',         cls:'heals', color:'#2E7D6F' },
   ll:    { file:'lee_longlands_intelligence.json',   label:'Lee Longlands', cls:'ll',    color:'#1B2A4A' },
+  hu:    { file:'housing_units_intelligence.json',   label:'Housing Units', cls:'hu',    color:'#8B4513' },
 };
 
 const FOLDERS = [
@@ -348,7 +360,7 @@ function setComp(c){
 const fmt  = v => v!=null?'£'+Number(v).toLocaleString('en-GB',{minimumFractionDigits:0,maximumFractionDigits:0}):'—';
 const lnk  = (url,t) => url?`<a href="${url}" target="_blank">${t||'↗'}</a>`:(t||'—');
 function pill(s){ return s==='in_stock'?'<span class="pill p-in">In Stock</span>':s==='out_of_stock'?'<span class="pill p-out">Out of Stock</span>':'—'; }
-function compTag(src){ return src==='heals'?'<span class="tag-heals">Heals</span>':'<span class="tag-ll">Lee Longlands</span>'; }
+function compTag(src){ return src==='heals'?'<span class="tag-heals">Heals</span>':src==='ll'?'<span class="tag-ll">Lee Longlands</span>':'<span class="tag-hu">Housing Units</span>'; }
 function stars(r){ if(!r)return'—'; const f=Math.round(r); return`<span class="stars">${'★'.repeat(f)}${'☆'.repeat(5-f)}</span> <small>${Number(r).toFixed(1)}</small>`; }
 function tbl(headers,rows,empty){
   if(!rows||!rows.length)return`<div class="empty">${empty||'No data.'}</div>`;
@@ -373,6 +385,7 @@ function render(){
   // Update competitor counts
   if(DATA.heals) document.getElementById('heals-count').textContent=`(${(DATA.heals.summary?.total_products||0).toLocaleString()})`;
   if(DATA.ll)    document.getElementById('ll-count').textContent=`(${(DATA.ll.summary?.total_products||0).toLocaleString()})`;
+  if(DATA.hu)    document.getElementById('hu-count').textContent=`(${(DATA.hu.summary?.total_products||0).toLocaleString()})`;
   // Latest run time
   const times=[DATA.heals?.scraped_at,DATA.ll?.scraped_at].filter(Boolean);
   if(times.length){ const d=new Date(Math.max(...times.map(t=>new Date(t)))); document.getElementById('run-time').textContent='Last run: '+d.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'}); }
@@ -609,7 +622,7 @@ function renderPricing(){
     .map(([cat,byComp])=>{ const allP=Object.values(byComp).flat(); return [cat,median(allP),byComp]; })
     .filter(([,m])=>m!=null).sort((a,b)=>b[1]-a[1]);
   const maxMed=Math.max(...entries.map(([,m])=>m),1);
-  const compCols={'Heals':'#2E7D6F','Lee Longlands':'#1B2A4A'};
+  const compCols={'Heals':'#2E7D6F','Lee Longlands':'#1B2A4A','Housing Units':'#8B4513'};
   document.getElementById('price-bars').innerHTML = entries.slice(0,40).map(([cat,med,byComp])=>{
     const pct=Math.round(med/maxMed*100);
     const compBars=Object.entries(byComp).map(([comp,prices])=>{
