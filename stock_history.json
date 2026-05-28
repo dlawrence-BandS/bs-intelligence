@@ -1,0 +1,34 @@
+{
+  "Heals": {
+    "scraped_at": "2026-05-28T08:40:59.180948",
+    "products": [],
+    "total": 0,
+    "in_stock": 0,
+    "out_of_stock": 0,
+    "low_stock": 0
+  },
+  "Lee Longlands": {
+    "scraped_at": "2026-05-28T08:41:14.133109",
+    "products": [],
+    "total": 0,
+    "in_stock": 0,
+    "out_of_stock": 0,
+    "low_stock": 0
+  },
+  "Smiths the Rink": {
+    "scraped_at": "2026-05-28T08:41:50.598868",
+    "products": [],
+    "total": 0,
+    "in_stock": 0,
+    "out_of_stock": 0,
+    "low_stock": 0
+  },
+  "John Lewis": {
+    "scraped_at": "2026-05-28T08:42:18.562352",
+    "products": [],
+    "total": 0,
+    "in_stock": 0,
+    "out_of_stock": 0,
+    "low_stock": 0
+  }
+}

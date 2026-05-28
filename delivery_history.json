@@ -1,0 +1,88 @@
+{
+  "run_at": "2026-05-28T08:47:34.057835",
+  "module": "delivery_tracker",
+  "results": [
+    {
+      "site": "Heals",
+      "url": "https://www.heals.com/brand/ercol.html",
+      "scraped_at": "2026-05-28T08:47:25.314378",
+      "delivery_mentions": [
+        {
+          "snippet": "Live Chat – Get product advice from an in-store specialist; 7 days a week 9:00 to 20:00",
+          "pattern": "days_single",
+          "values": [
+            7
+          ],
+          "approx_weeks": [
+            1.4
+          ]
+        }
+      ],
+      "longest_lead_time_weeks": 1.4,
+      "shortest_lead_time_weeks": 1.4,
+      "raw_snippets": [
+        "Live Chat – Get product advice from an in-store specialist; 7 days a week 9:00 to 20:00",
+        "Delivery & Returns"
+      ]
+    },
+    {
+      "site": "John Lewis",
+      "url": "https://www.johnlewis.com/our-services/delivery",
+      "scraped_at": "2026-05-28T08:47:26.953892",
+      "delivery_mentions": [
+        {
+          "snippet": "Klarna's Pay in 3 / Pay in 30 days are unregulated credit agreements. Borrowing more than you can afford or paying late may negatively impact your fin",
+          "pattern": "days_single",
+          "values": [
+            30
+          ],
+          "approx_weeks": [
+            6.0
+          ]
+        }
+      ],
+      "longest_lead_time_weeks": 6.0,
+      "shortest_lead_time_weeks": 6.0,
+      "raw_snippets": [
+        "Klarna's Pay in 3 / Pay in 30 days are unregulated credit agreements. Borrowing more than you can afford or paying late may negatively impact your financial status and ability to obtain credit. 18+, U",
+        "Delivery & collection"
+      ]
+    },
+    {
+      "site": "Lee Longlands",
+      "url": "https://www.leelonglands.co.uk/pages/delivery-information",
+      "scraped_at": "2026-05-28T08:47:29.140998",
+      "delivery_mentions": [
+        {
+          "snippet": "Enjoy beautifully crafted furniture, without the long wait. Our quick delivery collection features pieces that are either in stock and ready now or av",
+          "pattern": "days_single",
+          "values": [
+            14
+          ],
+          "approx_weeks": [
+            2.8
+          ]
+        },
+        {
+          "snippet": "Enjoy beautifully crafted furniture, without the long wait. Our quick delivery collection features pieces that are either in stock and ready now or av",
+          "pattern": "in_stock",
+          "values": [],
+          "approx_weeks": []
+        },
+        {
+          "snippet": "Enjoy beautifully crafted furniture, without the long wait. Our quick delivery collection features pieces that are either in stock and ready now or av",
+          "pattern": "available_when",
+          "values": [],
+          "approx_weeks": []
+        }
+      ],
+      "longest_lead_time_weeks": 2.8,
+      "shortest_lead_time_weeks": 2.8,
+      "raw_snippets": [
+        "Enjoy beautifully crafted furniture, without the long wait. Our quick delivery collection features pieces that are either in stock and ready now or available for delivery to your home within 14 days.",
+        "At Lee Longlands, we believe exceptional furniture shouldn’t mean extended lead times. From statement pieces to finishing touches, this collection brings together design, craftsmanship and convenience"
+      ]
+    }
+  ],
+  "changes_since_last_run": []
+}

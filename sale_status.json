@@ -1,0 +1,15 @@
+{
+  "run_at": "2026-05-28T08:44:16.165158",
+  "module": "sale_monitor",
+  "sale_ids": [],
+  "currently_on_sale": [],
+  "new_sales_detected": [],
+  "sales_ended": [],
+  "all_products": [],
+  "summary": {
+    "total_products": 0,
+    "currently_on_sale": 0,
+    "new_sales": 0,
+    "ended_sales": 0
+  }
+}
