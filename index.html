@@ -211,8 +211,10 @@ td a:hover{text-decoration:underline}
 
     <!-- Categories -->
     <div class="panel" id="p-categories">
-      <div class="sec" style="margin-top:0">Browse by Category</div>
+      <div class="sec" style="margin-top:0">Product Categories</div>
       <div class="cat-grid" id="cat-grid"></div>
+      <div class="sec" style="margin-top:28px">Brands</div>
+      <div class="cat-grid" id="brand-grid"></div>
     </div>
 
     <!-- All Products -->
@@ -284,19 +286,54 @@ const SOURCES = {
   hu:    { file:'housing_units_intelligence.json',   label:'Housing Units', cls:'hu',    color:'#8B4513' },
 };
 
-const FOLDERS = [
-  { name:'Sofas & Seating',  icon:'🛋', labels:['All Sofas','Fabric Sofas','Leather Sofas','Corner Sofas','Recliner Sofas','Sofa Beds','Footstools','Sofas'] },
-  { name:'Chairs',           icon:'🪑', labels:['Accent Chairs','Dining Chairs','Recliner Chairs','High Back Chairs','Bar Stools','Benches'] },
-  { name:'Dining',           icon:'🍽', labels:['Dining Tables','Extending Tables','Dining Chairs','Bar Stools','Dining Benches'] },
-  { name:'Living Room',      icon:'🪞', labels:['Coffee Tables','Side Tables','Console Tables','Lamp Tables','Sideboards','Bookcases','Display Cabinets','TV Units','Shelving'] },
-  { name:'Bedroom',          icon:'🛏', labels:['All Beds','Ottoman Beds','Divan Beds','Bed Frames','Beds','Wardrobes','Bedroom Chest of Drawers','Chest of Drawers','Bedside Tables','Dressing Tables','All Mattresses','Mattresses','Headboards'] },
+// ── Category folders (product categories only) ───────────────────────────────
+const CATEGORY_FOLDERS = [
+  { name:'Sofas & Seating',  icon:'🛋', labels:['All Sofas','Fabric Sofas','Leather Sofas','Corner Sofas','Recliner Sofas','Sofa Beds','Chesterfield Sofas','Footstools','Sofas'] },
+  { name:'Chairs',           icon:'🪑', labels:['Accent Chairs','Armchairs','Dining Chairs','Recliner Chairs','High Back Chairs','Bar Stools','Benches'] },
+  { name:'Dining',           icon:'🍽', labels:['Dining Tables','Extending Tables','Dining Sets','Bar Stools','Dining Benches','Dining Chairs'] },
+  { name:'Living Room',      icon:'🪞', labels:['Coffee Tables','Side Tables','Console Tables','Lamp Tables','Sideboards','Bookcases','Display Cabinets','TV Units','TV Stands','Shelving','Shelving Units'] },
+  { name:'Bedroom',          icon:'🛏', labels:['All Beds','Ottoman Beds','Divan Beds','Bed Frames','Storage Beds','Beds','Wardrobes','Bedroom Chest of Drawers','Chest of Drawers','Bedside Tables','Dressing Tables','All Mattresses','Mattresses','Headboards'] },
   { name:'Home Office',      icon:'💻', labels:['Office Desks','Office Chairs'] },
-  { name:'Lighting',         icon:'💡', labels:['Pendant Lights','Floor Lamps','Table Lamps','Wall Lights','Ceiling Lights','Lighting'] },
+  { name:'Lighting',         icon:'💡', labels:['Pendant Lights','Ceiling Lights','Floor Lamps','Table Lamps','Wall Lights','Lighting'] },
   { name:'Soft Furnishings', icon:'🧶', labels:['Rugs','Cushions','Throws','Mirrors','Scatter Cushions','Artwork'] },
-  { name:'Garden',           icon:'🌿', labels:['Garden Furniture','Garden Dining Sets','Garden Lounge Sets','Garden Sofas','Garden Dining Chairs','Garden Dining Tables'] },
-  { name:'Brands',           icon:'🏷', labels:['Ercol','Stressless','Kartell','Bontempi','Tempur','Parker Knoll','Himolla','G Plan','Duresta','Hypnos','Vispring','Harrison Spinks','Vitra','Tom Dixon','HAY','Muuto','Fritz Hansen','Carl Hansen','Flos','Gubi','Ligne Roset','Knoll','Anglepoise','Louis Poulsen','De La Espada','Bolia'] },
-  { name:'Sale & New In',    icon:'🔥', labels:['New In','In Stock','Clearance Sofas','Clearance Chairs','Clearance Tables','Clearance Beds','Clearance','Clearance Furniture','New In Furniture','New In Sofas'] },
+  { name:'Garden',           icon:'🌿', labels:['Garden Furniture','Garden Dining Sets','Garden Lounge Sets','Garden Sofas','Garden Sofa Sets','Garden Dining Chairs','Garden Dining Tables','Garden Tables','Garden Chairs'] },
+  { name:'Sale & New In',    icon:'🔥', labels:['New In','New In Furniture','New In Sofas','In Stock','Clearance','Clearance Furniture','Clearance Sofas','Clearance Chairs','Clearance Tables','Clearance Beds','Furniture Sale','Sofas Sale','Bedroom Sale','Lighting Sale'] },
 ];
+
+// ── Brand folders (one folder per brand, grouped alphabetically) ─────────────
+const BRAND_FOLDERS = [
+  { name:'Anglepoise',    icon:'💡', labels:['Anglepoise'] },
+  { name:'Bolia',         icon:'🛋', labels:['Bolia'] },
+  { name:'Bontempi',      icon:'🍽', labels:['Bontempi'] },
+  { name:'Carl Hansen',   icon:'🪑', labels:['Carl Hansen'] },
+  { name:'De La Espada',  icon:'🛋', labels:['De La Espada'] },
+  { name:'Duresta',       icon:'🛋', labels:['Duresta'] },
+  { name:'Eichholtz',     icon:'🏺', labels:['Eichholtz'] },
+  { name:'Ercol',         icon:'🌳', labels:['Ercol'] },
+  { name:'Flos',          icon:'💡', labels:['Flos'] },
+  { name:'Fritz Hansen',  icon:'🪑', labels:['Fritz Hansen'] },
+  { name:'G Plan',        icon:'🛋', labels:['G Plan'] },
+  { name:'Gubi',          icon:'🛋', labels:['Gubi'] },
+  { name:'HAY',           icon:'🪑', labels:['HAY'] },
+  { name:'Harrison Spinks',icon:'🛏',labels:['Harrison Spinks'] },
+  { name:'Himolla',       icon:'🛋', labels:['Himolla'] },
+  { name:'Hypnos',        icon:'🛏', labels:['Hypnos'] },
+  { name:'Kartell',       icon:'🪑', labels:['Kartell'] },
+  { name:'Knoll',         icon:'🪑', labels:['Knoll'] },
+  { name:'Ligne Roset',   icon:'🛋', labels:['Ligne Roset'] },
+  { name:'Louis Poulsen', icon:'💡', labels:['Louis Poulsen'] },
+  { name:'Muuto',         icon:'🪑', labels:['Muuto'] },
+  { name:'Parker Knoll',  icon:'🛋', labels:['Parker Knoll'] },
+  { name:'Stressless',    icon:'🛋', labels:['Stressless'] },
+  { name:'Tempur',        icon:'🛏', labels:['Tempur'] },
+  { name:'Tetrad',        icon:'🛋', labels:['Tetrad'] },
+  { name:'Tom Dixon',     icon:'💡', labels:['Tom Dixon'] },
+  { name:'Vispring',      icon:'🛏', labels:['Vispring'] },
+  { name:'Vitra',         icon:'🪑', labels:['Vitra'] },
+];
+
+// Combined for legacy use
+const FOLDERS = [...CATEGORY_FOLDERS, { name:'Brands', icon:'🏷', labels: BRAND_FOLDERS.flatMap(b=>b.labels) }, ...[] ];
 
 // ── State ─────────────────────────────────────────────────────────────────────
 const DATA  = {};   // DATA.heals, DATA.ll
@@ -486,40 +523,40 @@ function filterProds(){
 }
 
 // ── Categories ────────────────────────────────────────────────────────────────
-function renderCategories(){
-  const products = getProds(activeComp);
+function buildFolderGrid(folderList, prefix, products){
   const byLabel={};
   products.forEach(p=>{ const l=p.page_label||'Other'; if(!byLabel[l])byLabel[l]=[]; byLabel[l].push(p); });
   let html='';
-  FOLDERS.forEach((folder,fi)=>{
+  folderList.forEach((folder,fi)=>{
+    const fid = prefix+fi;
     let fc=0, fs=0, fo=0;
     folder.labels.forEach(lbl=>{ const ps=byLabel[lbl]||[]; fc+=ps.length; fs+=ps.filter(p=>p.is_on_sale).length; fo+=ps.filter(p=>p.stock_status==='out_of_stock').length; });
     if(!fc) return;
-    html+=`<div class="folder" id="folder-${fi}">
-      <div class="folder-head" onclick="toggleFolder(${fi})">
+    html+=`<div class="folder" id="folder-${fid}">
+      <div class="folder-head" onclick="toggleFolder('${fid}')">
         <span class="folder-icon">${folder.icon}</span>
         <span class="folder-name">${folder.name}</span>
         <span class="folder-meta">
           <span class="fmeta">${fc} products</span>
-          ${fs?`<span class="fmeta sale">${fs} on sale`+`</span>`:''}
+          ${fs?`<span class="fmeta sale">${fs} on sale</span>`:''}
           ${fo?`<span class="fmeta oos">${fo} OOS</span>`:''}
         </span>
         <span class="folder-arrow">▶</span>
       </div>
-      <div class="folder-body" id="fbody-${fi}"><div class="subcats">`;
+      <div class="folder-body" id="fbody-${fid}"><div class="subcats">`;
     folder.labels.forEach((lbl,li)=>{
       const ps=byLabel[lbl]||[];
       if(!ps.length) return;
+      const sid = `${fid}-${li}`;
       const prices=ps.map(p=>p.price).filter(Boolean);
       const med=median(prices);
       const sale=ps.filter(p=>p.is_on_sale).length;
       const oos=ps.filter(p=>p.stock_status==='out_of_stock').length;
-      // Show competitor breakdown if multiple competitors
       const compBreak = activeComp==='all'
         ? [...new Set(ps.map(p=>p._competitor))].map(c=>
-            `<span style="font-size:.62rem;color:var(--mid)">${c.split(' ')[0]}: ${ps.filter(p=>p._competitor===c).length}</span>`).join(' · ')
+            `<span style="font-size:.62rem;color:var(--mid)">${c.split(' ')[0]}: ${ps.filter(q=>q._competitor===c).length}</span>`).join(' · ')
         : '';
-      html+=`<div class="subcat-row" id="sub-${fi}-${li}" onclick="toggleSubcat(${fi},${li})">
+      html+=`<div class="subcat-row" id="sub-${sid}" onclick="toggleSubcat('${sid}')">
         <span class="subcat-name">${lbl}${compBreak?` <span style="font-size:.65rem;color:var(--mid);margin-left:4px">${compBreak}</span>`:''}</span>
         <span class="subcat-stats">
           <span>${ps.length}</span>
@@ -528,7 +565,7 @@ function renderCategories(){
           ${oos?`<span style="color:var(--red)">${oos} OOS</span>`:''}
         </span>
       </div>
-      <div class="cat-products" id="catprods-${fi}-${li}">
+      <div class="cat-products" id="catprods-${sid}">
         ${tbl(['Competitor','Product','Price','Was','Sale','Stock','Link'],
           ps.slice(0,150).map(p=>[compTag(p._src),p.name.substring(0,52),fmt(p.price),
             p.was_price?fmt(p.was_price):'—',
@@ -538,20 +575,30 @@ function renderCategories(){
     });
     html+='</div></div></div>';
   });
-  document.getElementById('cat-grid').innerHTML=html||'<div class="empty">No category data.</div>';
+  return html || '<div class="empty">No data available.</div>';
 }
-function toggleFolder(fi){
-  const head=document.querySelector(`#folder-${fi} .folder-head`);
-  const body=document.getElementById(`fbody-${fi}`);
+
+function renderCategories(){
+  const products = getProds(activeComp);
+  document.getElementById('cat-grid').innerHTML   = buildFolderGrid(CATEGORY_FOLDERS, 'c', products);
+  document.getElementById('brand-grid').innerHTML  = buildFolderGrid(BRAND_FOLDERS,    'b', products);
+}
+function toggleFolder(fid){
+  const head=document.querySelector(`#folder-${fid} .folder-head`);
+  const body=document.getElementById(`fbody-${fid}`);
   const open=head.classList.contains('open');
   head.classList.toggle('open',!open); body.classList.toggle('open',!open);
 }
-function toggleSubcat(fi,li){
-  const row=document.getElementById(`sub-${fi}-${li}`);
-  const prods=document.getElementById(`catprods-${fi}-${li}`);
+function toggleSubcat(sid){
+  const row=document.getElementById(`sub-${sid}`);
+  const prods=document.getElementById(`catprods-${sid}`);
   const open=row.classList.contains('active-sub');
-  document.querySelectorAll(`#fbody-${fi} .subcat-row`).forEach(r=>r.classList.remove('active-sub'));
-  document.querySelectorAll(`#fbody-${fi} .cat-products`).forEach(p=>p.classList.remove('open'));
+  // close all siblings in same folder
+  const fbody=row.closest('.folder-body');
+  if(fbody){
+    fbody.querySelectorAll('.subcat-row').forEach(r=>r.classList.remove('active-sub'));
+    fbody.querySelectorAll('.cat-products').forEach(p=>p.classList.remove('open'));
+  }
   if(!open){ row.classList.add('active-sub'); prods.classList.add('open'); }
 }
 
