@@ -434,9 +434,14 @@ function median(arr){ if(!arr.length)return null; const s=[...arr].sort((a,b)=>a
 function getProds(comp){ // filtered by active competitor
   if(comp==='heals') return (DATA.heals?.all_products||[]).map(p=>({...p,_src:'heals',_competitor:'Heals'}));
   if(comp==='ll')    return (DATA.ll?.all_products||[]).map(p=>({...p,_src:'ll',_competitor:'Lee Longlands'}));
+  if(comp==='hu')    return (DATA.hu?.all_products||[]).map(p=>({...p,_src:'hu',_competitor:'Housing Units'}));
+  if(comp==='bs')    return (DATA.bs?.all_products||[]).map(p=>({...p,_src:'bs',_competitor:'Barker & Stonehouse'}));
+  // 'all' = everyone including B&S, so you can compare your prices vs competitors in categories/products
   return [
+    ...(DATA.bs?.all_products||[]).map(p=>({...p,_src:'bs',_competitor:'Barker & Stonehouse'})),
     ...(DATA.heals?.all_products||[]).map(p=>({...p,_src:'heals',_competitor:'Heals'})),
     ...(DATA.ll?.all_products||[]).map(p=>({...p,_src:'ll',_competitor:'Lee Longlands'})),
+    ...(DATA.hu?.all_products||[]).map(p=>({...p,_src:'hu',_competitor:'Housing Units'})),
   ];
 }
 
@@ -460,8 +465,8 @@ function render(){
 function renderOverview(){
   let totalProducts=0, totalSale=0, totalOos=0, totalChanges=0;
   const alerts=[];
-  Object.entries(DATA).forEach(([key,d])=>{
-    if(!d) return;
+  // Competitor totals (exclude BS)
+  Object.entries(DATA).filter(([k,d])=>d&&k!=='bs').forEach(([key,d])=>{
     const s=d.summary||{}, ch=d.changes||{};
     totalProducts += s.total_products||0;
     totalSale     += s.on_sale||0;
@@ -473,12 +478,21 @@ function renderOverview(){
     (ch.stock_changes||[]).forEach(p=>alerts.push([src.label,`<b>Stock:</b> ${p.name.substring(0,50)} ${p.from}→${p.to}`]));
     (ch.new_products||[]).slice(0,4).forEach(p=>alerts.push([src.label,`<b>New product:</b> ${p.name.substring(0,50)} ${fmt(p.price)}`]));
   });
+  // B&S own changes (shown separately in alerts with star)
+  if(DATA.bs){
+    const ch=DATA.bs.changes||{};
+    const bsChanges = (ch.price_changes||[]).length+(ch.new_sales||[]).length+(ch.stock_changes||[]).length;
+    totalChanges += bsChanges;
+    (ch.price_changes||[]).forEach(p=>alerts.push(['⭐ B&S',`<b>Your price changed:</b> ${p.name.substring(0,50)} ${fmt(p.prev_price)}→${fmt(p.new_price)} (${p.change_pct>0?'+':''}${p.change_pct}%)`]));
+    (ch.new_sales||[]).forEach(p=>alerts.push(['⭐ B&S',`<b>Your product on sale:</b> ${p.name.substring(0,50)} ${fmt(p.price)}${p.discount_pct?' ('+p.discount_pct+'% off)':''}`]));
+    (ch.stock_changes||[]).forEach(p=>alerts.push(['⭐ B&S',`<b>Your stock changed:</b> ${p.name.substring(0,50)} ${p.from}→${p.to}`]));
+  }
   if(totalChanges){ const b=document.getElementById('b-ch'); b.textContent=totalChanges; b.style.display='inline-block'; }
   if(totalSale){ const b=document.getElementById('b-sl'); b.textContent=totalSale; b.style.display='inline-block'; }
   if(totalOos){ const b=document.getElementById('b-oo'); b.textContent=totalOos; b.style.display='inline-block'; }
   const bsData = DATA.bs;
   document.getElementById('ov-cards').innerHTML=`
-    ${bsData?`<div class="card c-o" style="border:2px solid var(--gold)"><div class="cl">&#11088; Your Products (B&S)</div><div class="cn">${(bsData.summary?.total_products||0).toLocaleString()}</div>
+    ${bsData?`<div class="card c-o" style="border:2px solid var(--gold)"><div class="cl">&#11088; Your Products (B&amp;S)</div><div class="cn">${(bsData.summary?.total_products||0).toLocaleString()}</div>
       <div class="cs">${bsData.summary?.on_sale||0} on sale &middot; ${bsData.summary?.out_of_stock||0} OOS</div></div>`:''}
     <div class="card c-n"><div class="cl">Competitor Products</div><div class="cn">${totalProducts.toLocaleString()}</div><div class="cs">across all competitors</div></div>
     <div class="card ${totalSale?'c-a':'c-t'}"><div class="cl">Competitors On Sale</div><div class="cn">${totalSale}</div><div class="cs">currently discounted</div></div>
@@ -488,7 +502,7 @@ function renderOverview(){
       <div class="card c-t"><div class="cl">${SOURCES[k].label}</div><div class="cn">${(d.summary?.total_products||0).toLocaleString()}</div>
       <div class="cs">${d.summary?.on_sale||0} on sale &middot; ${d.summary?.out_of_stock||0} OOS</div></div>`).join('')}`;
   document.getElementById('ov-alerts').innerHTML = alerts.length
-    ? tbl(['Competitor','Alert'],alerts,'')
+    ? tbl(['Source','Alert'],alerts,'')
     : '<div class="empty">✅ No changes since last run.</div>';
 }
 
@@ -653,7 +667,7 @@ function toggleSubcat(sid){
 // ── Changes ───────────────────────────────────────────────────────────────────
 function renderChanges(){
   const priceRows=[],stockRows=[],newRows=[],saleRows=[];
-  Object.entries(DATA).filter(([k,d])=>d&&k!=='bs').forEach(([key,d])=>{
+  Object.entries(DATA).filter(([,d])=>d).forEach(([key,d])=>{
     if(activeComp!=='all' && key!==activeComp) return;
     const ch=d.changes||{}, src=SOURCES[key];
     (ch.price_changes||[]).forEach(p=>priceRows.push([compTag(key),p.name.substring(0,52),fmt(p.prev_price),fmt(p.new_price),`<span class="pill ${p.direction==='up'?'p-up':'p-down'}">${p.change_pct>0?'+':''}${p.change_pct}%</span>`,lnk(p.url,'↗')]));
@@ -670,21 +684,21 @@ function renderChanges(){
 // ── Sales ─────────────────────────────────────────────────────────────────────
 function renderSales(){
   const rows=[];
-  Object.entries(DATA).filter(([k,d])=>d&&k!=='bs').forEach(([key,d])=>{
+  Object.entries(DATA).filter(([,d])=>d).forEach(([key,d])=>{
     if(activeComp!=='all' && key!==activeComp) return;
     (d.on_sale||[]).forEach(p=>rows.push([compTag(key),p.name.substring(0,55),(p.page_label||'—').substring(0,20),fmt(p.price),fmt(p.was_price),p.discount_pct?`<span class="pill p-sale">${p.discount_pct}% off</span>`:'—',lnk(p.url,'↗')]));
   });
-  document.getElementById('sale-tbl').innerHTML=tbl(['Competitor','Product','Category','Now','Was','Discount','Link'],rows,'No products on sale.');
+  document.getElementById('sale-tbl').innerHTML=tbl(['Source','Product','Category','Now','Was','Discount','Link'],rows,'No products on sale.');
 }
 
 // ── Stock ─────────────────────────────────────────────────────────────────────
 function renderStock(){
   const rows=[];
-  Object.entries(DATA).filter(([k,d])=>d&&k!=='bs').forEach(([key,d])=>{
+  Object.entries(DATA).filter(([,d])=>d).forEach(([key,d])=>{
     if(activeComp!=='all' && key!==activeComp) return;
     (d.out_of_stock||[]).forEach(p=>rows.push([compTag(key),p.name.substring(0,60),(p.page_label||'—').substring(0,20),fmt(p.price),lnk(p.url,'↗')]));
   });
-  document.getElementById('oos-tbl').innerHTML=tbl(['Competitor','Product','Category','Price','Link'],rows,'✅ No out-of-stock products.');
+  document.getElementById('oos-tbl').innerHTML=tbl(['Source','Product','Category','Price','Link'],rows,'✅ No out-of-stock products.');
 }
 
 // ── Reviews ───────────────────────────────────────────────────────────────────
@@ -703,10 +717,32 @@ function renderReviews(){
 // ── Pricing ───────────────────────────────────────────────────────────────────
 // ── Shared pricing bar builder ────────────────────────────────────────────────
 function buildPriceBars(labelSet){
-  const compCols={'Heals':'#2E7D6F','Lee Longlands':'#1B2A4A','Housing Units':'#8B4513','Barker & Stonehouse':'#C9A84C'};
+  const compCols={
+    'Barker & Stonehouse':'#C9A84C',
+    'Heals':'#2E7D6F',
+    'Lee Longlands':'#1B2A4A',
+    'Housing Units':'#8B4513',
+  };
+  // Order: B&S always first, then competitors
+  const compOrder = ['Barker & Stonehouse','Heals','Lee Longlands','Housing Units'];
+
   const combined={};
+
+  // Always include B&S as reference line, regardless of activeComp
+  if(DATA.bs){
+    (DATA.bs.all_products||[]).forEach(p=>{
+      const cat=p.page_label||'Other';
+      if(!labelSet.has(cat)) return;
+      if(!combined[cat]) combined[cat]={};
+      if(!combined[cat]['Barker & Stonehouse']) combined[cat]['Barker & Stonehouse']=[];
+      if(p.price) combined[cat]['Barker & Stonehouse'].push(p.price);
+    });
+  }
+
+  // Competitors — filtered by activeComp (skip bs key)
   Object.entries(DATA).filter(([k,d])=>d&&k!=='bs').forEach(([key,d])=>{
-    if(activeComp!=='all' && key!==activeComp) return;
+    if(activeComp!=='all' && activeComp!=='bs' && key!==activeComp) return;
+    if(activeComp==='bs') return; // B&S-only view: just show B&S bars above
     const src=SOURCES[key];
     (d.all_products||[]).forEach(p=>{
       const cat=p.page_label||'Other';
@@ -716,23 +752,28 @@ function buildPriceBars(labelSet){
       if(p.price) combined[cat][src.label].push(p.price);
     });
   });
+
   const entries=Object.entries(combined)
     .map(([cat,byComp])=>{ const allP=Object.values(byComp).flat(); return [cat,median(allP),byComp]; })
     .filter(([,m])=>m!=null).sort((a,b)=>b[1]-a[1]);
   if(!entries.length) return '<div class="empty">No pricing data for this view.</div>';
   const maxMed=Math.max(...entries.map(([,m])=>m),1);
   return entries.map(([cat,med,byComp])=>{
-    const compBars=Object.entries(byComp).map(([comp,prices])=>{
+    // Sort so B&S always first
+    const sortedComps = compOrder.filter(c=>byComp[c]);
+    const compBars=sortedComps.map(comp=>{
+      const prices=byComp[comp];
       const m=median(prices);
       const p2=Math.round((m||0)/maxMed*100);
-      return `<div class="bar-row" style="margin-bottom:3px">
-        <div class="bar-lbl" style="width:130px;font-size:.65rem">${comp}</div>
-        <div class="bar-track"><div class="bar-fill" style="width:${p2}%;background:${compCols[comp]||'#999'}">${m>300?fmt(m):''}</div></div>
-        <div class="bar-val" style="font-size:.68rem">${m?fmt(m):'—'}</div>
-      </div>`;
+      const isBs = comp==='Barker & Stonehouse';
+      return `<div class="bar-row" style="margin-bottom:${isBs?'5px':'3px'}">
+        <div class="bar-lbl" style="width:150px;font-size:.65rem;${isBs?'font-weight:700;color:var(--navy)':''}">${isBs?'⭐ '+comp:comp}</div>
+        <div class="bar-track" style="${isBs?'height:20px':''}"><div class="bar-fill" style="width:${p2}%;background:${compCols[comp]||'#999'}">${m>300?fmt(m):''}</div></div>
+        <div class="bar-val" style="font-size:.68rem;${isBs?'font-weight:700':''}">${m?fmt(m):'—'}</div>
+      </div>${isBs?'<div style="height:1px;background:var(--border);margin:4px 0 6px 0"></div>':''}`;
     }).join('');
-    return `<div style="margin-bottom:16px">
-      <div style="font-size:.78rem;font-weight:600;color:var(--navy);margin-bottom:5px">${cat}</div>
+    return `<div style="margin-bottom:18px">
+      <div style="font-size:.78rem;font-weight:600;color:var(--navy);margin-bottom:6px">${cat}</div>
       ${compBars}
     </div>`;
   }).join('');
