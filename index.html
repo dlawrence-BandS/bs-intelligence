@@ -6,7 +6,7 @@
 <title>B&S Intelligence Suite</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
-:root{--navy:#1B2A4A;--teal:#2E7D6F;--teal-l:#E8F4F2;--gold:#C9A84C;--sand:#F5F0E8;--red:#C0392B;--red-l:#FDECEA;--green:#27AE60;--grn-l:#E9F7EF;--amber:#D4860B;--border:#E2DDD6;--mid:#6B7A8D;--text:#2C3E50;
+:root{--navy:#1B2A4A;--teal:#2E7D6F;--teal-l:#E8F4F2;--gold:#C9A84C;--sand:#F5F0E8;--red:#C0392B;--red-l:#FDECEA;--green:#27AE60;--grn-l:#E9F7EF;--amber:#D4860B;--amb-l:#FEF5E7;--border:#E2DDD6;--mid:#6B7A8D;--text:#2C3E50;
 --heals:#2E7D6F;--heals-l:#E8F4F2;--ll:#1B2A4A;--ll-l:#E8EEF7;--hu:#8B4513;--hu-l:#F5EDE4;--bs:#C9A84C;--bs-l:#FBF5E6}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--text);min-height:100vh}
@@ -788,23 +788,86 @@ function renderReviews(){
   // ── Individual reviews ──
   const allReviews = [];
   results.forEach(r => {
-    (r.reviews||[]).forEach(rev => allReviews.push({...rev, site: r.site}));
+    (r.reviews||[]).forEach(rev => allReviews.push({...rev, site: r.site, is_own: r.is_own}));
   });
+
+  // Build filter controls
+  const sites = [...new Set(allReviews.map(r=>r.site))];
+  const filterHtml = `
+    <div class="filters" style="margin-bottom:12px">
+      <select id="rev-filter-site" onchange="filterReviews()" style="padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-family:'DM Sans',sans-serif;font-size:.74rem;outline:none;background:#fff">
+        <option value="">All competitors</option>
+        ${sites.map(s=>`<option value="${s}">${s}</option>`).join('')}
+      </select>
+      <select id="rev-filter-rating" onchange="filterReviews()" style="padding:7px 10px;border:1px solid var(--border);border-radius:6px;font-family:'DM Sans',sans-serif;font-size:.74rem;outline:none;background:#fff">
+        <option value="">All ratings</option>
+        <option value="5">★★★★★ 5 stars</option>
+        <option value="4">★★★★☆ 4 stars</option>
+        <option value="3">★★★☆☆ 3 stars</option>
+        <option value="2">★★☆☆☆ 2 stars</option>
+        <option value="1">★☆☆☆☆ 1 star</option>
+      </select>
+      <span id="rev-count" style="font-size:.72rem;color:var(--mid)"></span>
+    </div>
+    <div id="rev-table-wrap"></div>`;
+
+  document.getElementById('review-list').innerHTML = allReviews.length
+    ? filterHtml
+    : '<div class="empty">Individual review text not captured — run reviews_scraper.py again.</div>';
+
   if(allReviews.length){
-    document.getElementById('review-list').innerHTML = tbl(
-      ['Site','Rating','Title','Review'],
-      allReviews.slice(0,60).map(r=>[
-        compTag(Object.keys(SOURCES).find(k=>SOURCES[k].label===r.site)||''),
-        r.rating ? stars(r.rating) : '—',
-        (r.title||'').substring(0,60),
-        (r.body||'').substring(0,200),
-      ]),
-      'No individual reviews available.'
-    );
-  } else {
-    document.getElementById('review-list').innerHTML =
-      '<div class="empty">Individual review text not captured — requires render mode scraping.</div>';
+    // Store reviews globally for filtering
+    window._allReviews = allReviews;
+    filterReviews();
   }
+}
+
+function reviewSiteTag(site){
+  const cols = {
+    'Barker & Stonehouse': 'background:var(--bs-l);color:#8B6914;border:1px solid var(--gold)',
+    'Heals':               'background:var(--teal-l);color:var(--teal)',
+    'Lee Longlands':       'background:var(--ll-l);color:var(--ll)',
+    'Housing Units':       'background:var(--hu-l);color:var(--hu)',
+    'Cox & Cox':           'background:var(--grn-l);color:var(--green)',
+    'Dusk':                'background:var(--red-l);color:var(--red)',
+    'Furniture Village':   'background:var(--amb-l);color:var(--amber)',
+  };
+  const style = cols[site] || 'background:var(--sand);color:var(--mid)';
+  return `<span style="display:inline-block;padding:2px 8px;border-radius:8px;font-size:.65rem;font-weight:600;white-space:nowrap;${style}">${site}</span>`;
+}
+
+function filterReviews(){
+  const siteFlt   = document.getElementById('rev-filter-site')?.value   || '';
+  const ratingFlt = document.getElementById('rev-filter-rating')?.value || '';
+  const all = window._allReviews || [];
+
+  const filtered = all.filter(r => {
+    if(siteFlt   && r.site !== siteFlt) return false;
+    if(ratingFlt && String(r.rating) !== ratingFlt) return false;
+    return true;
+  });
+
+  const countEl = document.getElementById('rev-count');
+  if(countEl) countEl.textContent = `${filtered.length} of ${all.length} reviews`;
+
+  const wrap = document.getElementById('rev-table-wrap');
+  if(!wrap) return;
+
+  if(!filtered.length){
+    wrap.innerHTML = '<div class="empty">No reviews match the selected filters.</div>';
+    return;
+  }
+
+  wrap.innerHTML = tbl(
+    ['Competitor','Rating','Title','Review'],
+    filtered.slice(0,200).map(r=>[
+      reviewSiteTag(r.site),
+      r.rating ? `<span style="color:var(--gold);font-size:.9rem">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</span> <small style="color:var(--mid)">${r.rating}</small>` : '—',
+      `<span style="font-size:.76rem;font-weight:600;color:var(--navy)">${(r.title||'—').substring(0,60)}</span>`,
+      `<span style="font-size:.75rem;color:var(--text)">${(r.body||'').substring(0,220)}</span>`,
+    ]),
+    'No reviews found.'
+  );
 }
 
 let themesAnalysed = false;
