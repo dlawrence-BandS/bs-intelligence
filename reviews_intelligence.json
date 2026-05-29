@@ -1,13 +1,18 @@
 {
-  "scraped_at": "2026-05-29T11:07:22.614518",
+  "scraped_at": "2026-05-29T11:16:13.854236",
   "results": [
     {
       "site": "Barker & Stonehouse",
       "is_own": true,
       "overall_rating": 4.9,
-      "review_count": 68864,
+      "review_count": 68867,
       "source": "ScraperAPI render",
       "reviews": [
+        {
+          "rating": 5,
+          "title": "Came back to Bark and Stonehouse ",
+          "body": "Came back to Bark and Stonehouse \nagain and they didn’t disappoint. John and Paul Blaydon were professional, helpful, and very friendly. Really pleased with the whole experience.”"
+        },
         {
           "rating": 5,
           "title": "Would like to thank the delivery team…",
@@ -102,14 +107,9 @@
           "rating": 5,
           "title": "What else can I buy from Barker and Stonehouse",
           "body": "Easy to order. Kept up to date with delivery time and date. Morning of the delivery got my call. Thirty minutes later my table was here.\nPaul S and Tapiwa quickly put the table together. Both were very pleasant. They took away the packaging. \nI'm now looking to see what other furniture I can buy from Barker and Stonehouse. Would definitely recommend."
-        },
-        {
-          "rating": 5,
-          "title": "Quick delivery really friendly chaps…",
-          "body": "Quick delivery really friendly chaps (Dave A and Pauk Y) all wrapping taken away really pleased "
         }
       ],
-      "scraped_at": "2026-05-29T11:02:17.740111"
+      "scraped_at": "2026-05-29T11:12:05.855951"
     },
     {
       "site": "Heals",
@@ -209,7 +209,7 @@
           "body": "Ordered 2 x Normann marble shelves on 5th January, quoted 6-8 weeks. Have been told “sorry it’s more like 16 weeks”. \n\nSo, 4 months wait. \n\nClearly they forgot to lodge the order with the supplier. \n\nTruly shocking lack of service, no care, no response.\n\nAm still waiting"
         }
       ],
-      "scraped_at": "2026-05-29T11:03:14.962855"
+      "scraped_at": "2026-05-29T11:12:29.870899"
     },
     {
       "site": "Lee Longlands",
@@ -319,7 +319,7 @@
           "body": "Lee Longlands staff at the Bristol store are nothing short of amazing! James the Manager, helped me resolve a situation with an order I placed, when it was most needed, following a life changing set of circumstances almost immediately after placing the order. 12 months later, I went back to see James and I’m now in possession of not only a beautiful chair, but comfort that’s needed more than ever,"
         }
       ],
-      "scraped_at": "2026-05-29T11:03:48.508512"
+      "scraped_at": "2026-05-29T11:12:58.818966"
     },
     {
       "site": "Housing Units",
@@ -429,7 +429,7 @@
           "body": "Polite staff who were knowledgeable about the products. They contacted me via mobile phone as soon as the fitting was available for collection. It was well packaged and arrived in perfect condition."
         }
       ],
-      "scraped_at": "2026-05-29T11:04:40.626159"
+      "scraped_at": "2026-05-29T11:13:40.356733"
     },
     {
       "site": "Cox & Cox",
@@ -539,7 +539,7 @@
           "body": "My problem was dealt with extremely curtiously  I forgot to include a code for my purchase and Zoya from customer service was so helpful in solving the matter. I love Cox and cox cushions and would recommend their company."
         }
       ],
-      "scraped_at": "2026-05-29T11:05:19.445402"
+      "scraped_at": "2026-05-29T11:14:05.294655"
     },
     {
       "site": "Dusk",
@@ -548,6 +548,11 @@
       "review_count": 121301,
       "source": "ScraperAPI render",
       "reviews": [
+        {
+          "rating": 2,
+          "title": "The customer service was very bad.",
+          "body": "The customer service was very bad. "
+        },
         {
           "rating": 5,
           "title": "Bed was delivered carefully and on…",
@@ -642,14 +647,9 @@
           "rating": 5,
           "title": "The purchase was easy",
           "body": "The purchase was easy, it didn't take too long to arrive and the quality is excellent "
-        },
-        {
-          "rating": 5,
-          "title": "Top quality product 👍",
-          "body": "Top quality product 👍"
         }
       ],
-      "scraped_at": "2026-05-29T11:05:52.336367"
+      "scraped_at": "2026-05-29T11:14:47.340895"
     },
     {
       "site": "Furniture Village",
@@ -658,6 +658,16 @@
       "review_count": 219052,
       "source": "ScraperAPI render",
       "reviews": [
+        {
+          "rating": 5,
+          "title": "Jeff and Lee were both amazing from furniture village ",
+          "body": "Jeff and Lee were both amazing. They managed to get the large settee and super king sized bed from furniture village into our new property with ease and the installation of both items were fantastic. They didn’t make any mess and took away all of the packaging. Both were a credit to the company and professional and polite. 5 stars "
+        },
+        {
+          "rating": 5,
+          "title": "The team who came to deliver my bed and…",
+          "body": "The team who came to deliver my bed and mattress were so amazing. They were patient with me. I will like to say Thank you to them because I’ve had a rough week because of some deliveries. "
+        },
         {
           "rating": 5,
           "title": "Reef and Andy were excellent",
@@ -747,19 +757,9 @@
           "rating": 5,
           "title": "Steve and Ben were brilliant! ",
           "body": "Steve snd Ben were brilliant! Prompt to confirmed time, polite, took their shoes off at the door and installed the bed effortlessly! So impressed, thank you very much! "
-        },
-        {
-          "rating": 5,
-          "title": "I have been given explanations and…",
-          "body": "I have been given explanations and details about mattress I was looking for \nGood customer care  . \n"
-        },
-        {
-          "rating": 5,
-          "title": "Ben H and Jordan",
-          "body": "Ben H and Jordan"
         }
       ],
-      "scraped_at": "2026-05-29T11:06:37.023644"
+      "scraped_at": "2026-05-29T11:15:35.143314"
     }
   ],
   "themes": []
