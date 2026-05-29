@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-05-29T10:29:07.389228",
+  "scraped_at": "2026-05-29T11:07:22.614518",
   "results": [
     {
       "site": "Barker & Stonehouse",
@@ -109,24 +109,120 @@
           "body": "Quick delivery really friendly chaps (Dave A and Pauk Y) all wrapping taken away really pleased "
         }
       ],
-      "scraped_at": "2026-05-29T10:20:42.340479"
+      "scraped_at": "2026-05-29T11:02:17.740111"
     },
     {
       "site": "Heals",
       "is_own": false,
       "overall_rating": 3.4,
-      "review_count": 98834,
-      "source": "Google search",
-      "reviews": [],
-      "scraped_at": "2026-05-29T10:21:19.552090"
+      "review_count": 1155,
+      "source": "ScraperAPI render",
+      "reviews": [
+        {
+          "rating": 5,
+          "title": "George and Meg in the Bath Store are amazing!",
+          "body": "George and Meg in the Bath Located Store have been outstanding! I have a trade account activated recently but couldn't find the light fitting online was directed to the Bath Store who literally have gone over and above to help and restored my faith back into Heals after a not so reliable start with another team.\n\nGeorge and Meg I hope Heals give you a raise as you deserve it, what a shame the rest"
+        },
+        {
+          "rating": 5,
+          "title": "Heal’s sofa purchase ",
+          "body": "We ordered a Harri corner sofa from Heal’s in December. Great customer service and communication throughout and the sofa was delivered around a month early! \n\nThey also arranged a repair of the sofa for free within a week of delivery as the underside was damaged by the courier.\n\nExcellent service and very happy with our new sofa"
+        },
+        {
+          "rating": 5,
+          "title": "Excellent Service ",
+          "body": "Great help from the store when I couldn’t get an order in online!  Excellent customer service Darren …"
+        },
+        {
+          "rating": 1,
+          "title": "AVOID this store - no customer service ",
+          "body": "Having ordered some Umage lights which are fantastic fro Heals, I ordered 4 more - 1 was in stock and on sale and I paid full price for the other 3. After contacting them a few weeks past the delivery date - they asked if I wanted part shipment while they are still waiting for 1 more. The were NOT being helpful - I found out that they had sold the sale light to someone else. Didn't bother telling "
+        },
+        {
+          "rating": 5,
+          "title": "Overall an effortless and pleasant experience ",
+          "body": "Easy to navigate website, good offers in well known and established brands, excellent customer service."
+        },
+        {
+          "rating": 5,
+          "title": "Great customer service ",
+          "body": "Great customer service from Amina. I had a few questions about delivery and she was able to provide extra information about some of the sofas that wasn’t available on the website. She also kindly offered a site visit if I had any doubts before placing my order. Really helpful and professional service throughout!"
+        },
+        {
+          "rating": 5,
+          "title": "Great customer service",
+          "body": "Great customer service, feels very personal and tailored to the needs of customer rather than generic!"
+        },
+        {
+          "rating": 4,
+          "title": "Item not delivered in one piece.",
+          "body": "I have just discussed the issue of a Henley HEALS desk (which was not delivered in one piece) to the Bicester Manager today, l realised that this conversation was more helpful than emailing customer services.  He has been very understanding and helpful in his response.  He has reassured me the issue will now be resolved.  A very professional response with a resolution planned. He will also speak t"
+        },
+        {
+          "rating": 4,
+          "title": "Great first order",
+          "body": "First time I have ordered and I found site easy to navigate.  Items well illustrated and and I was able to place order quickly.\n\nFree delivery a bonus"
+        },
+        {
+          "rating": 5,
+          "title": "easy to use website",
+          "body": "easy to use website, and the help from customer services (George) when I had a question as I was ordering furniture was so helpful.  Thanks "
+        },
+        {
+          "rating": 5,
+          "title": "Excellent and prompt and friendly…",
+          "body": "Excellent and prompt and friendly service. Exactly what I would expect from a great historic company. "
+        },
+        {
+          "rating": 5,
+          "title": "Excellent Interior Design Service – Helen at Heal’s",
+          "body": "I had an excellent experience with Heal’s, particularly their Interior Design Service.\n\nI worked with Helen from the Interior Design Department, whose guidance was invaluable throughout. As someone without a design background, I really appreciated her ability to translate ideas into well-considered recommendations — from key furniture pieces to the finer details that bring everything together. She"
+        },
+        {
+          "rating": 5,
+          "title": "Outstanding Service",
+          "body": "We made two visits to Heal's. We received outstanding service, advice and patience from Matt Fowler over both days. He gave up his lunchtime for us and answered all of our questions with real information and grace. All of this in the Heal's environment which makes choosing and buying things for our home such a delight. Thanks to Matt, especially, and to everyone. "
+        },
+        {
+          "rating": 1,
+          "title": "What a truly awful company",
+          "body": "What a truly awful company. I bought a Brunel sofa a few years ago which was supposed to be guaranteed for life. One of the legs bent with only light usage, and I asked for a replacement. I was told that the legs were not covered in the warranty and that I could not get a replacement leg, even if I paid for it, as the manufacturer no longer makes them. Then I went into one of their stores and saw "
+        },
+        {
+          "rating": 5,
+          "title": "We were in store in Kingston two weeks…",
+          "body": "We were in store in Kingston two weeks ago and the staff were both friendly and helpful. 5 stars"
+        },
+        {
+          "rating": 1,
+          "title": "AVOID this store",
+          "body": "Awful experience -having bought 4 lights from here, I bought another 4 for other areas. 1 was clearance and the other 3 were at full price,  Not in stock Delivery 4-5 April. On 22/04 I chased them to be told they have the stock ( for 3 weeks ) but they didn't have the clearance light and I would have to re order at full price dueto their MISTAKE. After 2 days they offered me10% off this light only"
+        },
+        {
+          "rating": 4,
+          "title": "Good Customer Service",
+          "body": "Recently went to the London store and bought some nice Lighting.\nI had a nice experience instore with helpful sales staff. Order was delivered on time.\nI also found the customer service team helpful and i look forward to more purchases form this Store."
+        },
+        {
+          "rating": 1,
+          "title": "Don’t do it",
+          "body": "Ordered 2 x Normann marble shelves on 5th January, quoted 6-8 weeks. Have been told “sorry it’s more like 16 weeks”. \n\nSo, 4 months wait. \n\nClearly they forgot to lodge the order with the supplier. \n\nTruly shocking lack of service, no care, no response.\n\nAm still waiting"
+        }
+      ],
+      "scraped_at": "2026-05-29T11:03:14.962855"
     },
     {
       "site": "Lee Longlands",
       "is_own": false,
       "overall_rating": 4.8,
-      "review_count": 9277,
+      "review_count": 9278,
       "source": "ScraperAPI render",
       "reviews": [
+        {
+          "rating": 5,
+          "title": "Parker Knoll Sofa",
+          "body": "Just taken delivery of our furniture. Great communication with the delivery team. Quick and tidy, obviously take pride in their task. All the rubbish cleared away as promised. Thanks to the team for an end to end service."
+        },
         {
           "rating": 5,
           "title": "Lovely environment and excellent…",
@@ -221,14 +317,9 @@
           "rating": 5,
           "title": "Lee Longlands staff at the Bristol…",
           "body": "Lee Longlands staff at the Bristol store are nothing short of amazing! James the Manager, helped me resolve a situation with an order I placed, when it was most needed, following a life changing set of circumstances almost immediately after placing the order. 12 months later, I went back to see James and I’m now in possession of not only a beautiful chair, but comfort that’s needed more than ever,"
-        },
-        {
-          "rating": 5,
-          "title": "Our Mattress was delivered this morning…",
-          "body": "Our Mattress was delivered this morning by Tony & Carl . We were kept well informed of the delivery schedule and delivered with in the stated time .\nBoth were well presented plus delivery managed very well . With thanks "
         }
       ],
-      "scraped_at": "2026-05-29T10:25:15.857907"
+      "scraped_at": "2026-05-29T11:03:48.508512"
     },
     {
       "site": "Housing Units",
@@ -338,7 +429,7 @@
           "body": "Polite staff who were knowledgeable about the products. They contacted me via mobile phone as soon as the fitting was available for collection. It was well packaged and arrived in perfect condition."
         }
       ],
-      "scraped_at": "2026-05-29T10:25:55.425518"
+      "scraped_at": "2026-05-29T11:04:40.626159"
     },
     {
       "site": "Cox & Cox",
@@ -448,15 +539,25 @@
           "body": "My problem was dealt with extremely curtiously  I forgot to include a code for my purchase and Zoya from customer service was so helpful in solving the matter. I love Cox and cox cushions and would recommend their company."
         }
       ],
-      "scraped_at": "2026-05-29T10:26:45.089053"
+      "scraped_at": "2026-05-29T11:05:19.445402"
     },
     {
       "site": "Dusk",
       "is_own": false,
       "overall_rating": 3.5,
-      "review_count": 121298,
+      "review_count": 121301,
       "source": "ScraperAPI render",
       "reviews": [
+        {
+          "rating": 5,
+          "title": "Bed was delivered carefully and on…",
+          "body": "Bed was delivered carefully and on time. It seems god quality but has been fully unpacked yet. There was a hole in outer box but from my limited inspection it looks fine inside."
+        },
+        {
+          "rating": 5,
+          "title": "Everything with my order went very…",
+          "body": "Everything with my order went very smoothly, was kept up to date throughout the process and delivery was exceptional."
+        },
         {
           "rating": 4,
           "title": "A great company with great prices .The…",
@@ -546,19 +647,9 @@
           "rating": 5,
           "title": "Top quality product 👍",
           "body": "Top quality product 👍"
-        },
-        {
-          "rating": 2,
-          "title": "great quality but poor service when parts missing",
-          "body": "Ordered the Rachel sideboards which are beautiful but BOTH had the same piece missing, and one had the holes drilled in the wrong side so both are unusable as unable to be fully put together. Am STILL awaiting an update on whether they can source the part or send a new one two weeks later. Incredibly frustrating and radio silence from Dusk."
-        },
-        {
-          "rating": 1,
-          "title": "Hi it wasn't your company I was annoyed…",
-          "body": "Hi it wasn't your company I was annoyed with it was the delivery driver he didn't ring my bell he just put the parcel in the dustbin wasn't  happy with that. "
         }
       ],
-      "scraped_at": "2026-05-29T10:27:26.949148"
+      "scraped_at": "2026-05-29T11:05:52.336367"
     },
     {
       "site": "Furniture Village",
@@ -567,6 +658,51 @@
       "review_count": 219052,
       "source": "ScraperAPI render",
       "reviews": [
+        {
+          "rating": 5,
+          "title": "Reef and Andy were excellent",
+          "body": "Reef and Andy were excellent. Very quick and professional, my tables and chairs looked perfect when they finished setting up. Very friendly service and very careful with the furniture. Really pleased with this experience. "
+        },
+        {
+          "rating": 5,
+          "title": "Very efficient",
+          "body": "Very efficient, quick and helpful. Quick installation of the 4 bar stools followed by guidance on maintenance as well as information on actions needed if any issues with the stills. Thanks Nicolae and Lee."
+        },
+        {
+          "rating": 5,
+          "title": "All very professional.",
+          "body": "All very professional. "
+        },
+        {
+          "rating": 5,
+          "title": "All good",
+          "body": "Both sofas arrived this morning as arranged and in fact a bit earlier than expected which was great for us.  The two delivery guys Ben and Steve were very professional and got the job done with no fuss whilst being mindful of our home."
+        },
+        {
+          "rating": 5,
+          "title": "Great service from Alfred and Lee…",
+          "body": "Great service from Alfred and Lee today, very polite and respectful of property. Called to update me on delivery so that was appreciated. Highly recommend their service today "
+        },
+        {
+          "rating": 5,
+          "title": "Philip and Jamal was excellent",
+          "body": "Philip and Jamal was excellent. Great guys. "
+        },
+        {
+          "rating": 5,
+          "title": "Got my table and chairs delivered this…",
+          "body": "Got my table and chairs delivered this morning guys were great very professional pleasant took care of building the table brilliant very happy with the service from start to finish "
+        },
+        {
+          "rating": 2,
+          "title": "Efficient delivery but that’s the only good aspect ",
+          "body": "Efficient delivery which I guess is subcontracted to a 3rd party, in every other respect dealing with Furniture Village was a nightmare. They mean well but their systems and processes are broken. Not once did they keep a promise to call back. Even when they had good news that the replacement product had been authorised it was me who had to chase them for an update. We won’t use them again. "
+        },
+        {
+          "rating": 5,
+          "title": "Great service and stall is so helpful…",
+          "body": "Great service and stall is so helpful and professional. Highly recommended to everyone. "
+        },
         {
           "rating": 5,
           "title": "Jo and Kalman delivered our sofas come…",
@@ -621,54 +757,9 @@
           "rating": 5,
           "title": "Ben H and Jordan",
           "body": "Ben H and Jordan"
-        },
-        {
-          "rating": 5,
-          "title": "Quick service ",
-          "body": "I found the bed online, I rung out the get the measurements to ensure it will fit got, got all my answers and ordered straight away. \n"
-        },
-        {
-          "rating": 5,
-          "title": "Very good delivery service",
-          "body": "Very good delivery service "
-        },
-        {
-          "rating": 5,
-          "title": "Very  efficient service",
-          "body": "Very  efficient service "
-        },
-        {
-          "rating": 5,
-          "title": "Lovely team members and delivering…",
-          "body": "Lovely team members and delivering services "
-        },
-        {
-          "rating": 5,
-          "title": "Excellent service from Kiran ",
-          "body": "Kiran was extremely helpful today, he dealt with my query efficiently and explained he was going away to read the notes and gather detail, which I respected. Kiran also followed up with an email as promised. We still do not have a resolution for our broken sofa, but hopefully this will be followed up as Kiran promised, I believe he has done everything within his capacity. "
-        },
-        {
-          "rating": 5,
-          "title": "Brilliant service ",
-          "body": "The man who served us was brilliant. He was helpful, funny and informative. He was also grounded and real. A real genuine and nice guy. The lady who took my grandson off and played with him was also great. They both made us feel welcome and like nothing was too much trouble. Would definitely shop there again. "
-        },
-        {
-          "rating": 5,
-          "title": "My coustomer service agent Frances,was totally professional and the service was excellent.",
-          "body": "My coustomer service agent Frances,was of great assistance.From start to finish.Made the purchase of my item look so easy."
-        },
-        {
-          "rating": 5,
-          "title": "Mike and Abdul the delivery guys were…",
-          "body": "Mike and Abdul the delivery guys were professional, friendly and efficient - thank you! "
-        },
-        {
-          "rating": 5,
-          "title": "They have done a very good job",
-          "body": "They have done a very good job, happy with their service. Well done Guyz. "
         }
       ],
-      "scraped_at": "2026-05-29T10:28:12.001484"
+      "scraped_at": "2026-05-29T11:06:37.023644"
     }
   ],
   "themes": []
