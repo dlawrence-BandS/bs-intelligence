@@ -26,6 +26,7 @@ header{background:var(--navy);color:#fff;padding:20px 32px;display:flex;align-it
 .comp-tab.heals.active{color:var(--heals);border-bottom-color:var(--heals)}
 .comp-tab.ll.active{color:var(--ll);border-bottom-color:var(--ll)}
 .comp-tab.hu.active{color:var(--hu);border-bottom-color:var(--hu)}
+.comp-tab.cc.active{color:var(--cc);border-bottom-color:var(--cc)}
 .comp-tab.bs.active{color:var(--bs);border-bottom-color:var(--bs)}
 .comp-tab.all.active{color:var(--gold);border-bottom-color:var(--gold)}
 .comp-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
@@ -53,7 +54,7 @@ main{padding:24px 32px;max-width:1440px}
 .card{background:#fff;border-radius:9px;padding:15px 17px;border:1px solid var(--border);position:relative;overflow:hidden}
 .card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px}
 .c-r::before{background:var(--red)}.c-t::before{background:var(--teal)}.c-a::before{background:var(--amber)}
-.c-n::before{background:var(--navy)}.c-g::before{background:var(--green)}.c-o::before{background:var(--gold)}
+.c-n::before{background:var(--navy)}.c-g::before{background:var(--green)}.c-o::before{background:var(--gold)}.c-cc::before{background:var(--cc)}
 .cl{font-size:.62rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--mid);margin-bottom:5px}
 .cn{font-size:1.85rem;font-weight:700;font-family:'Playfair Display',serif;color:var(--navy);line-height:1}
 .cs{font-size:.67rem;color:var(--mid);margin-top:3px}
@@ -75,6 +76,7 @@ td a:hover{text-decoration:underline}
 .tag-heals{background:var(--heals-l);color:var(--heals);display:inline-block;padding:1px 7px;border-radius:8px;font-size:.65rem;font-weight:600}
 .tag-ll{background:var(--ll-l);color:var(--ll);display:inline-block;padding:1px 7px;border-radius:8px;font-size:.65rem;font-weight:600}
 .tag-hu{background:var(--hu-l);color:var(--hu);display:inline-block;padding:1px 7px;border-radius:8px;font-size:.65rem;font-weight:600}
+.tag-cc{background:var(--cc-l);color:var(--cc);display:inline-block;padding:1px 7px;border-radius:8px;font-size:.65rem;font-weight:600}
 .tag-bs{background:var(--bs-l);color:#8B6914;display:inline-block;padding:1px 7px;border-radius:8px;font-size:.65rem;font-weight:700;border:1px solid var(--bs)}
 /* Stars */
 .stars{color:var(--gold)}
@@ -173,6 +175,10 @@ td a:hover{text-decoration:underline}
       <label style="padding:8px 14px;border:1.5px dashed var(--border);border-radius:8px;cursor:pointer;font-size:.74rem;color:var(--mid);background:#fff">
         <span class="dot-hu" style="display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px"></span>housing_units_intelligence.json
         <input type="file" accept=".json" style="display:none" onchange="manualLoad('hu',this)">
+      </label>
+      <label style="padding:8px 14px;border:1.5px dashed var(--border);border-radius:8px;cursor:pointer;font-size:.74rem;color:var(--mid);background:#fff">
+        <span class="dot-cc" style="display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px"></span>cox_and_cox_intelligence.json
+        <input type="file" accept=".json" style="display:none" onchange="manualLoad('cc',this)">
       </label>
       <label style="padding:8px 14px;border:1.5px dashed var(--border);border-radius:8px;cursor:pointer;font-size:.74rem;color:var(--mid);background:#fff">
         <span class="dot-bs" style="display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:5px"></span>barker_intelligence.json
@@ -374,16 +380,16 @@ let REVIEWS_DATA = null;
 
 // ── Category folders (product categories only) ───────────────────────────────
 const CATEGORY_FOLDERS = [
-  { name:'Sofas & Seating',  icon:'🛋', labels:['All Sofas','Fabric Sofas','Leather Sofas','Corner Sofas','Recliner Sofas','Sofa Beds','Chesterfield Sofas','Footstools','Sofas'] },
-  { name:'Chairs',           icon:'🪑', labels:['Accent Chairs','Armchairs','Dining Chairs','Recliner Chairs','High Back Chairs','Bar Stools','Benches'] },
-  { name:'Dining',           icon:'🍽', labels:['Dining Tables','Extending Tables','Dining Sets','Bar Stools','Dining Benches','Dining Chairs'] },
-  { name:'Living Room',      icon:'🪞', labels:['Coffee Tables','Side Tables','Console Tables','Lamp Tables','Sideboards','Bookcases','Display Cabinets','TV Units','TV Stands','Shelving','Shelving Units'] },
-  { name:'Bedroom',          icon:'🛏', labels:['All Beds','Ottoman Beds','Divan Beds','Bed Frames','Storage Beds','Beds','Wardrobes','Bedroom Chest of Drawers','Chest of Drawers','Bedside Tables','Dressing Tables','All Mattresses','Mattresses','Headboards'] },
-  { name:'Home Office',      icon:'💻', labels:['Office Desks','Office Chairs'] },
+  { name:'Sofas & Seating',  icon:'🛋', labels:['All Sofas','Fabric Sofas','Leather Sofas','Corner Sofas','Recliner Sofas','Sofa Beds','Chesterfield Sofas','Footstools','Sofas','Sofas & Seating'] },
+  { name:'Chairs',           icon:'🪑', labels:['Accent Chairs','Armchairs','Dining Chairs','Recliner Chairs','High Back Chairs','Bar Stools','Benches','Chairs'] },
+  { name:'Dining',           icon:'🍽', labels:['Dining Tables','Extending Tables','Dining Sets','Bar Stools','Dining Benches','Dining Chairs','Dining'] },
+  { name:'Living Room',      icon:'🪞', labels:['Coffee Tables','Side Tables','Console Tables','Lamp Tables','Sideboards','Bookcases','Display Cabinets','TV Units','TV Stands','Shelving','Shelving Units','Living Room'] },
+  { name:'Bedroom',          icon:'🛏', labels:['All Beds','Ottoman Beds','Divan Beds','Bed Frames','Storage Beds','Beds','Wardrobes','Bedroom Chest of Drawers','Chest of Drawers','Bedside Tables','Dressing Tables','All Mattresses','Mattresses','Headboards','Bedroom'] },
+  { name:'Home Office',      icon:'💻', labels:['Office Desks','Office Chairs','Home Office'] },
   { name:'Lighting',         icon:'💡', labels:['Pendant Lights','Ceiling Lights','Floor Lamps','Table Lamps','Wall Lights','Lighting'] },
-  { name:'Soft Furnishings', icon:'🧶', labels:['Rugs','Cushions','Throws','Mirrors','Scatter Cushions','Artwork'] },
-  { name:'Garden',           icon:'🌿', labels:['Garden Furniture','Garden Dining Sets','Garden Lounge Sets','Garden Sofas','Garden Sofa Sets','Garden Dining Chairs','Garden Dining Tables','Garden Tables','Garden Chairs'] },
-  { name:'Sale & New In',    icon:'🔥', labels:['New In','New In Furniture','New In Sofas','In Stock','Clearance','Clearance Furniture','Clearance Sofas','Clearance Chairs','Clearance Tables','Clearance Beds','Furniture Sale','Sofas Sale','Bedroom Sale','Lighting Sale'] },
+  { name:'Soft Furnishings', icon:'🧶', labels:['Rugs','Cushions','Throws','Mirrors','Scatter Cushions','Artwork','Soft Furnishings'] },
+  { name:'Garden',           icon:'🌿', labels:['Garden Furniture','Garden Dining Sets','Garden Lounge Sets','Garden Sofas','Garden Sofa Sets','Garden Dining Chairs','Garden Dining Tables','Garden Tables','Garden Chairs','Garden'] },
+  { name:'Sale & New In',    icon:'🔥', labels:['New In','New In Furniture','New In Sofas','In Stock','Clearance','Clearance Furniture','Clearance Sofas','Clearance Chairs','Clearance Tables','Clearance Beds','Furniture Sale','Sofas Sale','Bedroom Sale','Lighting Sale','Sale & New In'] },
 ];
 
 // ── Brand folders (one folder per brand, grouped alphabetically) ─────────────
@@ -494,7 +500,7 @@ function setComp(c){
 const fmt  = v => v!=null?'£'+Number(v).toLocaleString('en-GB',{minimumFractionDigits:0,maximumFractionDigits:0}):'—';
 const lnk  = (url,t) => url?`<a href="${url}" target="_blank">${t||'↗'}</a>`:(t||'—');
 function pill(s){ return s==='in_stock'?'<span class="pill p-in">In Stock</span>':s==='out_of_stock'?'<span class="pill p-out">Out of Stock</span>':'—'; }
-function compTag(src){ return src==='heals'?'<span class="tag-heals">Heals</span>':src==='ll'?'<span class="tag-ll">Lee Longlands</span>':src==='hu'?'<span class="tag-hu">Housing Units</span>':'<span class="tag-bs">B&amp;S</span>'; }
+function compTag(src){ return src==='heals'?'<span class="tag-heals">Heals</span>':src==='ll'?'<span class="tag-ll">Lee Longlands</span>':src==='hu'?'<span class="tag-hu">Housing Units</span>':src==='cc'?'<span class="tag-cc">Cox &amp; Cox</span>':'<span class="tag-bs">B&amp;S</span>'; }
 function stars(r){ if(!r)return'—'; const f=Math.round(r); return`<span class="stars">${'★'.repeat(f)}${'☆'.repeat(5-f)}</span> <small>${Number(r).toFixed(1)}</small>`; }
 function tbl(headers,rows,empty){
   if(!rows||!rows.length)return`<div class="empty">${empty||'No data.'}</div>`;
