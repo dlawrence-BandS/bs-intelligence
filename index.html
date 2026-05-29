@@ -7,7 +7,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{--navy:#1B2A4A;--teal:#2E7D6F;--teal-l:#E8F4F2;--gold:#C9A84C;--sand:#F5F0E8;--red:#C0392B;--red-l:#FDECEA;--green:#27AE60;--grn-l:#E9F7EF;--amber:#D4860B;--amb-l:#FEF5E7;--border:#E2DDD6;--mid:#6B7A8D;--text:#2C3E50;
---heals:#2E7D6F;--heals-l:#E8F4F2;--ll:#1B2A4A;--ll-l:#E8EEF7;--hu:#8B4513;--hu-l:#F5EDE4;--bs:#C9A84C;--bs-l:#FBF5E6}
+--heals:#2E7D6F;--heals-l:#E8F4F2;--ll:#1B2A4A;--ll-l:#E8EEF7;--hu:#8B4513;--hu-l:#F5EDE4;--cc:#2D6A4F;--cc-l:#E8F5EE;--bs:#C9A84C;--bs-l:#FBF5E6}
 *{box-sizing:border-box;margin:0;padding:0}
 body{font-family:'DM Sans',sans-serif;background:var(--sand);color:var(--text);min-height:100vh}
 header{background:var(--navy);color:#fff;padding:20px 32px;display:flex;align-items:center;justify-content:space-between;border-bottom:3px solid var(--gold)}
@@ -29,7 +29,7 @@ header{background:var(--navy);color:#fff;padding:20px 32px;display:flex;align-it
 .comp-tab.bs.active{color:var(--bs);border-bottom-color:var(--bs)}
 .comp-tab.all.active{color:var(--gold);border-bottom-color:var(--gold)}
 .comp-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
-.dot-heals{background:var(--heals)}.dot-ll{background:var(--ll)}.dot-gold{background:var(--gold)}.dot-hu{background:var(--hu)}.dot-bs{background:var(--bs)}
+.dot-heals{background:var(--heals)}.dot-ll{background:var(--ll)}.dot-gold{background:var(--gold)}.dot-hu{background:var(--hu)}.dot-cc{background:var(--cc)}.dot-bs{background:var(--bs)}
 /* Nav */
 nav{background:#fff;padding:0 32px;border-bottom:1px solid var(--border);display:flex;overflow-x:auto;gap:0}
 .tab{padding:11px 15px;font-size:.75rem;font-weight:500;color:var(--mid);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;transition:.15s;display:flex;align-items:center;gap:5px}
@@ -202,6 +202,10 @@ td a:hover{text-decoration:underline}
       <span class="comp-dot dot-hu"></span>Housing Units
       <span id="hu-count" style="font-size:.65rem;font-weight:400;color:var(--mid)"></span>
     </div>
+    <div class="comp-tab cc" onclick="setComp('cc')" data-c="cc">
+      <span class="comp-dot dot-cc"></span>Cox &amp; Cox
+      <span id="cc-count" style="font-size:.65rem;font-weight:400;color:var(--mid)"></span>
+    </div>
     <div style="width:1px;background:var(--border);margin:8px 4px;flex-shrink:0"></div>
     <div class="comp-tab bs" onclick="setComp('bs')" data-c="bs">
       <span class="comp-dot dot-bs"></span>⭐ Barker &amp; Stonehouse
@@ -322,10 +326,17 @@ td a:hover{text-decoration:underline}
     <div class="panel" id="p-askai">
       <div style="max-width:860px">
 
-        <!-- Header -->
         <div style="background:linear-gradient(135deg,var(--navy),var(--teal));border-radius:12px;padding:24px 28px;margin-bottom:20px;color:#fff">
           <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin-bottom:6px">✨ Ask AI about your data</div>
           <div style="font-size:.8rem;opacity:.8;line-height:1.5">Ask anything about your competitors, pricing, stock levels, or trends. The AI has full context of all scraped product and pricing data.</div>
+          <div id="key-setup" style="margin-top:12px;display:none;background:rgba(0,0,0,.2);border-radius:8px;padding:12px">
+            <div style="font-size:.76rem;margin-bottom:8px;font-weight:600">🔑 Enter your Gemini API key to enable AI chat</div>
+            <div style="font-size:.72rem;opacity:.8;margin-bottom:8px">Get a free key at <a href="https://aistudio.google.com/apikey" target="_blank" style="color:#fff">aistudio.google.com/apikey</a> — stored only in your browser, never uploaded anywhere.</div>
+            <div style="display:flex;gap:8px">
+              <input id="key-input" type="password" placeholder="Paste Gemini API key..." style="flex:1;padding:7px 10px;border-radius:6px;border:none;font-size:.76rem;font-family:'DM Sans',sans-serif">
+              <button onclick="saveKey()" style="padding:7px 14px;background:var(--gold);color:var(--navy);border:none;border-radius:6px;font-weight:600;font-size:.76rem;cursor:pointer">Save</button>
+            </div>
+          </div>
           <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px" id="suggested-qs"></div>
         </div>
 
@@ -356,6 +367,7 @@ const SOURCES = {
   heals: { file:'heals_intelligence.json',          label:'Heals',                cls:'heals', color:'#2E7D6F' },
   ll:    { file:'lee_longlands_intelligence.json',   label:'Lee Longlands',        cls:'ll',    color:'#1B2A4A' },
   hu:    { file:'housing_units_intelligence.json',   label:'Housing Units',        cls:'hu',    color:'#8B4513' },
+  cc:    { file:'cox_and_cox_intelligence.json',     label:'Cox & Cox',            cls:'cc',    color:'#2D6A4F' },
   bs:    { file:'barker_intelligence.json',          label:'Barker & Stonehouse',  cls:'bs',    color:'#C9A84C', isOwn:true },
 };
 let REVIEWS_DATA = null;
@@ -872,6 +884,7 @@ function reviewSiteTag(site){
     'Heals':               'background:var(--teal-l);color:var(--teal)',
     'Lee Longlands':       'background:var(--ll-l);color:var(--ll)',
     'Housing Units':       'background:var(--hu-l);color:var(--hu)',
+    'Cox & Cox':           'background:var(--cc-l);color:var(--cc)',
     'Cox & Cox':           'background:var(--grn-l);color:var(--green)',
     'Dusk':                'background:var(--red-l);color:var(--red)',
     'Furniture Village':   'background:var(--amb-l);color:var(--amber)',
@@ -924,6 +937,7 @@ function buildPriceBars(labelSet){
     'Heals':'#2E7D6F',
     'Lee Longlands':'#1B2A4A',
     'Housing Units':'#8B4513',
+    'Cox & Cox':    '#2D6A4F',
   };
   // Order: B&S always first, then competitors
   const compOrder = ['Barker & Stonehouse','Heals','Lee Longlands','Housing Units'];
@@ -995,7 +1009,14 @@ function renderBrandPricing(){
 
 
 // ── Ask AI ────────────────────────────────────────────────────────────────────
-const GEMINI_KEY = "AQ.Ab8RN6L4FxSk-Be2M5lt1I0fMj_cqXi_e4q5QCCbXX0h6zqjCQ";
+// Gemini key — enter once in the dashboard, stored in your browser only
+function getGeminiKey(){
+  return localStorage.getItem('bs_gemini_key') || '';
+}
+function saveKey(){
+  const val = document.getElementById('key-input')?.value.trim();
+  if(val){ localStorage.setItem('bs_gemini_key', val); document.getElementById('key-setup').style.display='none'; }
+}
 
 const SUGGESTED_QUESTIONS = [
   "Best priced dining chairs vs B&S",
@@ -1006,9 +1027,18 @@ const SUGGESTED_QUESTIONS = [
   "What are the pricing gaps B&S could exploit?",
 ];
 
+function saveKey(){
+  const val = document.getElementById('key-input').value.trim();
+  if(val){ localStorage.setItem('bs_gemini_key', val); }
+  document.getElementById('key-setup').style.display = 'none';
+}
+
 function initAskAI(){
   const sq = document.getElementById('suggested-qs');
   if(!sq) return;
+  if(!getGeminiKey()){
+    document.getElementById('key-setup').style.display = 'block';
+  }
   sq.innerHTML = SUGGESTED_QUESTIONS.map(q =>
     `<button class="suggest-btn" onclick="askQuestion('${q.replace(/'/g,"\\'")}')">${q}</button>`
   ).join('');
@@ -1157,6 +1187,14 @@ ${window._aiContext}`;
       chatHistory.slice(-6,-1).map(m=>`${m.role}: ${m.content}`).join('\n') +
       '\n\nUser question: ' + question}
   ];
+
+  const GEMINI_KEY = getGeminiKey();
+  if(!GEMINI_KEY){
+    document.getElementById('key-setup').style.display = 'block';
+    btn.disabled = false; btn.textContent = 'Ask ↵';
+    chat.removeChild(qDiv);
+    return;
+  }
 
   try {
     const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`;
