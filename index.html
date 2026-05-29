@@ -782,7 +782,7 @@ function renderReviews(){
   } else {
     document.getElementById('theme-status').textContent = '— run reviews_scraper.py to generate themes';
     document.getElementById('theme-grid').innerHTML =
-      '<div class="empty" style="grid-column:1/-1">Theme analysis not yet available. Run reviews_scraper.py — it uses the Claude API once during scraping and saves the results here.</div>';
+      '<div class="empty" style="grid-column:1/-1">Theme analysis not yet available. Run reviews_scraper.py — themes are generated during scraping using Gemini AI (free) and saved here.</div>';
   }
 
   // ── Individual reviews ──
