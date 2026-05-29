@@ -1,0 +1,69 @@
+{
+  "scraped_at": "2026-05-29T09:43:16.042282",
+  "results": [
+    {
+      "site": "Barker & Stonehouse",
+      "is_own": true,
+      "overall_rating": 4.9,
+      "review_count": 68864,
+      "source": "ScraperAPI render",
+      "reviews": [],
+      "scraped_at": "2026-05-29T09:36:06.319966"
+    },
+    {
+      "site": "Heals",
+      "is_own": false,
+      "overall_rating": 3.4,
+      "review_count": 1155,
+      "source": "ScraperAPI render",
+      "reviews": [],
+      "scraped_at": "2026-05-29T09:36:29.215789"
+    },
+    {
+      "site": "Lee Longlands",
+      "is_own": false,
+      "overall_rating": 4.8,
+      "review_count": 9277,
+      "source": "ScraperAPI render",
+      "reviews": [],
+      "scraped_at": "2026-05-29T09:36:54.450325"
+    },
+    {
+      "site": "Housing Units",
+      "is_own": false,
+      "overall_rating": 4.4,
+      "review_count": 18,
+      "source": "ScraperAPI render",
+      "reviews": [],
+      "scraped_at": "2026-05-29T09:37:30.246625"
+    },
+    {
+      "site": "Cox & Cox",
+      "is_own": false,
+      "overall_rating": 4.0,
+      "review_count": 61437,
+      "source": "ScraperAPI render",
+      "reviews": [],
+      "scraped_at": "2026-05-29T09:38:24.465411"
+    },
+    {
+      "site": "Dusk",
+      "is_own": false,
+      "overall_rating": 3.5,
+      "review_count": 121295,
+      "source": "ScraperAPI render",
+      "reviews": [],
+      "scraped_at": "2026-05-29T09:38:49.674550"
+    },
+    {
+      "site": "Furniture Village",
+      "is_own": false,
+      "overall_rating": null,
+      "review_count": null,
+      "source": null,
+      "reviews": [],
+      "scraped_at": "2026-05-29T09:39:20.751083"
+    }
+  ],
+  "themes": []
+}
