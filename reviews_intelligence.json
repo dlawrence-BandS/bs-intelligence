@@ -1,5 +1,5 @@
 {
-  "scraped_at": "2026-05-29T10:00:55.695008",
+  "scraped_at": "2026-05-29T10:29:07.389228",
   "results": [
     {
       "site": "Barker & Stonehouse",
@@ -10,28 +10,63 @@
       "reviews": [
         {
           "rating": 5,
-          "title": "From initial purchase to delivery excellent\\u2026",
-          "body": "From initial purchase to delivery everything went as planned. Received the call first thing on the morning of the booked delivery date to advise when Dave A and Paul Y would arrive and they did, on time. Very happy guys who did a great job and made sure everything was put together well. Cleared away all the packaging, so no mess.  They were a pleasure to have in the house, and I\\u2019m very happy "
+          "title": "Would like to thank the delivery team…",
+          "body": "Would like to thank the delivery team Kevin and Chris for the table they delivered and set up, done a brilliant job. They was on time, polite and worked efficiently to do the job… thanks again "
         },
         {
           "rating": 5,
-          "title": "Ease of buying online from a trusted\\u2026",
-          "body": "Ease of buying online from a trusted and reputable company, quick and easy delivery confirmation followed by seemless delivery: Stefan and Richard were prompt polite and professional - what more could you ask for.  All round great experience!"
+          "title": "Great delivery experience. ",
+          "body": "Delivery team of Blaise and Stewart were great, phoned on the way and came when expected, moved the heavy parcels where I wanted them. All good, thanks. "
+        },
+        {
+          "rating": 5,
+          "title": "From initial purchase to delivery excellent…",
+          "body": "From initial purchase to delivery everything went as planned. Received the call first thing on the morning of the booked delivery date to advise when Dave A and Paul Y would arrive and they did, on time. Very happy guys who did a great job and made sure everything was put together well. Cleared away all the packaging, so no mess.  They were a pleasure to have in the house, and I’m very happy to wr"
+        },
+        {
+          "rating": 5,
+          "title": "Great delivery service & lovely sofa",
+          "body": "Great delivery service from Stefan and Richard, and very happy with the sofa! "
+        },
+        {
+          "rating": 5,
+          "title": "Ease of buying online from a trusted…",
+          "body": "Ease of buying online from a trusted and reputable company, quick and easy delivery confirmation followed by seemless delivery: Stefan and Richard were prompt polite and professional - what more could you ask for.\n\nAll round great experience!"
+        },
+        {
+          "rating": 5,
+          "title": "Happy customer ",
+          "body": "The guys who delivered our new mattress (Callum and Luke) were very helpful and respectful. Very happy with the purchase and the delivery. "
         },
         {
           "rating": 5,
           "title": "Had a table delivered ",
-          "body": "Had a table, bench and chairs delivery today. Gary R & Jordan were on time, polite and efficient. No complaints "
+          "body": "Had a table, bench and chairs delivery today. Gary R & Jordan were on time, polite and efficient.\nNo complaints "
+        },
+        {
+          "rating": 5,
+          "title": "Jake and Stephen provided a very…",
+          "body": "Jake and Stephen provided a very efficient service. They were extremely polite and friendly. Great representatives for Barker and Stonehouse. "
         },
         {
           "rating": 5,
           "title": "Fast delivery and friendly staff ",
-          "body": "Fast delivery great product. Liam and Wojciech delivered the item, were super friendly and built the furniture in no time. Great lads. 5 star service."
+          "body": "Fast delivery great product.\nLiam and Wojciech delivered the item, were super friendly and built the furniture in no time. Great lads. 5 star service."
         },
         {
           "rating": 5,
+          "title": "From visiting Paul in the Nottingham…",
+          "body": "From visiting Paul in the Nottingham store, to the items being delivered by Luke and Alex the experience of shopping at Barker and Stonehouse was first class\nMany thanks\nIan & Sue Shelley "
+        },
+        {
+          "rating": 1,
           "title": "Bad quality, chairs falling after within a few months!",
-          "body": "I\\u2019m so upset with my 8 \\u2018Quebec\\u2019 dining chairs I bought only 8 months ago! They\\u2019re all falling apart, bad quality stitching!  Dining chairs are supposed to last many years! The ones I had before looked new after 10 years!! I wish I can attach photos to show the quality.  All the company did was offer me an option to buy a new one for 50% off! Why would I want the same chair if i"
+          "body": "I’m so upset with my 8 ‘Quebec’ dining chairs I bought only 8 months ago! They’re all falling apart, bad quality stitching! \nDining chairs are supposed to last many years! The ones I had before looked new after 10 years!! I wish I can attach photos to show the quality.\n\nAll the company did was offer me an option to buy a new one for 50% off! Why would I want the same chair if it’s bad quality? "
+        },
+        {
+          "rating": 5,
+          "title": "Really helpful staff",
+          "body": "Really helpful staff - from sales to delivery. 5* delivery today from JamieS & Don. 🤩"
         },
         {
           "rating": 5,
@@ -40,186 +75,50 @@
         },
         {
           "rating": 5,
-          "title": "Great experience ",
-          "body": "Delivery guys Jake and Marty did a great job, couldn\\u2019t be happier with the delivery process. Very happy with the furniture, great quality and looks amazing. "
+          "title": "Efficient and friendly service ",
+          "body": "Chris and Cal were really efficient and friendly when delivering and putting together the sofa and dining table. They explained how to undo and re connect the sofa if ever required and also asked my preferences on where to position the furniture. "
         },
         {
           "rating": 5,
-          "title": "Received dining  tables and chairs just\\u2026",
-          "body": "Received dining  tables and chairs just now  delivery guys Liam snd Wojciech great.  Pleasant and helpful. However the leather chairs are poorly scratched and require replacing."
+          "title": "Great experience ",
+          "body": "Delivery guys Jake and Marty did a great job, couldn’t be happier with the delivery process.\nVery happy with the furniture, great quality and looks amazing.\n"
+        },
+        {
+          "rating": 5,
+          "title": "Punctual",
+          "body": "Punctual. Phoned before arriving. Installed the furniture and took all rubbish "
+        },
+        {
+          "rating": 5,
+          "title": "Received dining  tables and chairs just…",
+          "body": "Received dining  tables and chairs just now  delivery guys Liam snd Wojciech great. \nPleasant and helpful.\nHowever the leather chairs are poorly scratched and require replacing."
+        },
+        {
+          "rating": 5,
+          "title": "The staff at the Hove store",
+          "body": "The staff at the Hove store, Katie and Jago offered exceptional customer service to me and my fiancée. They listened carefully to our ideas, made great suggestions and helped us purchase some chairs and a rug. So lovely to encounter relaxed and happy people clearly passionate about their work.  Thank you "
         },
         {
           "rating": 5,
           "title": "What else can I buy from Barker and Stonehouse",
-          "body": "Easy to order. Kept up to date with delivery time and date. Morning of the delivery got my call. Thirty minutes later my table was here. Paul S and Tapiwa quickly put the table together. Both were very pleasant. They took away the packaging.  I'm now looking to see what other furniture I can buy from Barker and Stonehouse. Would definitely recommend."
+          "body": "Easy to order. Kept up to date with delivery time and date. Morning of the delivery got my call. Thirty minutes later my table was here.\nPaul S and Tapiwa quickly put the table together. Both were very pleasant. They took away the packaging. \nI'm now looking to see what other furniture I can buy from Barker and Stonehouse. Would definitely recommend."
         },
         {
           "rating": 5,
-          "title": "Stefan and Richard were very\\u2026",
-          "body": "Stefan and Richard were very professional and done the job quickly but efficiently. Thank you for being very chatty and kind "
-        },
-        {
-          "rating": 5,
-          "title": "Tom H and Craig did a great job today",
-          "body": "Tom H and Craig did a great job today. Delivery was on time as scheduled and a courtesy call was made 30mins beforehand. Polite guys and took extra care when delivering our sofas also ensuring they were positioned correctly before leaving.  Working in 30+ degrees too. Thank you."
-        },
-        {
-          "rating": 5,
-          "title": "Fantastic Experience",
-          "body": "Whole process with Barker and Stonehouse was great - good selection of classy furniture. Staff in the Leeds branch were helpful but not pushy, we had Guy and Chrissie helping us. Managed to get a couple of sofas on clearance so we only waited 10 days for delivery but this was booked and arranged promptly. Liam and Wojciech were fantastic for delivery - in and out in 20 minutes!"
-        },
-        {
-          "rating": 5,
-          "title": "First class experience shopping at the\\u2026",
-          "body": "First class experience shopping at the Battersea branch. John Bushill could not have been more helpful in advising us on our new sofa and dining table. He has a great sense of humour and we couldn't have asked for better service. If you\\u2019re thinking  of visiting the store, ask for John. "
-        },
-        {
-          "rating": 5,
-          "title": "Adrian and Quorasih delivered &\\u2026",
-          "body": "Adrian and Quorasih delivered & assembled our two sofas today. They were quick, efficient, friendly and polite. We were informed of a 2 hour slot a few days before and then another notification 20 mins before they arrived which helps if you\\u2019re working from home. "
-        },
-        {
-          "rating": 5,
-          "title": "Adrian and Quorasih delivered &\\u2026",
-          "body": "Adrian and Quorasih delivered & assembled our two sofas today. They were quick, efficient, friendly and polite. We were informed of a 2 hour slot a few days before and then another notification 20 mins before they arrived which helps if you\\u2019re working from home. "
-        },
-        {
-          "rating": 5,
-          "title": "First Class Service",
-          "body": "Dan and Levi delivered our sofas today.  They gave excellent service, assembling the sofas, applying felt pads to the feet to protect our Amtico flooring, placed the sofas just where we wanted and they removed all of the packaging.    This followed up on the first class advice and product knowledge provided by John Bushill at the Barker & Stonehouse store.  He guided us through the sales process w"
-        },
-        {
-          "rating": 5,
-          "title": "Very beautiful and elegant furniture",
-          "body": "Very beautiful and elegant furniture. My place and my taste. Really kind and knowledgeable team. A special thank you to Valantina for her patience, kindness and knowledge and completing the order xxx"
-        },
-        {
-          "rating": 5,
-          "title": "Adrian and Quorasih delivered &\\u2026",
-          "body": "Adrian and Quorasih delivered & assembled our two sofas today. They were quick, efficient, friendly and polite. We were informed of a 2 hour slot a few days before and then another notification 20 mins before they arrived which helps if you\\u2019re working from home. "
-        },
-        {
-          "rating": 5,
-          "title": "First Class Service",
-          "body": "Dan and Levi delivered our sofas today.  They gave excellent service, assembling the sofas, applying felt pads to the feet to protect our Amtico flooring, placed the sofas just where we wanted and they removed all of the packaging.    This followed up on the first class advice and product knowledge provided by John Bushill at the Barker & Stonehouse store.  He guided us through the sales process w"
-        },
-        {
-          "rating": 5,
-          "title": "Bought a sofa in Knaresborough store",
-          "body": "Bought a sofa in Knaresborough store. Good quality, very happy with the purchase. Helpful staff- Sharon S and Jamie H"
+          "title": "Quick delivery really friendly chaps…",
+          "body": "Quick delivery really friendly chaps (Dave A and Pauk Y) all wrapping taken away really pleased "
         }
       ],
-      "scraped_at": "2026-05-29T09:52:23.767631"
+      "scraped_at": "2026-05-29T10:20:42.340479"
     },
     {
       "site": "Heals",
       "is_own": false,
       "overall_rating": 3.4,
-      "review_count": 1155,
-      "source": "ScraperAPI render",
-      "reviews": [
-        {
-          "rating": 5,
-          "title": "George and Meg in the Bath Store are amazing!",
-          "body": "George and Meg in the Bath Located Store have been outstanding! I have a trade account activated recently but couldn't find the light fitting online was directed to the Bath Store who literally have gone over and above to help and restored my faith back into Heals after a not so reliable start with another team.  George and Meg I hope Heals give you a raise as you deserve it, what a shame the rest"
-        },
-        {
-          "rating": 1,
-          "title": "Excellent Service ",
-          "body": "Great help from the store when I couldn\\u2019t get an order in online!  Excellent customer service Darren \\u2026"
-        },
-        {
-          "rating": 5,
-          "title": "Overall an effortless and pleasant experience ",
-          "body": "Easy to navigate website, good offers in well known and established brands, excellent customer service."
-        },
-        {
-          "rating": 4,
-          "title": "Great customer service",
-          "body": "Great customer service, feels very personal and tailored to the needs of customer rather than generic!"
-        },
-        {
-          "rating": 5,
-          "title": "Great first order",
-          "body": "First time I have ordered and I found site easy to navigate.  Items well illustrated and and I was able to place order quickly.  Free delivery a bonus"
-        },
-        {
-          "rating": 5,
-          "title": "Excellent and prompt and friendly\\u2026",
-          "body": "Excellent and prompt and friendly service. Exactly what I would expect from a great historic company. "
-        },
-        {
-          "rating": 5,
-          "title": "Outstanding Service",
-          "body": "We made two visits to Heal's. We received outstanding service, advice and patience from Matt Fowler over both days. He gave up his lunchtime for us and answered all of our questions with real information and grace. All of this in the Heal's environment which makes choosing and buying things for our home such a delight. Thanks to Matt, especially, and to everyone. "
-        },
-        {
-          "rating": 5,
-          "title": "What a truly awful company",
-          "body": "What a truly awful company. I bought a Brunel sofa a few years ago which was supposed to be guaranteed for life. One of the legs bent with only light usage, and I asked for a replacement. I was told that the legs were not covered in the warranty and that I could not get a replacement leg, even if I paid for it, as the manufacturer no longer makes them. Then I went into one of their stores and saw "
-        },
-        {
-          "rating": 4,
-          "title": "AVOID this store",
-          "body": "Awful experience -having bought 4 lights from here, I bought another 4 for other areas. 1 was clearance and the other 3 were at full price,  Not in stock Delivery 4-5 April. On 22/04 I chased them to be told they have the stock ( for 3 weeks ) but they didn't have the clearance light and I would have to re order at full price dueto their MISTAKE. After 2 days they offered me10% off this light only"
-        },
-        {
-          "rating": 0,
-          "title": "Don\\u2019t do it",
-          "body": "Ordered 2 x Normann marble shelves on 5th January, quoted 6-8 weeks. Have been told \\u201csorry it\\u2019s more like 16 weeks\\u201d.   So, 4 months wait.   Clearly they forgot to lodge the order with the supplier.   Truly shocking lack of service, no care, no response.  Am still waiting"
-        },
-        {
-          "rating": 5,
-          "title": "George and Meg in the Bath Store are amazing!",
-          "body": "George and Meg in the Bath Located Store have been outstanding! I have a trade account activated recently but couldn't find the light fitting online was directed to the Bath Store who literally have gone over and above to help and restored my faith back into Heals after a not so reliable start with another team.  George and Meg I hope Heals give you a raise as you deserve it, what a shame the rest"
-        },
-        {
-          "rating": 1,
-          "title": "AVOID this store - no customer service ",
-          "body": "Having ordered some Umage lights which are fantastic fro Heals, I ordered 4 more - 1 was in stock and on sale and I paid full price for the other 3. After contacting them a few weeks past the delivery date - they asked if I wanted part shipment while they are still waiting for 1 more. The were NOT being helpful - I found out that they had sold the sale light to someone else. Didn't bother telling "
-        },
-        {
-          "rating": 4,
-          "title": "Happy with Heal's",
-          "body": "I have bought many items from Heal's for my house in the past year, ranging from a table, 2x sofas, a shelving unit, lamp, stool... Whilst there was a minor issue with 2 of them, a technician visited very quickly and with the minimum of fuss, everything was sorted very satisfactorily. My house now looks fabulous, with so many beautiful items. At no other shop have I come across such lovely furnitu"
-        },
-        {
-          "rating": 5,
-          "title": "What a surprise",
-          "body": "What a surprise.  We thought that Heals was an upmarket quality brand. Absolute shambles, products never arrived - initially said they had, but later confirmed still at the Kingston Store.  Impossible, to obtain a response, emails ignored. Postscript- we did eventually receive a reply and refund for the goods that had not arrived. So we have updated the review.  "
-        },
-        {
-          "rating": 5,
-          "title": "Outstanding Service",
-          "body": "We made two visits to Heal's. We received outstanding service, advice and patience from Matt Fowler over both days. He gave up his lunchtime for us and answered all of our questions with real information and grace. All of this in the Heal's environment which makes choosing and buying things for our home such a delight. Thanks to Matt, especially, and to everyone. "
-        },
-        {
-          "rating": 1,
-          "title": "Picture Perfect  I ordered a framed print which arrived\\u2026",
-          "body": "I ordered a framed print which arrived safely but unfortunately did not contain the promised hanging kit.  I emailed the Customer Services and received a reply from Rachel the same day apologising and promising to liaise with the suppliers for a hanging kit to  be sent to my address.  King & McGaw sent my kit first class and I am one very happy customer.  Great service Heal\\u2019s! "
-        },
-        {
-          "rating": 5,
-          "title": "I made several purchases from Heal\\u2019s a\\u2026",
-          "body": "I made several purchases from Heal\\u2019s a number of years ago and have been very happy with the products (bedroom furniture and lighting). I had a recent issue with one item and requested some replacement parts, which the Heal\\u2019s team (Izzie) managed to sort very quickly without any hassle. Great customer service, really impressed. "
-        },
-        {
-          "rating": 5,
-          "title": "Picture Perfect  I ordered a framed print which arrived\\u2026",
-          "body": "I ordered a framed print which arrived safely but unfortunately did not contain the promised hanging kit.  I emailed the Customer Services and received a reply from Rachel the same day apologising and promising to liaise with the suppliers for a hanging kit to  be sent to my address.  King & McGaw sent my kit first class and I am one very happy customer.  Great service Heal\\u2019s! "
-        },
-        {
-          "rating": 1,
-          "title": "Terrible customer service",
-          "body": "Terrible customer service. Placed an order for some very expensive battery operated candles that after 8 weeks are gummy, nicked and discoloured. Emailed Heals and they are trying to palm the issue off on me and refusing a refund. Avoid and take your money elsewhere!!"
-        },
-        {
-          "rating": 4,
-          "title": "Picture Perfect  I ordered a framed print which arrived\\u2026",
-          "body": "I ordered a framed print which arrived safely but unfortunately did not contain the promised hanging kit.  I emailed the Customer Services and received a reply from Rachel the same day apologising and promising to liaise with the suppliers for a hanging kit to  be sent to my address.  King & McGaw sent my kit first class and I am one very happy customer.  Great service Heal\\u2019s! "
-        }
-      ],
-      "scraped_at": "2026-05-29T09:52:54.573558"
+      "review_count": 98834,
+      "source": "Google search",
+      "reviews": [],
+      "scraped_at": "2026-05-29T10:21:19.552090"
     },
     {
       "site": "Lee Longlands",
@@ -230,8 +129,13 @@
       "reviews": [
         {
           "rating": 5,
-          "title": "Lovely environment and excellent\\u2026",
+          "title": "Lovely environment and excellent…",
           "body": "Lovely environment and excellent service as usual - many thanks!"
+        },
+        {
+          "rating": 5,
+          "title": "Great delivery team ",
+          "body": "The delivery team that delivered our mattress were great. Thank you Mark and Lewis :) "
         },
         {
           "rating": 5,
@@ -240,13 +144,28 @@
         },
         {
           "rating": 5,
+          "title": "Whole experience was excellent. ",
+          "body": "Very pleased with the Tempur bed and mattress. \nGreat help from the Peterborough store staff when choosing our new bed.\nDelivery was brilliant, Richard and Will were on time, were efficient, careful, friendly and helpful. "
+        },
+        {
+          "rating": 5,
           "title": "Helpful and professional from start to finish ",
           "body": "Helpful and professional from start to finish, from Mandy in the Leamington showroom to Jay, Carl and James on delivery. Excellent communication and we love our new sofa!"
         },
         {
           "rating": 5,
+          "title": "Furniture delivery",
+          "body": "Tony and Kane delivered my sofa and chair today and were very helpful and professional and nothing was too much trouble"
+        },
+        {
+          "rating": 5,
           "title": "Super service!",
-          "body": "Just taken delivery of our recliner chair. Superb quality product. Service in store was great. Had decided we would collect the product, to save cost, and then had a call to say they would deliver it anyway, for free!  Contacted us   just prior to delivery date. We had to rearrange due to being on holiday and they were most accommodating finding an alternative date.  The two delivery guys. Jay and"
+          "body": "Just taken delivery of our recliner chair. Superb quality product. Service in store was great. Had decided we would collect the product, to save cost, and then had a call to say they would deliver it anyway, for free! \nContacted us \n just prior to delivery date. We had to rearrange due to being on holiday and they were most accommodating finding an alternative date. \nThe two delivery guys. Jay and"
+        },
+        {
+          "rating": 5,
+          "title": "All around wonderful experience ",
+          "body": "Easy to order, and kept informed at all stages.\nBut the best part was the delivery, the drivers were lovely, Richard and Will, they called to advise us of delivery time, and they delivered at the time arranged, they built the furniture and cleared up after themselves, very friendly and helpful.\nThe furniture which i ordered was beautiful.\nA perfect experience \nThank you"
         },
         {
           "rating": 5,
@@ -255,90 +174,171 @@
         },
         {
           "rating": 5,
+          "title": "Glass table, chairs and bed, South Wales",
+          "body": "Richard and Will let me know when they would be arriving. They were polite and focussed on the job. Richard explained how to handle our new table and to look after it. Will cleared everything (all packaging) afterwards and together they were an efficient team. We were very pleased with the service from start to finish. Thank you both. Terry and Eira. "
+        },
+        {
+          "rating": 5,
           "title": "Wonderful products",
           "body": "Wonderful products, fantastic staff and service. The shop manager even called me in the evening to confirm the details of my order, because I made a slight change to the upholstery last minute and he wanted to double check. Very happy "
         },
         {
           "rating": 5,
-          "title": "Lee Longlands  - lives up to our experience again",
-          "body": "We have a history of ordering from Lee Longlands going back many years and their products are always of a high quality.  On this occasion, our item of furniture was delivered by Lewis and Kane who took great care in locating the item to our satisfaction and taking every piece of rubbish with them. You can be proud of your Staff. We have emailed our comments as well to Customer Service."
+          "title": "Really went out their way",
+          "body": "Really went out their way, to advise us ..friendly and approachable. "
         },
         {
-          "rating": 4,
+          "rating": 3,
+          "title": "Lee Longlands  - lives up to our experience again",
+          "body": "We have a history of ordering from Lee Longlands going back many years and their products are always of a high quality. \nOn this occasion, our item of furniture was delivered by Lewis and Kane who took great care in locating the item to our satisfaction and taking every piece of rubbish with them. You can be proud of your Staff.\nWe have emailed our comments as well to Customer Service."
+        },
+        {
+          "rating": 5,
+          "title": "Excellent service and a most helpful…",
+          "body": "Excellent service and a most helpful staff member."
+        },
+        {
+          "rating": 5,
           "title": "Fabulous Service, Beautiful Goods",
           "body": "Lee and Nathan did a sterling job of delivering and assembling our sofa set, cuddler and dining room table and chairs. They were polite, efficient and tidy, despite it being an impossibly hot day (over 30 degrees celsius!) Highly recommend Lee Longlands as the quality is superb."
         },
         {
+          "rating": 4,
+          "title": "All’s well that ends well",
+          "body": "I made arrangements for an item of furniture to be delivered to our local Lee Longland store for me to see.\n When I arrived to view the item it would appear that it was not there.\n    I returned a couple of days later, having been assured that the item was now available for me to view. I was served by Jake and his reaction to the problem was excellent. I have bought the item and am very pleased wi"
+        },
+        {
           "rating": 5,
           "title": "An efficient and friendly service.",
-          "body": "An efficient and friendly service. Kane and Jay phoned to confirm delivery time and they duly delivered the chair on time which they unpacked and assembled. They were courteous and quick."
+          "body": "An efficient and friendly service.\nKane and Jay phoned to confirm delivery time and they duly delivered the chair on time which they unpacked and assembled.\nThey were courteous and quick."
         },
         {
           "rating": 5,
-          "title": "Lee Longlands staff at the Bristol\\u2026",
-          "body": "Lee Longlands staff at the Bristol store are nothing short of amazing! James the Manager, helped me resolve a situation with an order I placed, when it was most needed, following a life changing set of circumstances almost immediately after placing the order. 12 months later, I went back to see James and I\\u2019m now in possession of not only a beautiful chair, but comfort that\\u2019s needed more "
+          "title": "Personal service and patience ",
+          "body": "Personal service and patience . There is care and patience and questions properly answered. We went in several times before we made a decision. There is no excessive sales push which is really pleasant "
         },
         {
           "rating": 5,
-          "title": "Super service!",
-          "body": "Just taken delivery of our recliner chair. Superb quality product. Service in store was great. Had decided we would collect the product, to save cost, and then had a call to say they would deliver it anyway, for free!  Contacted us   just prior to delivery date. We had to rearrange due to being on holiday and they were most accommodating finding an alternative date.  The two delivery guys. Jay and"
+          "title": "Lee Longlands staff at the Bristol…",
+          "body": "Lee Longlands staff at the Bristol store are nothing short of amazing! James the Manager, helped me resolve a situation with an order I placed, when it was most needed, following a life changing set of circumstances almost immediately after placing the order. 12 months later, I went back to see James and I’m now in possession of not only a beautiful chair, but comfort that’s needed more than ever,"
         },
         {
           "rating": 5,
-          "title": "The whole experience from choosing my\\u2026",
-          "body": "The whole experience from choosing my suite to delivery has been excellent. Brian Bowman at the Bristol shop was very helpful with our choice of furniture.  Mark, Lewis &Tom who delivered my furniture did an excellent job. They were very polite & respectful of my property & made sure everything was in working order. 10/10.  Would certainly recommend this company.  Thank you"
-        },
-        {
-          "rating": 5,
-          "title": "Elevating the every day",
-          "body": "Having shopped many times at Lee Longlands over several years, I returned when shopping for new furniture. Excellent help from Roman to order furniture for my living room. No pressure to buy, just practical advice. Also thank you to Paul, who advised me in Roman's absence. Great service, furniture is high quality and different to most stores, helpful staff. I definitely recommend."
-        },
-        {
-          "rating": 5,
-          "title": "Nathan & Rob were excellent",
-          "body": " Nathan & Rob were excellent. We\\u2019re very efficient, Explaining everything before they left.   Mandy was a great sales person in Leamington Spa. Overall v happy so far.  "
-        },
-        {
-          "rating": 5,
-          "title": "We have bought a suite from Lee\\u2026",
-          "body": "We have bought a suite from Lee Longlands in Bristol. We were helped by James Lane and found his advice extremely useful as he guided us through the extensive choice and we found a suite that works for both of us ( 6'2 and 5'3) We were able to choose a delivery day that fitted in with us and the delivery people, Lewis and Tony did everything for us, checked that the electric reclining functions wo"
-        },
-        {
-          "rating": 5,
-          "title": "Great delivery ",
-          "body": "The 2 delivery guys Jay and Frank were great, no problem getting the furniture in to our property and then disposing of the packaging for us. The only problem was after they had left we noticed the storage foot stool was a different shade of blue to the sofa, so a bit disappointing."
-        },
-        {
-          "rating": 5,
-          "title": "It was great to have a physical store\\u2026",
-          "body": "It was great to have a physical store with an extensive range of dining tables to explore. Sales man was old skool but not in a pushy way. Delivery time was about 9 weeks which is too long, but this always seems to be the way with big furniture.  Kane and Carl delivered smoothly,  and Kane was particularly helpful and positive whilst putting things together. Overall a very good experience "
-        },
-        {
-          "rating": 5,
-          "title": "Great delivery ",
-          "body": "The 2 delivery guys Jay and Frank were great, no problem getting the furniture in to our property and then disposing of the packaging for us. The only problem was after they had left we noticed the storage foot stool was a different shade of blue to the sofa, so a bit disappointing."
-        },
-        {
-          "rating": 5,
-          "title": "Delivery & customer complaint services ",
-          "body": "Kane & Frank provided a polite, respectful & efficient delivery service.  However it was disappointing that the glass coffee table was not perfect. The glass was imperfect & had a blurred surface.  Customer services were good & efficient but I\\u2019m awaiting a response regarding a replacement table.   I hope that a replacement will soon be available?\\ud83e\\udd1e"
-        },
-        {
-          "rating": 5,
-          "title": "Fabulous customer service! ",
-          "body": "Yet another great service from Jake in Leamington to enable us to purchase a new Ercol sofa and snuggler.  Love supporting a family business and the personal touches make a real difference! "
+          "title": "Our Mattress was delivered this morning…",
+          "body": "Our Mattress was delivered this morning by Tony & Carl . We were kept well informed of the delivery schedule and delivered with in the stated time .\nBoth were well presented plus delivery managed very well . With thanks "
         }
       ],
-      "scraped_at": "2026-05-29T09:53:54.724616"
+      "scraped_at": "2026-05-29T10:25:15.857907"
     },
     {
       "site": "Housing Units",
       "is_own": false,
-      "overall_rating": 4.8,
-      "review_count": 40,
-      "source": "Google search",
-      "reviews": [],
-      "scraped_at": "2026-05-29T09:54:47.295138"
+      "overall_rating": 4.4,
+      "review_count": 18,
+      "source": "ScraperAPI render",
+      "reviews": [
+        {
+          "rating": 5,
+          "title": "Just perfect in every way",
+          "body": "Found the perfect sofas at an amazing price in store.  Unfortunately we were in the process of moving house and had nowhere to store them.  No problem at all for the staff, really helpful ladies kept me informed of stock levels and I returned 5 weeks later when I finally had the keys to order which was when I was delighted to find that they had been reduced by a further £1000. \n\nKept informed by d"
+        },
+        {
+          "rating": 1,
+          "title": "My dining table came with a small black…",
+          "body": "My dining table came with a small black mark literally less than a week ago and they seem this not a fault and told me to go to the Ombudsman. Complaints team have no ounce of customer service and was not willing to help. Just said as we’re not a fault basically sod off. I’ve asked can they examine it so they can even see what I mean as let’s face it pictures are not the true thing and is 100 not "
+        },
+        {
+          "rating": 5,
+          "title": "Dave and Darren did a great job…",
+          "body": "Dave and Darren did a great job delivering our new bed today. Thank you so much, Sally "
+        },
+        {
+          "rating": 5,
+          "title": "Staff ( Janet O ) in Housing Units… and Dave and Darren delivery chaps",
+          "body": "Staff ( Janet O ) in Housing Units store bedroom dept was very friendly and more than helpful. No rush, answered all enquiries, an infinite amount of knowledge and patience . It was a pleasure meeting and dealing with her. Nothing was too much and we did have quite a few laughs . We’ll be back Janet . \nDave & Darren who delivered the bed were second to none. Arrived on time, assembled furniture , "
+        },
+        {
+          "rating": 5,
+          "title": "Great service",
+          "body": "Great service, delayed delivery for as long as I needed, quality is great, Joe and Craig delivery men was brilliant, couldn’t fault them, highly recommend "
+        },
+        {
+          "rating": 5,
+          "title": "Great delivery service",
+          "body": "The delivery time was communicated well in advance, as indicated with a call 30 minutes prior to confirm. Rick and Phill were polite/friendly and helpful."
+        },
+        {
+          "rating": 5,
+          "title": "New furniture ",
+          "body": "On time and delivered by 2 thoughtful and polite gentlemen namely Lee and David"
+        },
+        {
+          "rating": 5,
+          "title": "Rick & Phill - nice guys good service ",
+          "body": "Rick & Phill were very friendly delivery men and handled packages with care & delivery was nice and prompt so was not waiting around all day. Would definitely recommend "
+        },
+        {
+          "rating": 5,
+          "title": "Lee and David brought in and ensembles…",
+          "body": "Lee and David brought in and ensembles my table. Did a great job thanks guys "
+        },
+        {
+          "rating": 5,
+          "title": "Efficient delivery men",
+          "body": "Efficient delivery men, Lee and David. They took away the packaging. They put the cushions in place."
+        },
+        {
+          "rating": 5,
+          "title": "Very professional service from Rick and…",
+          "body": "Very professional service from Rick and Phil, went the extra mile to ensure the furniture was delivered even though it was an awkward delivery. Would highly recommend both of them!!  A++++"
+        },
+        {
+          "rating": 5,
+          "title": "Great service for our new garden furniture ",
+          "body": "From purchasing our new garden furniture through to delivery we were kept informed of when our item will turn up, on delivery day the drivers Rick & Phil gave me a curtesy call 30mins before they arrived and delivered it into our back garden, overall a great service and a great product which we are looking forward to using. "
+        },
+        {
+          "rating": 5,
+          "title": "Two great helpful deliverers",
+          "body": "Two great helpful deliverers Lee and David"
+        },
+        {
+          "rating": 5,
+          "title": "Great job by Lee & David",
+          "body": "Great job by Lee & David, friendly, efficient (delivery chaps) from HU "
+        },
+        {
+          "rating": 5,
+          "title": "Garden furniture",
+          "body": "Arthur the delivery man, delivered our garden furniture single handedly. He was very pleasant and efficient. He didn't leave until he was sure we were completely satisfied. We are very pleased with the furniture, good quality and sturdy. We can't wait for some sun to enable us to enjoy it. "
+        },
+        {
+          "rating": 1,
+          "title": "Customer care terrible",
+          "body": "Really bad experiences with Housing Units send numerous messages and telephone calls regarding my bulgati TOASTER being faulty.  NO customer care at all totally ignored.  Will never buy from this company again also will never buy bulgati again.  I feel like I've been scammed KEEP AWAY.\n\nYour have replied stating I'm out of warranty, but if you had of dealt with the query at the time I was within m"
+        },
+        {
+          "rating": 5,
+          "title": "The delivery was early and Lee & David…",
+          "body": "The delivery was early and Lee & David were very good "
+        },
+        {
+          "rating": 5,
+          "title": "Fabulous professional staff ",
+          "body": "Fabulous professional staff , especially Lee and David \nDelivering new sofas \nRespected property, on time, delivered with care\nFirst Class service from purchase to delivery \nFaultless "
+        },
+        {
+          "rating": 5,
+          "title": "Excellent staff,plenty of choice.",
+          "body": "Excellent staff,plenty of choice."
+        },
+        {
+          "rating": 5,
+          "title": "Polite staff who were knowledgeable…",
+          "body": "Polite staff who were knowledgeable about the products. They contacted me via mobile phone as soon as the fitting was available for collection. It was well packaged and arrived in perfect condition."
+        }
+      ],
+      "scraped_at": "2026-05-29T10:25:55.425518"
     },
     {
       "site": "Cox & Cox",
@@ -348,19 +348,34 @@
       "source": "ScraperAPI render",
       "reviews": [
         {
-          "rating": 2,
+          "rating": 5,
           "title": "Quality furniture and quality service",
-          "body": "I ordered a garden patio set and when unpacking we noticed a small mark on one of the cushions. I took a photo and sent an email to Cox and Cox saying I was very happy with the furniture but disappointed with the mark on it. I had a very prompt reply from Farad who swiftly dealt with the matter to my satisfaction. I wouldn\\u2019t hesitate to buy further items from Cox and Cox as they are of good q"
+          "body": "I ordered a garden patio set and when unpacking we noticed a small mark on one of the cushions. I took a photo and sent an email to Cox and Cox saying I was very happy with the furniture but disappointed with the mark on it. I had a very prompt reply from Farad who swiftly dealt with the matter to my satisfaction. I wouldn’t hesitate to buy further items from Cox and Cox as they are of good qualit"
+        },
+        {
+          "rating": 2,
+          "title": "Firstly I paid for next day delivery…",
+          "body": "Firstly I paid for next day delivery and the order showed up two days late , this was a wedding gift so really inconvenient. I was given the delivery charge back but was made to feel like they were doing me a huge favour. Then a return request was done which according to them takes 48hrs and its been 4 days so far!! Seriously how can it take 4 days to give a customer your return address!! First an"
         },
         {
           "rating": 1,
           "title": "Where are the Customer Service team?",
-          "body": "I have placed an order yesterday for next day delivery (prior to the 12 noon cutoff), it\\u2019s now nearly 3pm on the delivery day, I\\u2019ve received no tracking or dispatch email, I\\u2019ve tried to online chat them (switched off), called - waited on hold for 10 mins to then go to an answer machine, tried social media messaging (left unread) and emailed them - could be upto 5 days for a reply. T"
+          "body": "I have placed an order yesterday for next day delivery (prior to the 12 noon cutoff), it’s now nearly 3pm on the delivery day, I’ve received no tracking or dispatch email, I’ve tried to online chat them (switched off), called - waited on hold for 10 mins to then go to an answer machine, tried social media messaging (left unread) and emailed them - could be upto 5 days for a reply.\nThis is giving m"
         },
         {
           "rating": 1,
+          "title": "No impressed I still haven't received…",
+          "body": "No impressed I still haven't received my order placed end March 26 when it said delivery early April. Have contacted them a few times by live chat to be told item out of stock til end May so delivery beg June and that my order was a priority. Now they are not on live chat and not answering the phone. They have over £1000 of mine. Are they going bust??"
+        },
+        {
+          "rating": 4,
           "title": "Beautiful blue linen cushion cover",
-          "body": "The linen cushion cover is a beautiful shade of blue, high quality material and well-finished - highly recommended.  I\\u2019ve knocked off one star as no tracking number was provided, so I wasn\\u2019t sure when to expect the delivery. Zoya in Customer Service was very helpful in resolving the matter, and the package turned up soon after I was supplied with a tracking number."
+          "body": "The linen cushion cover is a beautiful shade of blue, high quality material and well-finished - highly recommended.\n\nI’ve knocked off one star as no tracking number was provided, so I wasn’t sure when to expect the delivery. Zoya in Customer Service was very helpful in resolving the matter, and the package turned up soon after I was supplied with a tracking number."
+        },
+        {
+          "rating": 1,
+          "title": "Risky financial position- avoid ",
+          "body": "I ordered some dining chairs at the end of March. The website said they’d be delivered in 5 days but I got a date for delivery a few weeks later. The chairs didn’t arrive on the day - having spent all day in waiting for them. \nI requested a refund, back in April, and here we are on 27th May with no refund as of yet. When I email and call I’m told that it’s being processed and it’ll take a few more"
         },
         {
           "rating": 5,
@@ -369,33 +384,13 @@
         },
         {
           "rating": 5,
+          "title": "Great customer service",
+          "body": "Great customer service "
+        },
+        {
+          "rating": 1,
           "title": "Dreadful customer service!!",
-          "body": "I wouldn\\u2019t even give them one star if zero was an option! They have beautiful things but when things go wrong their customer service is dreadful!! I\\u2019ve been waiting nearly two months for a side table I ordered as they sent the wrong item! Since then it\\u2019s been ME doing ALL of the chasing and they never get my emails I keep being asked to send and then they don\\u2019t follow up! And i"
-        },
-        {
-          "rating": 2,
-          "title": "Rapid solution and response",
-          "body": "Rapid solution to my problem thanks to Laiba. Question acknowledged by return and problem resolved in 24 hours"
-        },
-        {
-          "rating": 1,
-          "title": "I made a mistake when ordering but Zoya\\u2026",
-          "body": "I made a mistake when ordering but Zoya was absolutely superb at sorting out for me. This is in direct comparison with services from a competitor of Cox & Cox so I 100% know who I will and won't be using going forward. "
-        },
-        {
-          "rating": 1,
-          "title": "Getting desperate",
-          "body": "I'm writing a repeat review as it seems the only way to get any response. Kelly and Ashley both phoned me last time and gave great news about a direct phone number and \\u00a3100 compensation for poor service but neither has materialised.   I paid \\u00a31500 for garden furniture which arrived on 22 April minus 2 cushions. I have a verbal agreement that the cushions will be delivered on 3 June. Plea"
-        },
-        {
-          "rating": 1,
-          "title": "Order Correction",
-          "body": "I realised quite quickly after I placed my order and got the confirmation that I ordered the wrong colour! Fahad was very helpful and confirmed with me which colour I actually wanted and was able to change my order with no hassle and efficiently. Thank you very much. "
-        },
-        {
-          "rating": 5,
-          "title": "Cox and Cox have gorgeous products at a\\u2026",
-          "body": "Cox and Cox have gorgeous products at a reasonable price combined with excellent customer service. I had ordered a garden bench that was due in stock in May. When I contacted Fahad in customer services he quickly advised the product would not be available until June and then suggested a number of alternatives. Extremely friendly, helpful and very responsive. "
+          "body": "I wouldn’t even give them one star if zero was an option! They have beautiful things but when things go wrong their customer service is dreadful!! I’ve been waiting nearly two months for a side table I ordered as they sent the wrong item! Since then it’s been ME doing ALL of the chasing and they never get my emails I keep being asked to send and then they don’t follow up! And it takes ages for the"
         },
         {
           "rating": 5,
@@ -403,14 +398,34 @@
           "body": "Qaiser has been a great help with placing an order for a parasol & granite base.  His emails are very precise and very quickly too !  Also impressed with logistics team (Eddie) has been so lovely arranging delivery . Also, the notification for 'back in stock' worked brilliantly. Happy to recommend Cox & Cox"
         },
         {
-          "rating": 4,
-          "title": "Firstly I paid for next day delivery\\u2026",
-          "body": "Firstly I paid for next day delivery and the order showed up two days late , this was a wedding gift so really inconvenient. I was given the delivery charge back but was made to feel like they were doing me a huge favour. Then a return request was done which according to them takes 48hrs and its been 4 days so far!! Seriously how can it take 4 days to give a customer your return address!! First an"
+          "rating": 5,
+          "title": "Rapid solution and response",
+          "body": "Rapid solution to my problem thanks to Laiba.\nQuestion acknowledged by return and problem resolved in 24 hours"
+        },
+        {
+          "rating": 2,
+          "title": "I ordered an item online",
+          "body": "Initial order in stock. Some issues with supply chain and communication around item delivery led to my cancellation of order and delays in processing refund. Disappointing experience for a product that we were looking forward to adding to our garden. Issues resolved now."
         },
         {
           "rating": 5,
-          "title": "Great ending!",
-          "body": "Ironically, the experience started off good, went badly but ended really well with a confirmed order. Qaiser was able to assist us in having a happy outcome which I was very grateful for. Looking forward to receiving my new sofa!"
+          "title": "I made a mistake when ordering but Zoya…",
+          "body": "I made a mistake when ordering but Zoya was absolutely superb at sorting out for me. This is in direct comparison with services from a competitor of Cox & Cox so I 100% know who I will and won't be using going forward. "
+        },
+        {
+          "rating": 1,
+          "title": "Please listen to the low reviews and be careful ",
+          "body": "Please listen to the low reviews.  Communication and customer service is woeful.  \n\nHad a partial delivery.  The delivery agent wanted to dump boxes and leave despite the order suggesting everything would be unpacked and placed where you want it. \n\nBut the real issue was the missing items.  I finally had to contact cox to ask where my items were to be told.  They are out of stock and you will have"
+        },
+        {
+          "rating": 1,
+          "title": "Getting desperate",
+          "body": "I'm writing a repeat review as it seems the only way to get any response. Kelly and Ashley both phoned me last time and gave great news about a direct phone number and £100 compensation for poor service but neither has materialised. \n\nI paid £1500 for garden furniture which arrived on 22 April minus 2 cushions. I have a verbal agreement that the cushions will be delivered on 3 June. Please can som"
+        },
+        {
+          "rating": 1,
+          "title": "Teardrop hanging chair unable to fulfil order  twice and ended up driving to collect our own alterna",
+          "body": "We placed an order on 24th April and was due for delivery last Friday but you couldn’t deliver as insufficient space on delivery vehicle .\nPromised delivery for tomorrow 22nd May email at 5:40 pm tonight to say  item isn’t in stock  due to inventory error \nTeardrop chair for teenagers birthday  great !!! shameful service \nEmailed to accept alternative no response ended up driving to collect it our"
         },
         {
           "rating": 5,
@@ -418,29 +433,14 @@
           "body": "I realised quite quickly after I placed my order and got the confirmation that I ordered the wrong colour! Fahad was very helpful and confirmed with me which colour I actually wanted and was able to change my order with no hassle and efficiently. Thank you very much. "
         },
         {
-          "rating": 5,
-          "title": "Contacting customer services at Cox and Cox.",
-          "body": "My problem was dealt with extremely curtiously  I forgot to include a code for my purchase and Zoya from customer service was so helpful in solving the matter. I love Cox and cox cushions and would recommend their company."
-        },
-        {
           "rating": 1,
-          "title": "I wrote a post a week ago about my\\u2026",
-          "body": "I wrote a post a week ago about my order not being processed. I was given lots of AI platitudes and promise to pay my money back , that was last week, despite my payment disappearing into their banking system within seconds! So a new tactic has started, emailimg me and asking me for 'the details' ive tried to ask what further they need. They have my order number, thryve quoted it, they have my ema"
-        },
-        {
-          "rating": 1,
-          "title": "I am a returning customer of Cox and\\u2026",
-          "body": "I am a returning customer of Cox and Cox, the quality of their merchandise is second to none.  Everything I have purchased is always amazing and never disappoints.  I purchased a bedspread but there was quite a delay on delivery \\u2026 I reached out to C&C and received a quick response from Laiba \\u2026 I explained the circumstances and she agreed to chase the supplier \\u2026 I was constantly kept"
+          "title": "Seems like a scam company to me ",
+          "body": "I received a £100 voucher from an online competition directly from cox&cox. \n\nI placed my order with them over a month ago now and after many attempts to chase up the whereabouts of my order - I’ve still not received it. Over the phone and on their online website chat, I have received several platitudes that ‘we need to contact the warehouse and then we’ll send you an email confirming dispatch and"
         },
         {
           "rating": 5,
-          "title": "Order Correction",
-          "body": "I realised quite quickly after I placed my order and got the confirmation that I ordered the wrong colour! Fahad was very helpful and confirmed with me which colour I actually wanted and was able to change my order with no hassle and efficiently. Thank you very much. "
-        },
-        {
-          "rating": 5,
-          "title": "Terrible experience (this time)",
-          "body": "Terrible experience (this time), goods faulty and simply brushed off with a - they will deteriorate over time (I\\u2019ve had them 6 weeks !).  No offer to change or refund, or to investigate further even when photos were shared   Reference number is 002465027"
+          "title": "Cox and Cox have gorgeous products at a…",
+          "body": "Cox and Cox have gorgeous products at a reasonable price combined with excellent customer service. I had ordered a garden bench that was due in stock in May. When I contacted Fahad in customer services he quickly advised the product would not be available until June and then suggested a number of alternatives. Extremely friendly, helpful and very responsive. "
         },
         {
           "rating": 5,
@@ -448,7 +448,7 @@
           "body": "My problem was dealt with extremely curtiously  I forgot to include a code for my purchase and Zoya from customer service was so helpful in solving the matter. I love Cox and cox cushions and would recommend their company."
         }
       ],
-      "scraped_at": "2026-05-29T09:58:52.545377"
+      "scraped_at": "2026-05-29T10:26:45.089053"
     },
     {
       "site": "Dusk",
@@ -458,29 +458,59 @@
       "source": "ScraperAPI render",
       "reviews": [
         {
-          "rating": 5,
-          "title": "Great value and quality bed and\\u2026",
-          "body": "Great value and quality bed and mattress, we researched and you can\\u2019t best Dusk on beds. Easy to assemble too, all done in an hour."
+          "rating": 4,
+          "title": "A great company with great prices .The…",
+          "body": "A great company with great prices .The reason I haven’t given 5 stars is that it took nearly all day for a handyman to put together the bed, wardrobe and bedside drawers. I am good at DIY but it would have taken me a few days to put it all together ! "
         },
         {
           "rating": 5,
+          "title": "Great value and quality bed and…",
+          "body": "Great value and quality bed and mattress, we researched and you can’t best Dusk on beds. Easy to assemble too, all done in an hour."
+        },
+        {
+          "rating": 5,
+          "title": "Excellent",
+          "body": "Excellent bed, amazing mattress, unbelievable price and I don't see a downside! Would recommend and have done ✅"
+        },
+        {
+          "rating": 1,
           "title": "Do not purchase the Ascot Ottoman Storage Bed!",
-          "body": "Please read this review and do not buy the  Ascot Ottoman Storage Bed! This bed is faulty, I had the bed for 3 months before the bar in the middle collapsed. I contacted dusk and they sent the replacement part, however due to poor quality of items it was hard to actually repair. The staff on the phone were friendly but it took too long to sort out and made the whole experience stressful. I had to "
+          "body": "Please read this review and do not buy the \nAscot Ottoman Storage Bed! This bed is faulty, I had the bed for 3 months before the bar in the middle collapsed. I contacted dusk and they sent the replacement part, however due to poor quality of items it was hard to actually repair. The staff on the phone were friendly but it took too long to sort out and made the whole experience stressful. I had to "
+        },
+        {
+          "rating": 5,
+          "title": "Great service",
+          "body": "Great service, easy to assemble and gorgeous bed with lots of storage!"
+        },
+        {
+          "rating": 5,
+          "title": "Chairs are beautiful and look amusing…",
+          "body": "Chairs are beautiful and look amusing with my table"
         },
         {
           "rating": 4,
-          "title": "Chairs are beautiful and look amusing\\u2026",
-          "body": "Chairs are beautiful and look amusing with my table"
+          "title": "1 day late",
+          "body": "1 day late\n4 nuts missing on the piuffe otherwise perfect. Thanks"
         },
         {
           "rating": 1,
           "title": "Lana Side Table - Poor Quality",
-          "body": "The side table is not as shown in the photos.  There are stickers that cover the cam locks which have seemingly been airbrushed out in the photos on their webpage!  It looks cheap in the flesh.  A real shame as dowels and some wood glue would have led to a far better finish and done the job just as well."
+          "body": "The side table is not as shown in the photos.  There are stickers that cover the cam locks which have seemingly been airbrushed out in the photos on their webpage!\n\nIt looks cheap in the flesh.  A real shame as dowels and some wood glue would have led to a far better finish and done the job just as well."
+        },
+        {
+          "rating": 1,
+          "title": "Both items arrived damaged!",
+          "body": "Both 2 seater and pouffe arrived damaged.\nTear in fabric on sofa, scratched/damaged legs and ripped material under pouffe hanging down.\nOffered £75 refund to keep both items. Wanted to exchange but have to wait another 6 weeks for delivery!"
+        },
+        {
+          "rating": 1,
+          "title": "Poor quality ",
+          "body": "The bed was satisfactory on arrival, however after around a year it began to weaken and required repeated repairs, including reattaching screws. After 27 months, the bed became completely unusable and had to be disposed of. The wood appeared too soft to hold the screws securely, and several screws snapped over time, suggesting poor-quality materials. I contacted customer service, but as the produc"
         },
         {
           "rating": 5,
-          "title": "Poor quality ",
-          "body": "The bed was satisfactory on arrival, however after around a year it began to weaken and required repeated repairs, including reattaching screws. After 27 months, the bed became completely unusable and had to be disposed of. The wood appeared too soft to hold the screws securely, and several screws snapped over time, suggesting poor-quality materials. I contacted customer service, but as the produc"
+          "title": "Incredible customer service ",
+          "body": "Incredible customer service from\nDUSK. After I’d only had my new table a week and had an issue they were so accommodating and helpful in replacing the item despite it not being directly their issue - couldn’t fault their care and understanding. Thank you so much! "
         },
         {
           "rating": 5,
@@ -489,88 +519,93 @@
         },
         {
           "rating": 5,
-          "title": "Great product great price and quick\\u2026",
+          "title": "Dusk is my favourite company by far,",
+          "body": "Dusk is my favourite company by far,\nExcellent quality furniture, beautiful bedding. Everything looks amazing \nExcellent service.\nHighly recommend Dusk \nDon't hesitate to order you won't be disappointed. "
+        },
+        {
+          "rating": 5,
+          "title": "Great product great price and quick…",
           "body": "Great product great price and quick delivery ( 2 tog Superking duvet ) "
         },
         {
           "rating": 5,
-          "title": "When my son had an issue with the table\\u2026",
+          "title": "Lovely for me and my 2 visitor dogs",
+          "body": "Love the royal blue sofa.  I am updating my curtains and soft furnishings( after 20 years )  So more comfy than the 2 armchairs I had previously.\nDoing a royal blue and gold contrast ."
+        },
+        {
+          "rating": 5,
+          "title": "When my son had an issue with the table…",
           "body": "When my son had an issue with the table I ordered for him. Customer service were very helpful and understanding and arranged for a replacement item and removal of faulty item. They were so helpful, professional and supportive. Excellent customer service."
         },
         {
+          "rating": 5,
+          "title": "The purchase was easy",
+          "body": "The purchase was easy, it didn't take too long to arrive and the quality is excellent "
+        },
+        {
+          "rating": 5,
+          "title": "Top quality product 👍",
+          "body": "Top quality product 👍"
+        },
+        {
           "rating": 2,
-          "title": "Top quality product \\ud83d\\udc4d",
-          "body": "Top quality product \\ud83d\\udc4d"
-        },
-        {
-          "rating": 5,
-          "title": "Hi it wasn't your company I was annoyed\\u2026",
-          "body": "Hi it wasn't your company I was annoyed with it was the delivery driver he didn't ring my bell he just put the parcel in the dustbin wasn't  happy with that. "
-        },
-        {
-          "rating": 5,
           "title": "great quality but poor service when parts missing",
           "body": "Ordered the Rachel sideboards which are beautiful but BOTH had the same piece missing, and one had the holes drilled in the wrong side so both are unusable as unable to be fully put together. Am STILL awaiting an update on whether they can source the part or send a new one two weeks later. Incredibly frustrating and radio silence from Dusk."
         },
         {
-          "rating": 4,
-          "title": "Both items arrived damaged!",
-          "body": "Both 2 seater and pouffe arrived damaged. Tear in fabric on sofa, scratched/damaged legs and ripped material under pouffe hanging down. Offered \\u00a375 refund to keep both items. Wanted to exchange but have to wait another 6 weeks for delivery!"
-        },
-        {
-          "rating": 4,
-          "title": "The only reason for 4 stars is there\\u2026",
-          "body": "The only reason for 4 stars is there was a small scratch on a drawer top, but Dusk sorted immediately, swift response to email. Both ordering & sorting delivery was a breeze. Delivery was on time - great service from BJS - and quality of furniture looks good - yet to be assembled. Will use Dusk again. "
-        },
-        {
-          "rating": 4,
-          "title": "I have medium-level experience",
-          "body": "You provided contradictory information, and in some cases no information at all.  Additionally, I received a text message about the delivery slot, but the delivery team called me a few hours earlier saying they were already coming and wanted to leave the furniture in my garden.  I still haven\\u2019t opened the boxes yet, so I cannot confirm whether there is any damage.  The only positive thing was"
-        },
-        {
-          "rating": 5,
-          "title": "Delivered to my old address ",
-          "body": "Delivered to my old address  Re delivered to my new address wrong time given on email stayed in all day  When arrived box open mentioned it to your delivery guy told it was ok it had been in the van All day tied up . When my diy man came next day no fixtures at all . Very expensive and disappointing  Also so hard to get hold of you when I did get through your staff were very helpful .  Seriously n"
-        },
-        {
-          "rating": 3,
-          "title": "I have medium-level experience",
-          "body": "You provided contradictory information, and in some cases no information at all.  Additionally, I received a text message about the delivery slot, but the delivery team called me a few hours earlier saying they were already coming and wanted to leave the furniture in my garden.  I still haven\\u2019t opened the boxes yet, so I cannot confirm whether there is any damage.  The only positive thing was"
-        },
-        {
           "rating": 1,
-          "title": "I love shopping with Dusk",
-          "body": "I love shopping with Dusk. The quality is excellent and the communication once you place an order means that you are well informed and updated at every stage. Products are well packaged ensuring that they are protected in transit and arrive in perfect condition. The mirror is even better than expected. Love it."
-        },
-        {
-          "rating": 3,
-          "title": "Perfect!",
-          "body": "Beautiful furniture, very sturdy that I can tell will last. Easy to assemble on your own and very reasonably priced compared to other places that have the same furniture. Took longer than I thought to get here but that\\u2019s an observation, not a complaint, it\\u2019s perfect for the space I wanted it for and that\\u2019s the main thing. Very happy with my purchase."
-        },
-        {
-          "rating": 1,
-          "title": "The furniture is lovely - delivery a let downn ",
-          "body": "The furniture is lovely. Let down by delivery company. Van scheduled, but arrived without the goods. Two more calls to arrange re-delivery.  Courier line busy as they have so many issues. "
-        },
-        {
-          "rating": 3,
-          "title": "Perfect!",
-          "body": "Beautiful furniture, very sturdy that I can tell will last. Easy to assemble on your own and very reasonably priced compared to other places that have the same furniture. Took longer than I thought to get here but that\\u2019s an observation, not a complaint, it\\u2019s perfect for the space I wanted it for and that\\u2019s the main thing. Very happy with my purchase."
+          "title": "Hi it wasn't your company I was annoyed…",
+          "body": "Hi it wasn't your company I was annoyed with it was the delivery driver he didn't ring my bell he just put the parcel in the dustbin wasn't  happy with that. "
         }
       ],
-      "scraped_at": "2026-05-29T09:59:33.668657"
+      "scraped_at": "2026-05-29T10:27:26.949148"
     },
     {
       "site": "Furniture Village",
       "is_own": false,
       "overall_rating": 4.8,
-      "review_count": 219041,
+      "review_count": 219052,
       "source": "ScraperAPI render",
       "reviews": [
         {
           "rating": 5,
-          "title": "Steve p and Ben a come and put our bed\\u2026",
+          "title": "Jo and Kalman delivered our sofas come…",
+          "body": "Jo and Kalman delivered our sofas come on time and good job thank you"
+        },
+        {
+          "rating": 1,
+          "title": "Absolutely shocking experience with…",
+          "body": "Absolutely shocking experience with Furniture Village Slough branch.\nWe spent nearly £5,000 on a bed with an electronic lifting/storage system, and the mechanism did not even work on the very first day it was installed. The delivery and installation team from Furniture Village themselves saw that the bed was faulty and informed their aftercare team or management.\nBecause of this, we immediately de"
+        },
+        {
+          "rating": 5,
+          "title": "Fantastic customer service from…",
+          "body": "Fantastic customer service from ordering to delivery.\nDelivery drivers were friendly, communicative and efficient. Arrived exactly on time and sofa was in place and all packaging gone within 10 minutes. "
+        },
+        {
+          "rating": 1,
+          "title": "Their after care service is terrible",
+          "body": "Their after care service is terrible. When I had my wardrobe assembled by their team 4 years ago they seems to have not installed a component correctly which now has caused a structural collapse of the top. After complaining and requesting for this to be fixed they came up with the excuse that you have 30 days to report any fault with installation - which in my case was impossible as I didn’t real"
+        },
+        {
+          "rating": 5,
+          "title": "Steve at the Tamworth store was very…",
+          "body": "Steve at the Tamworth store was very helpful. \nNothing was too much trouble,  he sorted our order out quickly and efficiently.  Very pleased. \nThank you. "
+        },
+        {
+          "rating": 5,
+          "title": "First class service from Davie and John…",
+          "body": "First class service from Davie and John today. They were very professional, friendly and super efficient. I had an ottoman bed and mattress delivered the guys assembled it and  took all the packaging away they left no mess.  Highly recommend Furniture Village and thanks again to Davie and John "
+        },
+        {
+          "rating": 5,
+          "title": "Steve p and Ben a come and put our bed…",
           "body": "Steve p and Ben a come and put our bed up this morning. Very nice guys done it super fast and was very professional "
+        },
+        {
+          "rating": 5,
+          "title": "Furniture Village delivery…",
+          "body": "Fabian and Stacey were polite and helpful and, removed all rubbish.\n\nThank you"
         },
         {
           "rating": 5,
@@ -579,8 +614,23 @@
         },
         {
           "rating": 5,
+          "title": "I have been given explanations and…",
+          "body": "I have been given explanations and details about mattress I was looking for \nGood customer care  . \n"
+        },
+        {
+          "rating": 5,
+          "title": "Ben H and Jordan",
+          "body": "Ben H and Jordan"
+        },
+        {
+          "rating": 5,
           "title": "Quick service ",
-          "body": "I found the bed online, I rung out the get the measurements to ensure it will fit got, got all my answers and ordered straight away.  "
+          "body": "I found the bed online, I rung out the get the measurements to ensure it will fit got, got all my answers and ordered straight away. \n"
+        },
+        {
+          "rating": 5,
+          "title": "Very good delivery service",
+          "body": "Very good delivery service "
         },
         {
           "rating": 5,
@@ -589,8 +639,18 @@
         },
         {
           "rating": 5,
+          "title": "Lovely team members and delivering…",
+          "body": "Lovely team members and delivering services "
+        },
+        {
+          "rating": 5,
           "title": "Excellent service from Kiran ",
           "body": "Kiran was extremely helpful today, he dealt with my query efficiently and explained he was going away to read the notes and gather detail, which I respected. Kiran also followed up with an email as promised. We still do not have a resolution for our broken sofa, but hopefully this will be followed up as Kiran promised, I believe he has done everything within his capacity. "
+        },
+        {
+          "rating": 5,
+          "title": "Brilliant service ",
+          "body": "The man who served us was brilliant. He was helpful, funny and informative. He was also grounded and real. A real genuine and nice guy. The lady who took my grandson off and played with him was also great. They both made us feel welcome and like nothing was too much trouble. Would definitely shop there again. "
         },
         {
           "rating": 5,
@@ -599,76 +659,16 @@
         },
         {
           "rating": 5,
+          "title": "Mike and Abdul the delivery guys were…",
+          "body": "Mike and Abdul the delivery guys were professional, friendly and efficient - thank you! "
+        },
+        {
+          "rating": 5,
           "title": "They have done a very good job",
           "body": "They have done a very good job, happy with their service. Well done Guyz. "
-        },
-        {
-          "rating": 5,
-          "title": "Excellent delivery service ",
-          "body": "Rob and Joe did both of our deliveries ( an adjustable bed and a corner sofa) and I could not fault the service which they gave. Both times they were extremely careful when assembling the furniture and I would highly recommend them."
-        },
-        {
-          "rating": 5,
-          "title": "Lola at Furniture Village was fantastic ",
-          "body": "Lola at Furniture Village was absoloutely Brillaint. She resolved my query that was dragging on for 2 weeks and made sure my concerns around my damage rug was seen too and ensured the replacement rug was ordered and delivered to me within the week. Thank you so much Lola!!!! "
-        },
-        {
-          "rating": 5,
-          "title": "Qasim was great and really helpful and\\u2026",
-          "body": "Qasim was great and really helpful and built the bed in perfectly, amazing delivery service"
-        },
-        {
-          "rating": 5,
-          "title": "Would definitely use FV again, delivery guys were great",
-          "body": "Sofa was delayed a couple of weeks but there was always good communication regarding this. Delivered today and the guys Steve P & Ben A were lovely. Very respectful, took shoes off upon entering the home every time despite having multiple trips back to the van. Put the sofa together within 5/10 minutes, made sure I was happy before they left and even demonstrated how the remote control worked. Rea"
-        },
-        {
-          "rating": 5,
-          "title": "Sofa",
-          "body": "Helpful sales people helped us choose right sofa Easy ordering  Phoned when ready and easy to arrange delivery On delivery day time given and drivers rang on way and arrived in between time slot given. Very efficient and professional when bringing sofa in. The delivery drivers were David and Geoff All in all a very pleasant experience  Looking forward to enjoying sofa"
-        },
-        {
-          "rating": 5,
-          "title": "A really good Experience",
-          "body": "Anja made the whole furniture village experience go really well. She was very knowledgable on all of the items and gave her professional opinion when asked. She demonstrated a wide range of table designs which helped us secure our table and chairs she even followed up by informing us of the product availability. A really good experience. "
-        },
-        {
-          "rating": 5,
-          "title": "Friendly, Helpful Staff and Smooth Delivery",
-          "body": "Barry at Furniture Village was very helpful in showing us the styles and sizes of table and chairs we were after. We had our small children with us, and he was great with them too, which made the whole experience much easier and more enjoyable.  Very polite and friendly delivery men, Danny and Charlie, quick service, and they cleared away all the packaging afterwards. Really pleased with the exper"
-        },
-        {
-          "rating": 5,
-          "title": "Furniture delivery ",
-          "body": "Our table and chairs were delivered today within the timeframe notified to us previously. The driver rang beforehand to inform me when they were half an hour away so we were fully prepared for them.  The table was in flat pack form but the drivers assembled it for us which was a pleasant surprise as normally the customer has to do this themselves.  The drivers were polite and friendly and smartly "
-        },
-        {
-          "rating": 5,
-          "title": "Modern well laid-out showroom with\\u2026",
-          "body": "Modern well laid-out showroom with excellent car parking, great advice and help from Sales Consultant Cindy who let us take samples home to match up our decor. Went back a few days later and made our purchase and now awaiting delivery  in about five weeks."
-        },
-        {
-          "rating": 5,
-          "title": "Excellent service from Sebastian and Mike",
-          "body": "The two chaps who delivered my furniture Sebastian and Mike were brilliant. They had a can do approach in getting some very large and heavy furniture up to my apartment.  Very friendly guys.  They very professionally and quickly assembled and set out the furniture, removed all the packaging materials and left no mess.  Thank you for the great work!"
-        },
-        {
-          "rating": 5,
-          "title": "Just had our sofa delivered ",
-          "body": "Just had our sofa delivered by Danny and Charlie. They were excellent. Friendly, careful and professional. Ensured no damage to our property bringing the item into our house and put it together quickly. Very good service."
-        },
-        {
-          "rating": 5,
-          "title": "Review for table chairs stools sofa bed ",
-          "body": "In the shop in reading my experience was 10/10. After we dealt turned in to a nightmare. Ordered 4jan 26, for delivery 1st week April. We received delivery today 22nd may, 3 chairs with minor faults, sofa bed inoperable, 2 stools minor defects, table stained and different colour to what was in the shop. The delivery people were clueless had no tools to put goods together, and didn\\u2019t know how "
-        },
-        {
-          "rating": 5,
-          "title": "Furniture delivery ",
-          "body": "Our table and chairs were delivered today within the timeframe notified to us previously. The driver rang beforehand to inform me when they were half an hour away so we were fully prepared for them.  The table was in flat pack form but the drivers assembled it for us which was a pleasant surprise as normally the customer has to do this themselves.  The drivers were polite and friendly and smartly "
         }
       ],
-      "scraped_at": "2026-05-29T10:00:22.635003"
+      "scraped_at": "2026-05-29T10:28:12.001484"
     }
   ],
   "themes": []
