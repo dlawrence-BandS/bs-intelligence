@@ -122,6 +122,21 @@ td a:hover{text-decoration:underline}
 .filters input{width:230px}
 /* Empty */
 .empty{text-align:center;padding:30px;color:var(--mid);font-size:.78rem}
+/* AI Chat */
+.chat-q{background:var(--navy);color:#fff;padding:12px 16px;border-radius:10px 10px 4px 10px;font-size:.82rem;line-height:1.5;align-self:flex-end;max-width:80%}
+.chat-a{background:#fff;border:1px solid var(--border);padding:16px 18px;border-radius:4px 10px 10px 10px;font-size:.82rem;line-height:1.6;align-self:flex-start;max-width:100%;width:100%}
+.chat-a table{width:100%;border-collapse:collapse;margin:10px 0;font-size:.78rem}
+.chat-a th{background:var(--navy);color:#fff;padding:6px 10px;text-align:left;font-size:.72rem}
+.chat-a td{padding:6px 10px;border-bottom:1px solid var(--border)}
+.chat-a tr:nth-child(even) td{background:#FAFAF8}
+.chat-a h3{font-family:'Playfair Display',serif;font-size:.95rem;color:var(--navy);margin:12px 0 6px}
+.chat-a ul,.chat-a ol{padding-left:18px;margin:6px 0}
+.chat-a li{margin-bottom:3px}
+.chat-a strong{color:var(--navy)}
+.chat-a .insight{background:var(--sand);border-left:3px solid var(--gold);padding:8px 12px;border-radius:0 6px 6px 0;margin:10px 0;font-style:italic}
+.chat-thinking{color:var(--mid);font-size:.78rem;display:flex;align-items:center;gap:8px;padding:8px 0}
+.suggest-btn{background:rgba(255,255,255,.15);color:#fff;border:1px solid rgba(255,255,255,.3);padding:5px 11px;border-radius:16px;font-size:.72rem;cursor:pointer;font-family:'DM Sans',sans-serif;transition:.15s;white-space:nowrap}
+.suggest-btn:hover{background:rgba(255,255,255,.25)}
 </style>
 </head>
 <body>
@@ -207,6 +222,7 @@ td a:hover{text-decoration:underline}
     <div class="tab" onclick="show('reviews')" data-t="reviews">&#11088; Reviews</div>
     <div class="tab" onclick="show('pricing')" data-t="pricing">&#128200; Category Pricing</div>
     <div class="tab" onclick="show('brandpricing')" data-t="brandpricing">&#128200; Brand Pricing</div>
+    <div class="tab" onclick="show('askai')" data-t="askai" style="background:linear-gradient(135deg,#1B2A4A,#2E7D6F);color:white;border-radius:6px;margin:6px 4px;padding:8px 14px;font-weight:600">&#10024; Ask AI</div>
   </nav>
 
   <main>
@@ -300,6 +316,34 @@ td a:hover{text-decoration:underline}
     <div class="panel" id="p-brandpricing">
       <div class="sec" style="margin-top:0">Median Price by Brand</div>
       <div id="brand-price-bars"></div>
+    </div>
+
+    <!-- Ask AI -->
+    <div class="panel" id="p-askai">
+      <div style="max-width:860px">
+
+        <!-- Header -->
+        <div style="background:linear-gradient(135deg,var(--navy),var(--teal));border-radius:12px;padding:24px 28px;margin-bottom:20px;color:#fff">
+          <div style="font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;margin-bottom:6px">✨ Ask AI about your data</div>
+          <div style="font-size:.8rem;opacity:.8;line-height:1.5">Ask anything about your competitors, pricing, stock levels, or trends. The AI has full context of all scraped product and pricing data.</div>
+          <div style="margin-top:12px;display:flex;flex-wrap:wrap;gap:8px" id="suggested-qs"></div>
+        </div>
+
+        <!-- Input -->
+        <div style="display:flex;gap:10px;margin-bottom:20px">
+          <textarea id="ai-question" placeholder="e.g. Show me the best priced dining chairs from competitors vs B&S..." 
+            style="flex:1;padding:12px 14px;border:1.5px solid var(--border);border-radius:8px;font-family:'DM Sans',sans-serif;font-size:.82rem;resize:vertical;min-height:60px;outline:none;line-height:1.5"
+            onkeydown="if(event.key==='Enter'&&(event.ctrlKey||event.metaKey))askAI()"></textarea>
+          <button onclick="askAI()" id="ask-btn"
+            style="padding:0 22px;background:var(--navy);color:#fff;border:none;border-radius:8px;font-family:'DM Sans',sans-serif;font-weight:600;font-size:.82rem;cursor:pointer;white-space:nowrap;transition:.2s;align-self:stretch">
+            Ask ↵
+          </button>
+        </div>
+
+        <!-- Chat history -->
+        <div id="ai-chat" style="display:flex;flex-direction:column;gap:16px"></div>
+
+      </div>
     </div>
 
   </main>
@@ -948,6 +992,244 @@ function renderBrandPricing(){
   const brandLabels = new Set(BRAND_FOLDERS.flatMap(f=>f.labels));
   document.getElementById('brand-price-bars').innerHTML = buildPriceBars(brandLabels);
 }
+
+
+// ── Ask AI ────────────────────────────────────────────────────────────────────
+const GEMINI_KEY = "AQ.Ab8RN6L4FxSk-Be2M5lt1I0fMj_cqXi_e4q5QCCbXX0h6zqjCQ";
+
+const SUGGESTED_QUESTIONS = [
+  "Best priced dining chairs vs B&S",
+  "Which competitor has the most Ercol products?",
+  "Where is B&S most expensive vs competitors?",
+  "Which categories have the most out-of-stock items?",
+  "Summary of competitor strengths and weaknesses",
+  "What are the pricing gaps B&S could exploit?",
+];
+
+function initAskAI(){
+  const sq = document.getElementById('suggested-qs');
+  if(!sq) return;
+  sq.innerHTML = SUGGESTED_QUESTIONS.map(q =>
+    `<button class="suggest-btn" onclick="askQuestion('${q.replace(/'/g,"\\'")}')">${q}</button>`
+  ).join('');
+}
+
+function buildDataContext(){
+  // Build a compact but comprehensive data summary for the AI
+  const lines = [];
+  lines.push("=== BARKER & STONEHOUSE COMPETITOR INTELLIGENCE DATA ===");
+  lines.push(`Data collected: ${new Date().toLocaleDateString('en-GB')}`);
+  lines.push("");
+
+  // Product counts and summaries per competitor
+  const allSources = {...DATA};
+  Object.entries(allSources).filter(([,d])=>d).forEach(([key, d])=>{
+    const src = SOURCES[key];
+    const s = d.summary||{};
+    lines.push(`--- ${src.label} ---`);
+    lines.push(`Total products: ${s.total_products||0} | On sale: ${s.on_sale||0} | Out of stock: ${s.out_of_stock||0}`);
+
+    // Category price medians
+    const stats = d.category_stats||{};
+    if(Object.keys(stats).length){
+      lines.push("Category median prices:");
+      Object.entries(stats)
+        .filter(([,s])=>s.count>=2)
+        .sort((a,b)=>b[1].median-a[1].median)
+        .forEach(([cat,s])=>{
+          lines.push(`  ${cat}: £${s.median} median (£${s.min}–£${s.max}, ${s.count} products)`);
+        });
+    }
+
+    // Recent changes
+    const ch = d.changes||{};
+    if((ch.price_changes||[]).length) lines.push(`Price changes since last run: ${ch.price_changes.length}`);
+    if((ch.stock_changes||[]).length) lines.push(`Stock changes since last run: ${ch.stock_changes.length}`);
+    if((ch.new_products||[]).length)  lines.push(`New products since last run: ${ch.new_products.length}`);
+    lines.push("");
+  });
+
+  // Individual products — grouped by category for AI to query
+  lines.push("=== ALL PRODUCTS (grouped by category) ===");
+  const allProds = Object.entries(allSources)
+    .filter(([,d])=>d)
+    .flatMap(([key,d])=>(d.all_products||[]).map(p=>({
+      ...p,
+      competitor: SOURCES[key].label,
+      is_own: SOURCES[key].isOwn||false,
+    })));
+
+  // Group by page_label
+  const byCategory = {};
+  allProds.forEach(p=>{
+    const cat = p.page_label||'Other';
+    if(!byCategory[cat]) byCategory[cat]=[];
+    byCategory[cat].push(p);
+  });
+
+  Object.entries(byCategory).sort().forEach(([cat, prods])=>{
+    lines.push(`\n[${cat}] — ${prods.length} products total`);
+    // Sort by price
+    prods.sort((a,b)=>(a.price||99999)-(b.price||99999));
+    prods.slice(0,50).forEach(p=>{  // cap per category to keep context manageable
+      const sale = p.is_on_sale ? ` (WAS £${p.was_price}, ${p.discount_pct}% off)` : '';
+      const oos  = p.stock_status==='out_of_stock' ? ' [OUT OF STOCK]' : '';
+      const own  = p.is_own ? ' [B&S]' : '';
+      lines.push(`  ${p.competitor}${own}: ${p.name} — £${p.price||'?'}${sale}${oos}`);
+    });
+    if(prods.length>50) lines.push(`  ... and ${prods.length-50} more`);
+  });
+
+  // Reviews summary
+  if(REVIEWS_DATA?.results?.length){
+    lines.push("\n=== TRUSTPILOT RATINGS ===");
+    REVIEWS_DATA.results.forEach(r=>{
+      lines.push(`${r.site}: ${r.overall_rating||'?'}/5 (${(r.review_count||0).toLocaleString()} reviews)`);
+    });
+    if(REVIEWS_DATA.themes?.length){
+      lines.push("\n=== REVIEW THEMES ===");
+      REVIEWS_DATA.themes.forEach(t=>{
+        lines.push(`${t.site} — Positives: ${(t.positives||[]).join(', ')} | Negatives: ${(t.negatives||[]).join(', ')}`);
+        if(t.insight) lines.push(`  Insight: ${t.insight}`);
+      });
+    }
+  }
+
+  return lines.join('\n');
+}
+
+const chatHistory = [];
+
+async function askQuestion(q){
+  document.getElementById('ai-question').value = q;
+  await askAI();
+}
+
+async function askAI(){
+  const questionEl = document.getElementById('ai-question');
+  const question = questionEl.value.trim();
+  if(!question) return;
+
+  const btn = document.getElementById('ask-btn');
+  btn.disabled = true;
+  btn.textContent = '...';
+  questionEl.value = '';
+
+  const chat = document.getElementById('ai-chat');
+
+  // Add question bubble
+  const qDiv = document.createElement('div');
+  qDiv.className = 'chat-q';
+  qDiv.textContent = question;
+  chat.appendChild(qDiv);
+
+  // Add thinking indicator
+  const thinkDiv = document.createElement('div');
+  thinkDiv.className = 'chat-thinking';
+  thinkDiv.innerHTML = '<div class="spinner" style="width:16px;height:16px;border-width:2px"></div> Analysing your data...';
+  chat.appendChild(thinkDiv);
+  chat.scrollTop = chat.scrollHeight;
+
+  // Build context (only once per session, cached)
+  if(!window._aiContext){
+    window._aiContext = buildDataContext();
+  }
+
+  // Add to history
+  chatHistory.push({role:'user', content: question});
+
+  const systemPrompt = `You are a retail intelligence analyst for Barker & Stonehouse, a premium UK furniture retailer. You have been given comprehensive data about competitor pricing, stock levels, product ranges and customer reviews.
+
+When answering:
+- Be specific with prices, product names and competitor names from the data
+- Use markdown tables when comparing prices or products across competitors  
+- Highlight where B&S is priced above or below competitors
+- Note stock availability where relevant
+- Keep insights actionable for a retail buying/pricing team
+- Use £ for prices
+- If asked about trends over time, note that you only have the current snapshot plus any "changes since last run" data
+
+DATA CONTEXT:
+${window._aiContext}`;
+
+  const messages = [
+    {role:'user', content: systemPrompt + '\n\nConversation history:\n' + 
+      chatHistory.slice(-6,-1).map(m=>`${m.role}: ${m.content}`).join('\n') +
+      '\n\nUser question: ' + question}
+  ];
+
+  try {
+    const url = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${GEMINI_KEY}`;
+    const response = await fetch(url, {
+      method: 'POST',
+      headers: {'Content-Type':'application/json'},
+      body: JSON.stringify({
+        contents: messages.map(m=>({
+          role: m.role==='assistant' ? 'model' : 'user',
+          parts: [{text: m.content}]
+        })),
+        generationConfig: {maxOutputTokens: 1500, temperature: 0.2}
+      })
+    });
+
+    const data = await response.json();
+    const answer = data?.candidates?.[0]?.content?.parts?.[0]?.text || 'Sorry, I could not generate a response.';
+
+    chatHistory.push({role:'assistant', content: answer});
+
+    // Remove thinking indicator
+    chat.removeChild(thinkDiv);
+
+    // Add answer bubble
+    const aDiv = document.createElement('div');
+    aDiv.className = 'chat-a';
+    // Render markdown-like formatting
+    aDiv.innerHTML = formatAIResponse(answer);
+    chat.appendChild(aDiv);
+
+  } catch(e) {
+    chat.removeChild(thinkDiv);
+    const errDiv = document.createElement('div');
+    errDiv.className = 'chat-a';
+    errDiv.innerHTML = `<span style="color:var(--red)">Error: ${e.message}. Check your Gemini API key is set in the dashboard.</span>`;
+    chat.appendChild(errDiv);
+  }
+
+  btn.disabled = false;
+  btn.textContent = 'Ask ↵';
+  chat.scrollTop = chat.scrollHeight;
+}
+
+function formatAIResponse(text){
+  // Convert markdown to HTML
+  return text
+    // Tables
+    .replace(/\|(.+)\|\n\|[-|: ]+\|\n((?:\|.+\|\n?)+)/g, (match, header, rows) => {
+      const ths = header.split('|').filter(s=>s.trim()).map(s=>`<th>${s.trim()}</th>`).join('');
+      const trs = rows.trim().split('\n').map(row => {
+        const tds = row.split('|').filter(s=>s.trim()).map(s=>`<td>${s.trim()}</td>`).join('');
+        return `<tr>${tds}</tr>`;
+      }).join('');
+      return `<table><thead><tr>${ths}</tr></thead><tbody>${trs}</tbody></table>`;
+    })
+    // Headers
+    .replace(/^### (.+)$/gm, '<h3>$1</h3>')
+    .replace(/^## (.+)$/gm, '<h3>$1</h3>')
+    // Bold
+    .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>')
+    // Bullet lists
+    .replace(/^[-•] (.+)$/gm, '<li>$1</li>')
+    .replace(/(<li>.*<\/li>\n?)+/g, '<ul>$&</ul>')
+    // Numbered lists
+    .replace(/^\d+\. (.+)$/gm, '<li>$1</li>')
+    // Line breaks
+    .replace(/\n\n/g, '<br><br>')
+    .replace(/\n/g, '<br>');
+}
+
+// Initialise suggested questions when data loads
+const _origRender = render;
+render = function(){ _origRender(); initAskAI(); };
 
 loadAll(false);
 </script>
