@@ -284,6 +284,10 @@ td a:hover{text-decoration:underline}
     <div class="panel" id="p-reviews">
       <div class="sec" style="margin-top:0">Trustpilot Ratings</div>
       <div class="cards" id="rev-cards"></div>
+      <div class="sec" style="margin-top:28px">Review Theme Analysis <span id="theme-status" style="font-size:.72rem;font-weight:400;color:var(--mid)"></span></div>
+      <div id="theme-grid" style="display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px"></div>
+      <div class="sec" style="margin-top:28px">Individual Reviews</div>
+      <div id="review-list"></div>
     </div>
 
     <!-- Category Pricing -->
@@ -305,11 +309,12 @@ td a:hover{text-decoration:underline}
 // ── Config ────────────────────────────────────────────────────────────────────
 const GITHUB_RAW = 'https://raw.githubusercontent.com/dlawrence-BandS/bs-intelligence/main/';
 const SOURCES = {
-  heals: { file:'heals_intelligence.json',          label:'Heals',         cls:'heals', color:'#2E7D6F' },
-  ll:    { file:'lee_longlands_intelligence.json',   label:'Lee Longlands', cls:'ll',    color:'#1B2A4A' },
-  hu:    { file:'housing_units_intelligence.json',   label:'Housing Units', cls:'hu',    color:'#8B4513' },
-  bs:    { file:'barker_intelligence.json',             label:'Barker & Stonehouse', cls:'bs', color:'#C9A84C', isOwn:true },
+  heals: { file:'heals_intelligence.json',          label:'Heals',                cls:'heals', color:'#2E7D6F' },
+  ll:    { file:'lee_longlands_intelligence.json',   label:'Lee Longlands',        cls:'ll',    color:'#1B2A4A' },
+  hu:    { file:'housing_units_intelligence.json',   label:'Housing Units',        cls:'hu',    color:'#8B4513' },
+  bs:    { file:'barker_intelligence.json',          label:'Barker & Stonehouse',  cls:'bs',    color:'#C9A84C', isOwn:true },
 };
+let REVIEWS_DATA = null;
 
 // ── Category folders (product categories only) ───────────────────────────────
 const CATEGORY_FOLDERS = [
@@ -390,6 +395,17 @@ async function loadAll(force){
       chip.innerHTML=`<span class="comp-dot dot-${key}"></span> ✗ ${src.label}: not found`;
     }
   }));
+  // Also try to load reviews (optional — don't block render if missing)
+  try {
+    const revRes = await fetch(GITHUB_RAW + 'reviews_intelligence.json' + (force?'?t='+Date.now():''));
+    if(revRes.ok) {
+      REVIEWS_DATA = await revRes.json();
+      const chip = document.createElement('div');
+      chip.className='chip ok';
+      chip.innerHTML=`⭐ Reviews: ${(REVIEWS_DATA.results||[]).length} competitors loaded`;
+      document.getElementById('load-chips').appendChild(chip);
+    }
+  } catch(e) { /* reviews optional */ }
   if(loadedAny){ render(); }
   else {
     document.getElementById('loading').querySelector('h2').textContent='No data found';
@@ -702,17 +718,96 @@ function renderStock(){
 }
 
 // ── Reviews ───────────────────────────────────────────────────────────────────
+// ── Reviews ───────────────────────────────────────────────────────────────────
+const REVIEW_COLOURS = {
+  'Barker & Stonehouse': {card:'c-o', border:'border:2px solid var(--gold)', tag:'⭐'},
+  'Heals':               {card:'c-t', border:'', tag:''},
+  'Lee Longlands':       {card:'c-n', border:'', tag:''},
+  'Housing Units':       {card:'c-a', border:'', tag:''},
+  'Cox & Cox':           {card:'c-g', border:'', tag:''},
+  'Dusk':                {card:'c-r', border:'', tag:''},
+  'Furniture Village':   {card:'c-o', border:'', tag:''},
+};
+
 function renderReviews(){
-  const reviews=[...(DATA.heals?.reviews||[])];
-  if(!reviews.length){ document.getElementById('rev-cards').innerHTML='<div class="empty">No review data.</div>'; return; }
-  const cols=['c-o','c-t','c-n','c-a'];
-  document.getElementById('rev-cards').innerHTML=reviews.map((r,i)=>`
-    <div class="card ${cols[i%cols.length]}">
-      <div class="cl">${r.site}</div>
-      <div style="font-size:1.05rem;margin:5px 0">${stars(r.overall_rating)}</div>
-      <div class="cs">${r.review_count?Number(r.review_count).toLocaleString()+' reviews':'Unavailable'}</div>
-    </div>`).join('');
+  const results = REVIEWS_DATA?.results || [];
+  if(!results.length){
+    document.getElementById('rev-cards').innerHTML =
+      '<div class="empty">No review data yet — run reviews_scraper.py and upload reviews_intelligence.json to GitHub.</div>';
+    document.getElementById('theme-grid').innerHTML = '';
+    document.getElementById('review-list').innerHTML = '';
+    return;
+  }
+
+  // ── Rating cards ──
+  document.getElementById('rev-cards').innerHTML = results.map(r=>{
+    const col = REVIEW_COLOURS[r.site] || {card:'c-t', border:'', tag:''};
+    const ratingBar = r.overall_rating ? `
+      <div style="margin:8px 0 4px">
+        <div style="display:flex;align-items:center;gap:8px">
+          <div style="font-size:1.6rem;font-weight:700;font-family:'Playfair Display',serif;color:var(--navy)">${Number(r.overall_rating).toFixed(1)}</div>
+          <div>${stars(r.overall_rating)}</div>
+        </div>
+        <div style="margin-top:4px;background:var(--border);border-radius:4px;height:6px;overflow:hidden">
+          <div style="height:100%;border-radius:4px;background:var(--gold);width:${(r.overall_rating/5*100).toFixed(0)}%;transition:width .6s ease"></div>
+        </div>
+      </div>` : '<div class="cs" style="margin-top:8px">Rating unavailable</div>';
+    return `<div class="card ${col.card}" style="${col.border}">
+      <div class="cl">${col.tag} ${r.site}</div>
+      ${ratingBar}
+      <div class="cs">${r.review_count ? Number(r.review_count).toLocaleString()+' reviews on Trustpilot' : ''}</div>
+      ${r.source ? `<div style="font-size:.62rem;color:var(--mid);margin-top:4px">via ${r.source}</div>` : ''}
+    </div>`;
+  }).join('');
+
+  // ── Pre-computed themes (generated by reviews_scraper.py, no API call here) ──
+  const themes = REVIEWS_DATA?.themes || [];
+  if(themes.length){
+    document.getElementById('theme-status').textContent = `— ${themes.length} competitor${themes.length!==1?'s':''} analysed`;
+    document.getElementById('theme-grid').innerHTML = themes.map(t => {
+      const col = REVIEW_COLOURS[t.site] || {card:'c-t', border:'', tag:''};
+      return `<div class="card ${col.card}" style="${col.border};padding:18px">
+        <div class="cl" style="margin-bottom:10px">${col.tag||''} ${t.site} — Review Themes</div>
+        <div style="margin-bottom:10px">
+          <div style="font-size:.7rem;font-weight:600;color:var(--green);margin-bottom:5px">✓ WHAT CUSTOMERS LOVE</div>
+          ${(t.positives||[]).map(p=>`<div style="font-size:.76rem;padding:3px 0;border-bottom:1px solid var(--border);color:var(--text)">• ${p}</div>`).join('')}
+        </div>
+        <div style="margin-bottom:10px">
+          <div style="font-size:.7rem;font-weight:600;color:var(--red);margin-bottom:5px">✗ COMMON COMPLAINTS</div>
+          ${(t.negatives||[]).map(p=>`<div style="font-size:.76rem;padding:3px 0;border-bottom:1px solid var(--border);color:var(--text)">• ${p}</div>`).join('')}
+        </div>
+        <div style="margin-top:10px;padding:8px;background:var(--sand);border-radius:6px;font-size:.74rem;color:var(--navy);font-style:italic">💡 ${t.insight}</div>
+      </div>`;
+    }).join('');
+  } else {
+    document.getElementById('theme-status').textContent = '— run reviews_scraper.py to generate themes';
+    document.getElementById('theme-grid').innerHTML =
+      '<div class="empty" style="grid-column:1/-1">Theme analysis not yet available. Run reviews_scraper.py — it uses the Claude API once during scraping and saves the results here.</div>';
+  }
+
+  // ── Individual reviews ──
+  const allReviews = [];
+  results.forEach(r => {
+    (r.reviews||[]).forEach(rev => allReviews.push({...rev, site: r.site}));
+  });
+  if(allReviews.length){
+    document.getElementById('review-list').innerHTML = tbl(
+      ['Site','Rating','Title','Review'],
+      allReviews.slice(0,60).map(r=>[
+        compTag(Object.keys(SOURCES).find(k=>SOURCES[k].label===r.site)||''),
+        r.rating ? stars(r.rating) : '—',
+        (r.title||'').substring(0,60),
+        (r.body||'').substring(0,200),
+      ]),
+      'No individual reviews available.'
+    );
+  } else {
+    document.getElementById('review-list').innerHTML =
+      '<div class="empty">Individual review text not captured — requires render mode scraping.</div>';
+  }
 }
+
+let themesAnalysed = false;
 
 // ── Pricing ───────────────────────────────────────────────────────────────────
 // ── Shared pricing bar builder ────────────────────────────────────────────────
